@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   env_it.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/21 19:16:33 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/21 22:43:41 by irabeson         ###   ########.fr       */
+/*   Created: 2014/01/21 21:47:12 by irabeson          #+#    #+#             */
+/*   Updated: 2014/01/21 21:48:01 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "app.h"
-#include <stdio.h>
+#include "env.h"
 
-int	main(int argc, char **argv, char **environs)
+t_env_var		*env_begin(t_env *env)
 {
-	app_init(argc, argv, environs);
-	app_destroy();
-	return (0);
-	(void)argc;
-	(void)argv;
+	return (env->env_vars);
+}
+
+t_env_var		*env_end(t_env *env)
+{
+	return (env->env_vars + env->count);
+}
+
+t_env_var const	*env_cbegin(t_env const *env)
+{
+	return (env->env_vars);
+}
+
+t_env_var const	*env_cend(t_env const *env)
+{
+	return (env->env_vars + env->count);
 }

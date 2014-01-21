@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   str_array.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/21 19:16:33 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/21 22:43:41 by irabeson         ###   ########.fr       */
+/*   Created: 2014/01/21 20:31:40 by irabeson          #+#    #+#             */
+/*   Updated: 2014/01/21 20:37:54 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "app.h"
-#include <stdio.h>
+#ifndef STR_ARRAY_H
+# define STR_ARRAY_H
+# include "types_def.h"
 
-int	main(int argc, char **argv, char **environs)
-{
-	app_init(argc, argv, environs);
-	app_destroy();
-	return (0);
-	(void)argc;
-	(void)argv;
-}
+t_ui	str_array_size(char **array);
+void	str_array_delete(char ***array);
+
+#endif

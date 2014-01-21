@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   env_var.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/21 19:16:33 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/21 22:43:41 by irabeson         ###   ########.fr       */
+/*   Created: 2014/01/21 20:45:56 by irabeson          #+#    #+#             */
+/*   Updated: 2014/01/21 21:40:25 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "app.h"
-#include <stdio.h>
+#ifndef ENV_VAR_H
+# define ENV_VAR_H
 
-int	main(int argc, char **argv, char **environs)
+# include "types_def.h"
+
+typedef struct	s_env_var
 {
-	app_init(argc, argv, environs);
-	app_destroy();
-	return (0);
-	(void)argc;
-	(void)argv;
-}
+	char	*key;
+	char	*value;
+}				t_env_var;
+
+t_bool		env_var_init(t_env_var *env_var, char const *str);
+t_bool		env_var_init_kv(t_env_var *env_var, char const *key,
+							char const *value);
+void		env_var_destroy(t_env_var *env_var);
+void		env_var_set_value(t_env_var *env_var, char const *str);
+
+#endif

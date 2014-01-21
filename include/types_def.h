@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   types_def.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/21 19:16:33 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/21 22:43:41 by irabeson         ###   ########.fr       */
+/*   Created: 2014/01/21 19:41:37 by irabeson          #+#    #+#             */
+/*   Updated: 2014/01/21 20:24:30 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "app.h"
-#include <stdio.h>
+#ifndef TYPES_DEF_H
+# define TYPES_DEF_H
 
-int	main(int argc, char **argv, char **environs)
+typedef unsigned int	t_ui;
+typedef	int				t_bool;
+typedef enum			e_bool_val
 {
-	app_init(argc, argv, environs);
-	app_destroy();
-	return (0);
-	(void)argc;
-	(void)argv;
-}
+	false = 0,
+	true = 1
+}						t_bool_val;
+
+#endif

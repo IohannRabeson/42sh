@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   app.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/21 19:16:33 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/21 22:43:41 by irabeson         ###   ########.fr       */
+/*   Created: 2014/01/21 20:15:52 by irabeson          #+#    #+#             */
+/*   Updated: 2014/01/21 20:24:09 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "app.h"
-#include <stdio.h>
+#ifndef APP_H
+# define APP_H
+# include "types_def.h"
+# include "env.h"
 
-int	main(int argc, char **argv, char **environs)
+typedef struct	s_app
 {
-	app_init(argc, argv, environs);
-	app_destroy();
-	return (0);
-	(void)argc;
-	(void)argv;
-}
+	t_env	env;
+	t_bool	run;
+}				t_app;
+
+t_app	*app_instance(void);
+void	app_init(int argc, char **argv, char **environs);
+void	app_destroy(void);
+void	app_stop(void);
+t_bool	app_run(void);
+
+#endif
