@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/01/22 05:44:56 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/01/22 20:34:40 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -21,7 +21,8 @@ LIBFT_DIR = ../libft
 SRC =		main.c				\
 			app.c				\
 			$(SRC_ENV)			\
-			$(SRC_UTILS)
+			$(SRC_UTILS)		\
+			$(SRC_PARSER)
 
 SRC_UTILS = path_is.c			\
 			path_concat.c		\
@@ -34,6 +35,13 @@ SRC_ENV =	env.c				\
             env_access.c		\
             env_get_values.c	\
             env_copy.c
+
+SRC_PARSER =	parser.c						\
+		   		parser_add.c					\
+		   		parser_matrix.c					\
+		   		parser_mat_row.c				\
+		   		parser_mat_row_kv.c				\
+				lexem.c
 
 COLOR_ID = \033[1;32m
 COLOR_NO = \033[0m
@@ -67,4 +75,4 @@ $(BUILD_DIR):
 	@mkdir $(BUILD_DIR)
 
 ft:
-	make --silent -C $(LIBFT_DIR)
+	@make --silent -C $(LIBFT_DIR)
