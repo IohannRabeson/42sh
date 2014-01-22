@@ -6,15 +6,16 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:26:02 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/21 21:38:00 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/22 05:45:43 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
-#include "error.h"
-#include "str_array.h"
 #include <stdlib.h>
-#include <libft.h>
+#include <ft_memory.h>
+#include <ft_string.h>
+#include <ft_error.h>
+#include <ft_str_array.h>
 
 void		env_init(t_env *env, char **environs)
 {

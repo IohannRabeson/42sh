@@ -1,39 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_array.c                                        :+:      :+:    :+:   */
+/*   path_can.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/21 20:32:45 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/21 21:10:04 by irabeson         ###   ########.fr       */
+/*   Created: 2014/01/21 23:00:18 by irabeson          #+#    #+#             */
+/*   Updated: 2014/01/21 23:00:20 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "str_array.h"
-#include <stdlib.h>
+#include <sys/stat.h>
 
-t_ui	str_array_size(char **array)
+int		path_can_be_executed(char const *path)
 {
-	t_ui	i;
+	struct stat	s;
 
-	i = 0;
-	if (array == NULL)
+	if (lstat(path, &s) < 0)
 		return (0);
-	while (array[i] != NULL)
-		++i;
-	return (i);
-}
-
-void	str_array_delete(char ***array)
-{
-	char 	**str_array;
-
-	if (array == NULL || *array == NULL)
-		return ;
-	str_array = *array;
-	while (*str_array != NULL)
-		free(*str_array++);
-	free(str_array);
-	array = NULL;
+	return (s.st_mode & S_IXUSR);
 }

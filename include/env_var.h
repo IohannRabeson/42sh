@@ -6,14 +6,14 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:45:56 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/21 21:40:25 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/22 03:12:49 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENV_VAR_H
 # define ENV_VAR_H
 
-# include "types_def.h"
+# include <ft_types_def.h>
 
 typedef struct	s_env_var
 {

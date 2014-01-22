@@ -6,13 +6,13 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:15:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/21 20:24:09 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/22 03:02:47 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef APP_H
 # define APP_H
-# include "types_def.h"
+# include "ft_types_def.h"
 # include "env.h"
 
 typedef struct	s_app

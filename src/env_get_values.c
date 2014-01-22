@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_array.h                                        :+:      :+:    :+:   */
+/*   env_get_values.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/21 20:31:40 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/21 20:37:54 by irabeson         ###   ########.fr       */
+/*   Created: 2014/01/22 05:06:50 by irabeson          #+#    #+#             */
+/*   Updated: 2014/01/22 05:35:16 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STR_ARRAY_H
-# define STR_ARRAY_H
-# include "types_def.h"
+#include "env.h"
+#include "ft_list.h"
+#include "ft_string.h"
 
-t_ui	str_array_size(char **array);
-void	str_array_delete(char ***array);
+t_ui			env_get_values(t_env const *env, char const *key, char sep,
+							   struct s_list *results)
+{
+	t_ui		count;
+	char const	*value;
 
-#endif
+	value = env_get_value(env, key);
+	if (value)
+		count = ft_strsplit_list(value, sep, results);
+	return (count);
+}

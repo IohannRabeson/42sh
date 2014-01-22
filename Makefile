@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/01/21 22:47:27 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/01/22 05:44:56 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -18,18 +18,22 @@ INCLUDE_DIR = ./include
 BUILD_DIR = ./builds
 LIBFT_DIR = ../libft
 
-SRC_UTILS = str_array.c
-
-SRC =		main.c			\
-			error.c			\
-			env.c			\
-			env_it.c		\
-			env_var.c		\
-			env_modifier.c	\
-			env_access.c	\
-			env_copy.c		\
-			app.c			\
+SRC =		main.c				\
+			app.c				\
+			$(SRC_ENV)			\
 			$(SRC_UTILS)
+
+SRC_UTILS = path_is.c			\
+			path_concat.c		\
+			path_exists.c
+			
+SRC_ENV =	env.c				\
+            env_it.c			\
+            env_var.c			\
+            env_modifier.c		\
+            env_access.c		\
+            env_get_values.c	\
+            env_copy.c
 
 COLOR_ID = \033[1;32m
 COLOR_NO = \033[0m
@@ -38,17 +42,18 @@ SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 INCLUDES = -I$(INCLUDE_DIR) -I$(LIBFT_DIR)/includes/
 LIB_LINKS = -L$(LIBFT_DIR) -lft
 
-all: $(TARGET)
+all: $(BUILD_DIR) ft $(TARGET)
 
-$(TARGET): ft $(BUILD_DIR) $(OBJS)
+$(TARGET): $(OBJS)
 	@echo " - Building $(COLOR_ID)$(TARGET)$(COLOR_NO)..."
 	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o $(TARGET) $(LIB_LINKS)
 
 $(addprefix $(BUILD_DIR)/, %.o): $(addprefix $(SRC_DIR)/, %.c)
 	@echo " - Building $(COLOR_ID)$(<:.c=.o)$(COLOR_NO)..."
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ $(LIB_LINKS)
+
 re: fclean $(TARGET)
-	
+
 clean:
 	@echo " - Removing objects files:"
 	@rm -fr $(OBJS)
@@ -62,4 +67,4 @@ $(BUILD_DIR):
 	@mkdir $(BUILD_DIR)
 
 ft:
-	make -C $(LIBFT_DIR)
+	make --silent -C $(LIBFT_DIR)

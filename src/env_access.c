@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 21:11:54 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/21 21:58:34 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/22 05:25:44 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ char const		*env_get_value(t_env const *env, char const *key)
 	t_env_var const	*it;
 
 	it = env_cbegin(env);
-	while (it != env_cend(env))
+	while (it && it != env_cend(env))
 	{
-		if (ft_strcmp(it->key, key) == 1)
+		if (ft_strequ(it->key, key))
 			return (it->value);
 		++it;
 	}
-	return (false);
+	return (NULL);
 }
 
 t_env_var		*env_find(t_env *env, char const *key)
