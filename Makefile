@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/01/22 20:34:40 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/01/24 23:11:46 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -18,30 +18,40 @@ INCLUDE_DIR = ./include
 BUILD_DIR = ./builds
 LIBFT_DIR = ../libft
 
-SRC =		main.c				\
-			app.c				\
-			$(SRC_ENV)			\
-			$(SRC_UTILS)		\
-			$(SRC_PARSER)
+SRC =			main.c					\
+				app.c					\
+				app_controls.c			\
+				app_op.c				\
+				app_run.c				\
+				cmd.c					\
+				cmd_setup.c				\
+				cmd_exec.c				\
+				$(SRC_ENV)				\
+				$(SRC_UTILS)			\
+				$(SRC_PARSER)
 
-SRC_UTILS = path_is.c			\
-			path_concat.c		\
-			path_exists.c
-			
-SRC_ENV =	env.c				\
-            env_it.c			\
-            env_var.c			\
-            env_modifier.c		\
-            env_access.c		\
-            env_get_values.c	\
-            env_copy.c
+SRC_UTILS =		path_is.c				\
+				path_can.c				\
+				path_concat.c			\
+				path_exists.c
+				
+SRC_ENV =		env.c					\
+				env_it.c				\
+				env_var.c				\
+				env_modifier.c			\
+				env_access.c			\
+				env_get_values.c		\
+				env_copy.c
 
-SRC_PARSER =	parser.c						\
-		   		parser_add.c					\
-		   		parser_matrix.c					\
-		   		parser_mat_row.c				\
-		   		parser_mat_row_kv.c				\
-				lexem.c
+SRC_PARSER =	parser.c				\
+		   		parser_add.c			\
+		   		parser_run.c			\
+		   		parser_load.c			\
+		   		parser_matrix.c			\
+		   		parser_mat_row.c		\
+		   		parser_mat_row_kv.c		\
+				lexem.c					\
+				lexem_put.c
 
 COLOR_ID = \033[1;32m
 COLOR_NO = \033[0m

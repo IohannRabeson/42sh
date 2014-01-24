@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   path_can.c                                         :+:      :+:    :+:   */
+/*   parser_load.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/21 23:00:18 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/24 17:22:59 by irabeson         ###   ########.fr       */
+/*   Created: 2014/01/24 03:28:08 by irabeson          #+#    #+#             */
+/*   Updated: 2014/01/24 04:07:48 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "path.h"
-#include <sys/stat.h>
+#include "parser.h"
 
-t_bool	path_is_executable(char const *path)
+void	parser_load(t_parser *parser, t_parser_trans const *trans)
 {
-	struct stat	s;
-
-	if (lstat(path, &s) < 0)
-		return (0);
-	return (s.st_mode & S_IXUSR);
+	if (trans == NULL)
+		return ;
+	while (trans->chars)
+	{
+		parser_add_chars(parser, trans->current, trans->next, trans->chars);
+		++trans;
+	}
 }

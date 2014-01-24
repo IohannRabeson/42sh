@@ -1,34 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   app_op.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/21 19:16:33 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/24 22:26:02 by irabeson         ###   ########.fr       */
+/*   Created: 2014/01/24 15:08:06 by irabeson          #+#    #+#             */
+/*   Updated: 2014/01/24 22:10:29 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "app.h"
 #include "parser.h"
-#include <ft_list.h>
 #include <ft_print.h>
 #include <ft_string.h>
 #include <unistd.h>
-#include <stdio.h>
-#include <ft_str_array.h>
 
-int	main(int argc, char **argv, char **environs)
+char	*app_readline(void)
 {
-	app_init(argc, argv, environs);
-	while (app_run());
+	t_app * const	app = app_instance();
+	int				gnl_res;
+	char			*line;
 
-	char	**str;
-
-	str = str_array_from_array(argc, argv);
-	str_array_free(str);
-
-	app_destroy();
-	return (0);
+	ft_putstr(STR_PROMPT);
+	line = NULL;
+	gnl_res = get_next_line(&app->gnl, &line, STDIN_FILENO);
+	if (gnl_res > 0)
+	{
+		if (line && ft_strlen(line) > 0)
+			return (line);
+	}
+	else if (gnl_res == 0)
+	{
+		app_stop();
+	}
+	else
+	{
+		ft_putendl_fd("ft_sh: unable to reading from stdin", STDERR_FILENO);
+		app_stop();
+	}
+	if (line)
+		free(line);
+	return (NULL);
 }

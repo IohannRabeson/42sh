@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 19:40:15 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/22 05:14:17 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/24 17:40:02 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ t_env_var const	*env_cend(t_env const *env);
 t_env_var		*env_find(t_env *env, char const *key);
 t_env_var const	*env_cfind(t_env const *env, char const *key);
 void			env_copy(t_env *dest, t_env const *env);
+char			**env_copy_array(t_env const *env);
 
 #endif
