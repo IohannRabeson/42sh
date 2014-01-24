@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 19:16:33 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/23 00:20:33 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/23 00:30:28 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ int	main(int argc, char **argv, char **environs)
 	gnl_init(&gnl);
 	app_init(argc, argv, environs);
 	parser_init(&parser, 0);
+	parser_add_chars(&parser, 0, 5, " \t");
+	parser_add_chars(&parser, 5, 5, " \t");
+	parser_add_keyword(&parser, 5, 1, "hello");
+	parser_add_keyword(&parser, 5, 2, "world");
+	parser_add_keyword(&parser, 5, 3, "wally");
+	parser_add_keyword(&parser, 5, 4, "hellihello");
 	parser_add_keyword(&parser, 0, 1, "hello");
 	parser_add_keyword(&parser, 0, 2, "world");
 	parser_add_keyword(&parser, 0, 3, "wally");

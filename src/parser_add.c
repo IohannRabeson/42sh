@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 20:22:46 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/22 23:46:10 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/23 22:55:02 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void			parser_add(t_parser *parser,
 						   t_mat_row_kv const *state)
 {
 	parser_mat_set(&parser->matrix, start, state);
-	printf("parser add %u -> %u [%c]\n", start, state->value, state->key);
 }
 
 static void		parser_addc(t_parser *parser,
@@ -88,5 +87,24 @@ void			parser_add_keyword(t_parser *parser,
 		kv.value = next;
 		kv.final = true;
 		parser_add(parser, last_id, &kv);
+	}
+}
+
+void	parser_add_chars(t_parser *parser,
+						 t_ui start,
+						 t_ui next,
+						 char const *str)
+{
+	t_mat_row_kv	kv;
+
+	if (str == NULL)
+		return ;
+	kv.value = next;
+	while (*str != '\0')
+	{
+		kv.key = *str;
+		kv.final = true;
+		parser_add(parser, start, &kv);
+		++str;
 	}
 }

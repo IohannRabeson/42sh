@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 16:53:04 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/22 23:50:49 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/23 23:59:01 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_ui	parser_mat_row_get(t_parser_mat_row const *row, char col_id)
 
 	mat_row_kv_init(&kv, col_id, PARSER_ERR_STATE, false);
 	node = btree_find(&row->cols, &kv);
-	if (node)
+	if (node && node->value)
 	{
 		temp = (t_mat_row_kv const *)node->value;
 		return (temp->value);
@@ -61,7 +61,7 @@ t_bool	parser_mat_row_is_final(t_parser_mat_row const *row, char col_id)
 
 	mat_row_kv_init(&kv, col_id, PARSER_ERR_STATE, false);
 	node = btree_find(&row->cols, &kv);
-	if (node)
+	if (node && node->value)
 	{
 		temp = (t_mat_row_kv const *)node->value;
 		return (temp->final);
