@@ -6,11 +6,20 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:17:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 06:08:25 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 20:53:06 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "app.h"
+#include "builtin.h"
+#include "app_builtins.h"
+#include <ft_memory.h>
+
+t_builtin const			g_builtins[] =
+{
+	{"exit", bt_exit},
+	{NULL, NULL}
+};
 
 t_parser_trans const	g_parser_transitions[] =
 { 
@@ -98,17 +107,19 @@ t_app	*app_instance(void)
 
 	return (&app);
 }
-
 t_app	*app_init(int argc, char **argv, char **environs)
 {
 	t_app * const	app = app_instance();
 
+	ft_bzero(app, sizeof(*app));
 	getopt_init_args(&app->getopt, argc, argv);
 	env_init(&app->env, environs);
 	gnl_init(&app->gnl);
 	parser_init(&app->parser, ST_INIT);
 	app->parser.verbose = getopt_contains(&app->getopt, "verbose");
 	parser_load(&app->parser, g_parser_transitions);
+	builtins_init(&app->builtins);
+	builtins_load(&app->builtins, g_builtins);
 	app->run = true;
 	return (app);
 }
@@ -117,8 +128,10 @@ void	app_destroy(void)
 {
 	t_app * const	app = app_instance();
 
+	builtins_destroy(&app->builtins);
 	parser_destroy(&app->parser);
 	gnl_destroy(&app->gnl);
 	env_destroy(&app->env);
 	getopt_destroy(&app->getopt);
+	ft_bzero(app, sizeof(*app));
 }

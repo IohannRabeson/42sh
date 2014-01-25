@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 19:16:33 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/24 22:26:02 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 20:41:35 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,11 @@
 
 int	main(int argc, char **argv, char **environs)
 {
+	int	ec;
+	
 	app_init(argc, argv, environs);
 	while (app_run());
-
-	char	**str;
-
-	str = str_array_from_array(argc, argv);
-	str_array_free(str);
-
+	ec = app_instance()->exit_code;
 	app_destroy();
-	return (0);
+	return (ec);
 }

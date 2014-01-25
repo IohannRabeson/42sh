@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 17:01:48 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 18:24:38 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 21:00:48 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "cmd.h"
 #include "app.h"
 #include "app_lexems.h"
+#include "builtins.h"
+#include "builtin.h"
 #include "env.h"
 #include "lexem.h"
 #include <ft_string.h>
@@ -38,12 +40,21 @@ static char			*cmd_resolve_exec_path(char const *exec_path)
 		complete_path = path_concat(*path_it, exec_path);
 		if (path_exists(complete_path) && path_is_executable(complete_path))
 			return (complete_path);
-		else
+		if (complete_path)	
 			free(complete_path);
 		++path_it;
 	}
 	str_array_free(paths);
 	return (NULL);
+}
+
+static t_bool		builtins_contains(char const *exec_path)
+{
+	t_app	* const	app = app_instance();
+	t_builtin		*bt;
+
+	bt = builtins_find(&app->builtins, exec_path);
+	return (bt != NULL);
 }
 
 static void			setup_cmd_type(t_cmd *cmd)
@@ -52,12 +63,11 @@ static void			setup_cmd_type(t_cmd *cmd)
 	char	*resolved_path;
 
 	exec_path = cmd->params[0];
-	///< TODO: verifier ici si c'est pas un builtin
-	/*if (builtins_contains(exec_path))
+	if (builtins_contains(exec_path))
 	{
 		cmd->type = CMD_BUILTIN;
 	}
-	else*/
+	else
 	if (path_is_executable(exec_path))
 	{
 		cmd->type = CMD_EXE;
@@ -100,5 +110,6 @@ t_list_node			*cmd_bld_setup_params(t_cmd *cmd, t_list_node *lex_it)
 		if (lex_it != NULL)
 			lex = (t_lexem *)lex_it->item;
 	}
+	cmd->params_count = str_array_size(cmd->params);
 	return (lex_it);
 }

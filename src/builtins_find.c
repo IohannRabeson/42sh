@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_run.c                                          :+:      :+:    :+:   */
+/*   builtins_find.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/24 16:11:25 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 20:22:21 by irabeson         ###   ########.fr       */
+/*   Created: 2014/01/25 19:46:38 by irabeson          #+#    #+#             */
+/*   Updated: 2014/01/25 19:48:31 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "app.h"
-#include "cmd.h"
-#include "lexem.h"
-#include "cmd_builder.h"
+#include "builtins.h"
+#include "builtin.h"
 #include <ft_string.h>
-#include <ft_print.h>
-#include <stdlib.h>
-#include <unistd.h>
 
-t_bool				app_run(void)
+t_builtin	*builtins_find(t_builtins const *bts, char const *key)
 {
-	t_app * const	app = app_instance();
-	char			*line;
+	t_ui	i;
 
-	line = NULL;
-	if (app->run == false)
-		return (false);
-	line = app_readline();
-	app_process_line(line);
-	if (line)
-		free(line);
-	return (true);
+	i = 0;
+	while (i < bts->size)
+	{
+		if (ft_strequ(key, bts->builtins[i].key))
+			return (&bts->builtins[i]);
+		++i;
+	}
+	return (NULL);
 }

@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_run.c                                          :+:      :+:    :+:   */
+/*   app_builtins.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/24 16:11:25 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 20:22:21 by irabeson         ###   ########.fr       */
+/*   Created: 2014/01/25 20:48:35 by irabeson          #+#    #+#             */
+/*   Updated: 2014/01/25 20:49:08 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "app.h"
-#include "cmd.h"
-#include "lexem.h"
-#include "cmd_builder.h"
-#include <ft_string.h>
-#include <ft_print.h>
-#include <stdlib.h>
-#include <unistd.h>
+#ifndef APP_BUILTINS_H
+# define APP_BUILTINS_H
 
-t_bool				app_run(void)
-{
-	t_app * const	app = app_instance();
-	char			*line;
+struct	s_cmd;
+struct	s_env;
 
-	line = NULL;
-	if (app->run == false)
-		return (false);
-	line = app_readline();
-	app_process_line(line);
-	if (line)
-		free(line);
-	return (true);
-}
+void	bt_exit(struct s_cmd *cmd, struct s_env const *env);
+
+#endif

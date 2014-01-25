@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:15:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 05:06:53 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 20:41:28 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <ft_getopt.h>
 # include "env.h"
 # include "parser.h"
+# include "builtins.h"
 
 # define CHRS_SPC				" \t\v\n\r\b"
 # define CHRS_LOW				"abcdefghijklmnopqrstuvwxyz"
@@ -53,16 +54,20 @@ typedef struct	s_app
 {
 	t_getopt	getopt;
 	t_env		env;
-	t_parser	parser;
 	t_gnl		gnl;
+	t_parser	parser;
+	t_builtins	builtins;
 	t_bool		run;
+	int			exit_code;
 }				t_app;
 
 t_app	*app_instance(void);
 t_app	*app_init(int argc, char **argv, char **environs);
 void	app_destroy(void);
 char	*app_readline(void);
+t_bool	app_process_line(char const *line);
 void	app_stop(void);
+void	app_exit(int code);
 t_bool	app_run(void);
 
 #endif

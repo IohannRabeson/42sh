@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_run.c                                          :+:      :+:    :+:   */
+/*   builtins_add.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/24 16:11:25 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 20:22:21 by irabeson         ###   ########.fr       */
+/*   Created: 2014/01/25 19:56:28 by irabeson          #+#    #+#             */
+/*   Updated: 2014/01/25 19:58:37 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "app.h"
-#include "cmd.h"
-#include "lexem.h"
-#include "cmd_builder.h"
-#include <ft_string.h>
-#include <ft_print.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "builtins.h"
+#include "builtin.h"
 
-t_bool				app_run(void)
+void	builtins_add(t_builtins *bts, t_builtin const *bt)
 {
-	t_app * const	app = app_instance();
-	char			*line;
-
-	line = NULL;
-	if (app->run == false)
-		return (false);
-	line = app_readline();
-	app_process_line(line);
-	if (line)
-		free(line);
-	return (true);
+	if (bts->size == bts->capacity)
+		builtins_reserve(bts, bts->capacity * 2);
+	bts->builtins[bts->size++] = *bt;
 }

@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_run.c                                          :+:      :+:    :+:   */
+/*   cmd_exec_builtin.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/24 16:11:25 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 20:22:21 by irabeson         ###   ########.fr       */
+/*   Created: 2014/01/25 20:31:30 by irabeson          #+#    #+#             */
+/*   Updated: 2014/01/25 20:34:42 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "app.h"
 #include "cmd.h"
-#include "lexem.h"
-#include "cmd_builder.h"
-#include <ft_string.h>
-#include <ft_print.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "env.h"
+#include "app.h"
+#include "builtins.h"
+#include "builtin.h"
 
-t_bool				app_run(void)
+t_bool	cmd_exec_builtin(t_cmd *cmd, t_env const *env)
 {
-	t_app * const	app = app_instance();
-	char			*line;
+	t_app const * const	app = app_instance();
+	t_builtin			*bt;
 
-	line = NULL;
-	if (app->run == false)
-		return (false);
-	line = app_readline();
-	app_process_line(line);
-	if (line)
-		free(line);
-	return (true);
+	bt = builtins_find(&app->builtins, cmd->params[0]);
+	if (bt)
+		bt->func(cmd, env);
+	return (bt != NULL);
 }
