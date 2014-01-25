@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 14:56:01 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 05:40:57 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 06:30:16 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,10 @@ t_bool	cmd_exec_simple(t_cmd *cmd, t_env const *env)
 	}
 	else
 	{
+		cmd->pid = pid;
 		waitpid(pid, &status, 0);
 		cmd->success = (status == 0);
+		cmd->pid = -1;
 	}
 	str_array_free(env_array);
 	return (cmd->success);
@@ -119,14 +121,14 @@ t_bool	cmd_exec_redir_in(t_cmd *cmd, t_env const *env)
 	}
 	else if (pid == 0)
 	{
-		dup2(STDIN_FILENO, cmd->fd_in);
+		dup2(cmd->fd_in, STDIN_FILENO);
 		execve(cmd->params[0], cmd->params, env_array);
 		ft_putendl_fd("ft_sh: can't execute command", STDERR_FILENO);
 		exit(0);
 	}
 	else
 	{
-		close(STDIN_FILENO);
+		close(cmd->fd_in);
 		waitpid(pid, &status, 0);
 		cmd->success = (status == 0);
 	}

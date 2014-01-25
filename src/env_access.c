@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 21:11:54 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/22 05:25:44 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 06:44:38 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_bool			env_contains(t_env const *env, char const *key)
 	it = env_cbegin(env);
 	while (it != env_cend(env))
 	{
-		if (ft_strcmp(it->key, key) == 1)
+		if (ft_strcmp(it->key, key) == 0)
 			return (true);
 		++it;
 	}

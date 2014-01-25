@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 14:05:11 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 01:24:41 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 06:32:34 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <ft_str_array.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <signal.h>
 
 void	cmd_init(t_cmd *cmd)
 {
@@ -21,6 +22,7 @@ void	cmd_init(t_cmd *cmd)
 	cmd->fd_in = -1;
 	cmd->fd_out = -1;
 	cmd->success = false;
+	cmd->pid = -1;
 }
 
 void	cmd_destroy(t_cmd *cmd)
@@ -39,6 +41,11 @@ void	cmd_destroy(t_cmd *cmd)
 	{
 		close(cmd->fd_out);
 		cmd->fd_out = -1;
+	}
+	if (cmd->pid != -1)
+	{
+		kill(cmd->pid, SIGINT);
+		cmd->pid = -1;
 	}
 	cmd->success = false;
 }

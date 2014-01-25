@@ -6,13 +6,14 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 14:01:17 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 05:24:37 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 06:13:52 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CMD_H
 # define CMD_H
 # include <ft_types_def.h>
+# include <sys/types.h>
 
 struct			s_env;
 struct			s_list;
@@ -36,6 +37,7 @@ typedef struct	s_cmd
 	int			fd_in;
 	int			fd_out;
 	t_bool		success;
+	pid_t		pid;
 }				t_cmd;
 
 typedef	t_bool(*t_cmd_exec_func)(t_cmd *, struct s_env const *);

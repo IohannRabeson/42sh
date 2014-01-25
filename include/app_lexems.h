@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexem_is.c                                         :+:      :+:    :+:   */
+/*   app_lexems.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/25 01:34:09 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 06:50:13 by irabeson         ###   ########.fr       */
+/*   Created: 2014/01/25 06:50:59 by irabeson          #+#    #+#             */
+/*   Updated: 2014/01/25 06:51:42 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lexem.h"
+#ifndef APP_LEXEMS_H
+# define APP_LEXEMS_H
+# include <ft_types_def.h>
 
-t_bool	lexem_type_is(t_lexem *lex, t_ui type)
-{
-	return (lex->state_id == type);
-}
+struct		s_lexem;
+
+t_bool		lexem_is_params(struct s_lexem *lex);
+t_bool		lexem_is_operators(struct s_lexem *lex);
+
+#endif

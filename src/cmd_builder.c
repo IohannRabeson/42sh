@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 01:31:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 05:47:20 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 07:37:24 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,12 @@
 #include "app.h"
 #include "cmd.h"
 #include "path.h"
+#include "app_lexems.h"
 #include <ft_str_array.h>
 #include <ft_string.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
-
-static t_bool		lexem_is_params(t_lexem *lex)
-{
-	return (lexem_type_is(lex, ST_PARAM) || lexem_type_is(lex, ST_FPARAM));
-}
-
-static t_bool		lexem_is_operators(t_lexem *lex)
-{
-	return (lex->state_id == ST_OP_REDIR_OUT
-			|| lex->state_id == ST_OP_REDIR_OUTA
-			|| lex->state_id == ST_OP_REDIR_IN
-			|| lex->state_id == ST_OP_REDIR_INA
-			|| lex->state_id == ST_END_CMD);
-}
 
 static t_list_node	*parser_operators(t_cmd *cmd, t_list_node *lex_it)
 {
@@ -42,6 +29,8 @@ static t_list_node	*parser_operators(t_cmd *cmd, t_list_node *lex_it)
 	char	*filename;
 
 	lex = (t_lexem *)lex_it->item;
+	if (lex == NULL)
+		return (NULL);
 	next_lex = NULL;
 	filename = NULL;
 	if (lexem_is_operators(lex))
@@ -51,6 +40,12 @@ static t_list_node	*parser_operators(t_cmd *cmd, t_list_node *lex_it)
 			next_lex = (t_lexem *)lex_it->item;
 		if (lexem_type_is(lex, ST_OP_REDIR_OUT))
 		{
+			if (next_lex == NULL)
+			{
+				// ERROR: manque une opérande
+				cmd->type = CMD_ERROR;
+				return (NULL);
+			}
 			if (lexem_type_is(next_lex, ST_OP_REDIR_OUTA))
 			{
 				lex_it = lex_it->next;
@@ -67,6 +62,24 @@ static t_list_node	*parser_operators(t_cmd *cmd, t_list_node *lex_it)
 						S_IRUSR | S_IRGRP | S_IWUSR | S_IWGRP);
 				cmd->type = (cmd->fd_out != -1) ? CMD_EXE_REDIR_OUT : CMD_ERROR;
 			}
+			lex_it = lex_it->next;
+		}
+		else if (lexem_type_is(lex, ST_OP_REDIR_IN))
+		{
+			if (next_lex && lexem_type_is(next_lex, ST_OP_REDIR_INA))
+			{
+				lex_it = lex_it->next;
+				next_lex = (t_lexem *)lex_it->item;
+			}
+			if (next_lex == NULL)
+			{
+				// ERROR: manque une opérande
+				cmd->type = CMD_ERROR;
+				return (NULL);
+			}
+			filename = lexem_get_text(next_lex);
+			cmd->fd_in = open(filename, O_RDONLY);
+			cmd->type = (cmd->fd_in != -1) ? CMD_EXE_REDIR_IN : CMD_ERROR;
 			lex_it = lex_it->next;
 		}
 		if (filename)
@@ -125,7 +138,8 @@ static void			setup_cmd_type(t_cmd *cmd)
 static t_list_node	*parser_params(t_cmd *cmd, t_list_node *lex_it)
 {
 	t_lexem	*lex;
-	
+	char	*temp;
+
 	if (lex_it == NULL)
 		return (NULL);
 	lex = (t_lexem *)lex_it->item;
@@ -135,8 +149,9 @@ static t_list_node	*parser_params(t_cmd *cmd, t_list_node *lex_it)
 	{
 		if (lexem_is_params(lex))
 		{
-			cmd->params = str_array_append(cmd->params,
-					lexem_get_text(lex));
+			temp = lexem_get_text(lex);
+			cmd->params = str_array_append(cmd->params, temp);
+			free(temp);
 			if (str_array_size(cmd->params) == 1)
 				setup_cmd_type(cmd);
 		}
