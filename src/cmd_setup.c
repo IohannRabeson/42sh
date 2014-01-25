@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 16:32:08 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/24 17:22:20 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 01:14:09 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,29 @@
 #include <ft_str_array.h>
 #include <ft_string.h>
 
+static char			*cmd_resolve_exec_path(char const *exec_path,
+										   t_app const *app)
+{
+	char	**paths;
+	char	**path_it;
+	char	*complete_path;
+
+	paths = ft_strsplit(env_get_value(&app->env, "PATH"), ':');
+	if (paths == NULL)
+		return (NULL);
+	path_it = paths;
+	while (path_it && *path_it)
+	{
+		complete_path = path_concat(*path_it, exec_path);
+		if (path_exists(complete_path) && path_is_executable(complete_path))
+			return (complete_path);
+		else
+			free(complete_path);
+		++path_it;
+	}
+	return (NULL);
+}
+
 static t_cmd_type	cmd_deduce_type(char **params, t_app const *app)
 {
 	const t_ui	params_count = str_array_size(params);
@@ -26,12 +49,11 @@ static t_cmd_type	cmd_deduce_type(char **params, t_app const *app)
 	if (params_count == 0)
 		return (CMD_UNKNOW);
 	// Tester ici si c'est un builtin!
-	if (path_is_absolute(params[0]) && path_is_executable(params[0]))
+	if (path_is_executable(params[0]))
 		return (CMD_EXE);
-	if (path_is_relative(params[0]))
+	else	
 	{
-		resolved_exec_path =
-			ft_strjoin(env_get_value(&app->env, "PWD"), params[0]);
+		resolved_exec_path = cmd_resolve_exec_path(params[0], app);
 		free(params[0]);
 		params[0] = resolved_exec_path;
 		return (CMD_EXE);
@@ -40,8 +62,8 @@ static t_cmd_type	cmd_deduce_type(char **params, t_app const *app)
 }
 
 void	cmd_setup(t_cmd *cmd,
-				  struct s_list const *params,
-				  struct s_app const *app)
+				  t_list const *params,
+				  t_app const *app)
 {
 	if (cmd->params)
 		str_array_free(cmd->params);

@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   path_concat.c                                      :+:      :+:    :+:   */
+/*   cmd_builder.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/21 23:00:37 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 01:00:49 by irabeson         ###   ########.fr       */
+/*   Created: 2014/01/25 01:23:57 by irabeson          #+#    #+#             */
+/*   Updated: 2014/01/25 02:01:06 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_str_buf.h>
+#ifndef CMD_BUILDER_H
+# define CMD_BUILDER_H
 
-char	*path_concat(char const *base, char const *append)
+# include <ft_list.h>
+# include "lexem.h"
+
+struct			s_cmd;
+
+typedef struct	s_cmd_bld
 {
-	t_str_buf	buf;
+	
+}				t_cmd_bld;
 
-	str_buf_init(&buf);
-	str_buf_app_str(&buf, base);
-	if (append && str_buf_get_last_char(&buf) != '/' && append[0] != '/')
-		str_buf_app_char(&buf, '/');
-	str_buf_app_str(&buf, append);
-	return (str_buf_get(&buf));
-}
+t_list_node	*cmd_bld_build(t_cmd_bld *builder,
+						   struct s_cmd *cmd,
+						   t_list_node *lex_it);
+
+#endif

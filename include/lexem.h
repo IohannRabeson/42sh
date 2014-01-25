@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 19:56:17 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/24 16:07:35 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 01:44:04 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ void	lexem_clear(t_lexem *lex);
 void	lexem_delete(t_lexem *lex);
 t_lexem	*lexem_clone(t_lexem const *lex);
 void	lexem_put(t_lexem const *lex);
+t_bool	lexem_type_is(t_lexem *lex, t_ui type);
+char	*lexem_get_text(t_lexem const *lex);
 
 #endif

@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/01/24 23:11:46 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/01/25 01:58:23 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -26,6 +26,7 @@ SRC =			main.c					\
 				cmd.c					\
 				cmd_setup.c				\
 				cmd_exec.c				\
+				cmd_builder.c			\
 				$(SRC_ENV)				\
 				$(SRC_UTILS)			\
 				$(SRC_PARSER)
@@ -51,6 +52,8 @@ SRC_PARSER =	parser.c				\
 		   		parser_mat_row.c		\
 		   		parser_mat_row_kv.c		\
 				lexem.c					\
+				lexem_get_text.c		\
+				lexem_is.c				\
 				lexem_put.c
 
 COLOR_ID = \033[1;32m

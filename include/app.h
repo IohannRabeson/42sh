@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:15:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/24 22:10:46 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 01:31:04 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@
 # define CHRS_SPE			"!#$%&()*+,-./:;<=>?@[]^_{|}~"
 # define CHRS_DELIM_PARAM	"\""
 # define CHRS_CMD_END		";"
+# define OP_REDIRECT_OUT	">"
+# define OP_REDIRECT_OUTA	">>"
+# define OP_REDIRECT_IN		"<"
+# define OP_REDIRECT_INA	"<<"
 
 # define STR_PROMPT			"$> "
 
@@ -36,7 +40,11 @@ typedef enum	e_parser_states
 	ST_FPARAM,
 	ST_DELIM_PARAM_IN,
 	ST_DELIM_PARAM_OUT,
-	ST_END_CMD
+	ST_END_CMD,
+	ST_OP_REDIR_OUT,
+	ST_OP_REDIR_OUTA,
+	ST_OP_REDIR_IN,
+	ST_OP_REDIR_INA
 }				t_parser_states;
 
 
