@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/01/25 06:52:01 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/01/25 19:24:01 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -18,21 +18,26 @@ INCLUDE_DIR = ./include
 BUILD_DIR = ./builds
 LIBFT_DIR = ../libft
 
-SRC =			main.c					\
-				app.c					\
-				app_controls.c			\
-				app_op.c				\
-				app_run.c				\
-				app_lexems.c			\
-				cmd.c					\
-				cmd_exec.c				\
-				cmd_is.c				\
-				cmd_builder.c			\
-				$(SRC_ENV)				\
-				$(SRC_UTILS)			\
+SRC =			main.c						\
+				app.c						\
+				app_controls.c				\
+				app_op.c					\
+				app_run.c					\
+				app_lexems.c				\
+				cmd.c						\
+				cmd_exec.c					\
+				cmd_is.c					\
+				cmd_error.c					\
+				cmd_exec_file.c				\
+				cmd_builder.c				\
+				cmd_builder_setup_params.c	\
+				cmd_builder_setup_op.c		\
+				$(SRC_ENV)					\
+				$(SRC_UTILS)				\
 				$(SRC_PARSER)
 
 SRC_UTILS =		path_is.c				\
+				path_is_readable.c		\
 				path_can.c				\
 				path_concat.c			\
 				path_exists.c

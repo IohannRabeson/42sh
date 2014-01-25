@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 01:31:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 07:37:24 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 19:22:10 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,146 +22,6 @@
 #include <stdlib.h>
 #include <fcntl.h>
 
-static t_list_node	*parser_operators(t_cmd *cmd, t_list_node *lex_it)
-{
-	t_lexem	*lex;
-	t_lexem	*next_lex;
-	char	*filename;
-
-	lex = (t_lexem *)lex_it->item;
-	if (lex == NULL)
-		return (NULL);
-	next_lex = NULL;
-	filename = NULL;
-	if (lexem_is_operators(lex))
-	{
-		lex_it = lex_it->next;
-		if (lex_it)
-			next_lex = (t_lexem *)lex_it->item;
-		if (lexem_type_is(lex, ST_OP_REDIR_OUT))
-		{
-			if (next_lex == NULL)
-			{
-				// ERROR: manque une opérande
-				cmd->type = CMD_ERROR;
-				return (NULL);
-			}
-			if (lexem_type_is(next_lex, ST_OP_REDIR_OUTA))
-			{
-				lex_it = lex_it->next;
-				next_lex = (t_lexem *)lex_it->item;
-				filename = lexem_get_text(next_lex);
-				cmd->fd_out = open(filename, O_WRONLY | O_CREAT,
-						S_IRUSR | S_IRGRP | S_IWUSR | S_IWGRP);
-				cmd->type = (cmd->fd_out != -1) ? CMD_EXE_REDIR_OUT : CMD_ERROR;
-			}
-			else
-			{
-				filename = lexem_get_text(next_lex);
-				cmd->fd_out = open(filename, O_WRONLY | O_CREAT | O_TRUNC,
-						S_IRUSR | S_IRGRP | S_IWUSR | S_IWGRP);
-				cmd->type = (cmd->fd_out != -1) ? CMD_EXE_REDIR_OUT : CMD_ERROR;
-			}
-			lex_it = lex_it->next;
-		}
-		else if (lexem_type_is(lex, ST_OP_REDIR_IN))
-		{
-			if (next_lex && lexem_type_is(next_lex, ST_OP_REDIR_INA))
-			{
-				lex_it = lex_it->next;
-				next_lex = (t_lexem *)lex_it->item;
-			}
-			if (next_lex == NULL)
-			{
-				// ERROR: manque une opérande
-				cmd->type = CMD_ERROR;
-				return (NULL);
-			}
-			filename = lexem_get_text(next_lex);
-			cmd->fd_in = open(filename, O_RDONLY);
-			cmd->type = (cmd->fd_in != -1) ? CMD_EXE_REDIR_IN : CMD_ERROR;
-			lex_it = lex_it->next;
-		}
-		if (filename)
-			free(filename);
-	}
-	return (lex_it);
-}
-
-static char			*cmd_resolve_exec_path(char const *exec_path)
-{
-	t_app	* const	app = app_instance();
-	char			**paths;
-	char			**path_it;
-	char			*complete_path;
-
-	paths = ft_strsplit(env_get_value(&app->env, "PATH"), ':');
-	if (paths == NULL)
-		return (NULL);
-	path_it = paths;
-	while (path_it && *path_it)
-	{
-		complete_path = path_concat(*path_it, exec_path);
-		if (path_exists(complete_path) && path_is_executable(complete_path))
-			return (complete_path);
-		else
-			free(complete_path);
-		++path_it;
-	}
-	str_array_free(paths);
-	return (NULL);
-}
-
-static void			setup_cmd_type(t_cmd *cmd)
-{
-	char	*exec_path;
-	char	*resolved_path;
-
-	exec_path = cmd->params[0];
-	///< TODO: verifier ici si c'est pas un builtin
-	if (path_is_executable(exec_path))
-		cmd->type = CMD_EXE;
-	else
-	{
-		resolved_path = cmd_resolve_exec_path(exec_path);
-		if (resolved_path)
-		{
-			free(cmd->params[0]);
-			cmd->params[0] = resolved_path;
-			cmd->type = CMD_EXE;
-		}
-		else
-			cmd->type = CMD_UNKNOW;
-	}
-}
-
-static t_list_node	*parser_params(t_cmd *cmd, t_list_node *lex_it)
-{
-	t_lexem	*lex;
-	char	*temp;
-
-	if (lex_it == NULL)
-		return (NULL);
-	lex = (t_lexem *)lex_it->item;
-	while (lex_it && (lexem_is_params(lex)
-						|| lexem_type_is(lex, ST_DELIM_PARAM_IN)
-						|| lexem_type_is(lex, ST_DELIM_PARAM_OUT)))
-	{
-		if (lexem_is_params(lex))
-		{
-			temp = lexem_get_text(lex);
-			cmd->params = str_array_append(cmd->params, temp);
-			free(temp);
-			if (str_array_size(cmd->params) == 1)
-				setup_cmd_type(cmd);
-		}
-		lex_it = lex_it->next;
-		if (lex_it != NULL)
-			lex = (t_lexem *)lex_it->item;
-	}
-	return (lex_it);
-}
-
 /*
 **	Builds a t_cmd instance with the lexems list.
 */
@@ -169,9 +29,9 @@ t_list_node	*cmd_bld_build(t_cmd *cmd, t_list_node *lex_it)
 {
 	if (lex_it == NULL)
 		return (NULL);
-	lex_it = parser_params(cmd, lex_it);
+	lex_it = cmd_bld_setup_params(cmd, lex_it);
 	if (lex_it == NULL)
 		return (NULL);
-	lex_it = parser_operators(cmd, lex_it);
+	lex_it = cmd_bld_setup_operators(cmd, lex_it);
 	return (lex_it);
 }

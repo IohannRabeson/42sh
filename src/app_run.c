@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 16:11:25 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 03:30:03 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 18:46:31 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,6 @@ static t_list_node	*app_process_cmd(t_list *lexems)
 		lex_it = cmd_bld_build(&cmd, lex_it);
 		if (cmd_is_exec(&cmd))
 			cmd_exec(&cmd, &app->env);
-		else
-		{
-			ft_putstr_fd("ft_sh: ", STDERR_FILENO);
-			ft_putstr_fd(cmd.params[0], STDERR_FILENO);
-			ft_putendl_fd(": unknown command", STDERR_FILENO);
-		}
 		cmd_destroy(&cmd);
 	}
 	return (lex_it);

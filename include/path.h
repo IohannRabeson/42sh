@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 22:54:40 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/24 17:23:18 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 17:19:57 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ t_bool	path_exists(char const *path);
 t_bool	path_is_relative(char const *path);
 t_bool	path_is_absolute(char const *path);
 t_bool	path_is_executable(char const *path);
+t_bool	path_is_readable(char const *path);
 
 #endif

@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd.c                                              :+:      :+:    :+:   */
+/*   builtin.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/24 14:05:11 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 18:50:29 by irabeson         ###   ########.fr       */
+/*   Created: 2014/01/25 16:34:20 by irabeson          #+#    #+#             */
+/*   Updated: 2014/01/25 16:36:40 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cmd.h"
-#include <ft_str_array.h>
-#include <ft_string.h>
-#include <ft_memory.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <signal.h>
+#include "builtin.h"
 
-void	cmd_init(t_cmd *cmd)
+void			builtin_init(t_builtin *btin,
+							 char const *key,
+							 t_buitin_func func)
 {
-	ft_bzero(cmd, sizeof(*cmd));
+	btin->key = key;
+	btin->func = func;
 }
 
-void	cmd_destroy(t_cmd *cmd)
+void			builtin_destroy(t_builtin *btin)
 {
-	if (cmd->params)
-		str_array_free(cmd->params);
-	if (cmd->filename)
-		free(cmd->filename);
-	if (cmd->pid > 0)
-		kill(cmd->pid, SIGINT);
-	ft_bzero(cmd, sizeof(*cmd));
+	btin->func = NULL;
+}
+
+char const		*builtin_key(t_builtin const *btin)
+{
+	return (btin->key);
 }

@@ -6,12 +6,13 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 14:01:17 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 06:13:52 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 19:16:19 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CMD_H
 # define CMD_H
+# include "builtin.h"
 # include <ft_types_def.h>
 # include <sys/types.h>
 
@@ -23,21 +24,30 @@ typedef enum	e_cmd_type
 {
 	CMD_BUILTIN = 0,
 	CMD_EXE,
-	CMD_EXE_REDIR_OUT,
-	CMD_EXE_REDIR_IN,
 	CMD_UNKNOW,
 	CMD_ERROR,
 	CMD_COUNT
 }				t_cmd_type;
 
+typedef enum	e_cmd_mode
+{
+	CMD_MODE_NORMAL = 0,
+	CMD_MODE_REDIR_OUT,
+	CMD_MODE_REDIR_OUTA,
+	CMD_MODE_REDIR_IN,
+	CMD_MODE_PIPE,
+	CMD_MODE_COUNT
+}				t_cmd_mode;
+
 typedef struct	s_cmd
 {
-	t_cmd_type	type;
-	char		**params;
-	int			fd_in;
-	int			fd_out;
-	t_bool		success;
-	pid_t		pid;
+	t_cmd_type		type;
+	t_cmd_mode		mode;
+	char			**params;
+	char			*filename;
+	t_buitin_func	builtin_func;
+	t_bool			success;
+	pid_t			pid;
 }				t_cmd;
 
 typedef	t_bool(*t_cmd_exec_func)(t_cmd *, struct s_env const *);
@@ -52,5 +62,9 @@ t_bool	cmd_is_exec(t_cmd const *cmd);
 t_bool	cmd_exec_simple(t_cmd *cmd, struct s_env const *env);
 t_bool	cmd_exec_redir_out(t_cmd *cmd, struct s_env const *env);
 t_bool	cmd_exec_redir_in(t_cmd *cmd, struct s_env const *env);
+void	cmd_error(t_cmd const *cmd, char const *msg);
+void	cmd_errorl(t_cmd const *cmd, t_ui level, char const *msg);
+t_bool	cmd_exec_open_ofile(t_cmd *cmd, int *fd_out);
+t_bool	cmd_exec_open_ifile(t_cmd *cmd, int *fd_in);
 
 #endif
