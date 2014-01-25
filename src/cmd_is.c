@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_builder.h                                      :+:      :+:    :+:   */
+/*   cmd_is.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/25 01:23:57 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 02:30:20 by irabeson         ###   ########.fr       */
+/*   Created: 2014/01/25 03:22:58 by irabeson          #+#    #+#             */
+/*   Updated: 2014/01/25 05:39:40 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CMD_BUILDER_H
-# define CMD_BUILDER_H
+#include "cmd.h"
 
-# include <ft_list.h>
-# include "lexem.h"
-
-struct			s_cmd;
-
-typedef struct	s_cmd_bld
+t_bool	cmd_is_exec(t_cmd const *cmd)
 {
-	
-}				t_cmd_bld;
-
-t_list_node	*cmd_bld_build(struct s_cmd *cmd,
-						   t_list_node *lex_it);
-
-#endif
+	return (cmd
+			&& cmd->type >= CMD_EXE
+			&& cmd->type <= CMD_EXE_REDIR_IN);
+}

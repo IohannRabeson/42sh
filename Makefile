@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/01/25 01:58:23 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/01/25 03:24:34 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -24,8 +24,8 @@ SRC =			main.c					\
 				app_op.c				\
 				app_run.c				\
 				cmd.c					\
-				cmd_setup.c				\
 				cmd_exec.c				\
+				cmd_is.c				\
 				cmd_builder.c			\
 				$(SRC_ENV)				\
 				$(SRC_UTILS)			\

@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 14:58:51 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/24 15:58:31 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 04:56:24 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,23 @@ typedef struct	s_parser
 	t_parser_mat	matrix;
 	t_ui			init_state;
 	t_ui			free_id;
+	t_bool			verbose;
 }				t_parser;
+
+typedef enum	s_trans_type
+{
+	PTT_CHARS,
+	PTT_KEYWORD,
+	PTT_NULL
+}				t_trans_type;
 
 typedef struct	s_parser_trans
 {
-	t_ui		current;
-	t_ui		next;
-	char const	*chars;
-}				t_parser_trans;
+	t_trans_type	type;
+	t_ui			current;
+	t_ui			next;
+	char const		*chars;
+}					t_parser_trans;
 
 void	parser_init(t_parser *parser, t_ui init_state);
 void	parser_load(t_parser *parser, t_parser_trans const *trans);

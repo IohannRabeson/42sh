@@ -6,18 +6,20 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 16:11:25 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 01:43:25 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 03:30:03 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "app.h"
 #include "cmd.h"
 #include "lexem.h"
+#include "cmd_builder.h"
 #include <ft_string.h>
 #include <ft_print.h>
 #include <stdlib.h>
 #include <unistd.h>
 
+/*
 static t_lexem		*app_get_lex(t_list_node const *lex_it)
 {
 	t_lexem	*lex;
@@ -35,7 +37,6 @@ static t_bool		app_skip_lexs(t_list_node const *lex_it)
 	return (lex && lex->state_id != ST_PARAM
 				&& lex->state_id != ST_FPARAM);
 }
-
 static t_list_node	*app_extract_cmd(t_list_node *lex_it, t_cmd *cmd)
 {
 	t_app * const	app = app_instance();
@@ -59,7 +60,7 @@ static t_list_node	*app_extract_cmd(t_list_node *lex_it, t_cmd *cmd)
 	list_destroy(&params);
 	return (lex_it);
 }
-
+**/
 static t_list_node	*app_process_cmd(t_list *lexems)
 {
 	t_app * const	app = app_instance();
@@ -70,11 +71,15 @@ static t_list_node	*app_process_cmd(t_list *lexems)
 	while (lex_it)
 	{
 		cmd_init(&cmd);
-		lex_it = app_extract_cmd(lex_it, &cmd);
-		if (cmd.type == CMD_EXE)
+		lex_it = cmd_bld_build(&cmd, lex_it);
+		if (cmd_is_exec(&cmd))
 			cmd_exec(&cmd, &app->env);
 		else
-			ft_putendl_fd("ft_sh: unknow command", STDERR_FILENO);
+		{
+			ft_putstr_fd("ft_sh: ", STDERR_FILENO);
+			ft_putstr_fd(cmd.params[0], STDERR_FILENO);
+			ft_putendl_fd(": unknown command", STDERR_FILENO);
+		}
 		cmd_destroy(&cmd);
 	}
 	return (lex_it);

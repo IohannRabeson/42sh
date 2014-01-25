@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 03:28:08 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/24 04:07:48 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 05:11:50 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,16 @@ void	parser_load(t_parser *parser, t_parser_trans const *trans)
 		return ;
 	while (trans->chars)
 	{
-		parser_add_chars(parser, trans->current, trans->next, trans->chars);
+		if (trans->type == PTT_CHARS)
+		{
+			parser_add_chars(parser, trans->current,
+							 trans->next, trans->chars);
+		}
+		else if (trans->type == PTT_KEYWORD)
+		{
+			parser_add_keyword(parser, trans->current,
+							   trans->next, trans->chars);
+		}
 		++trans;
 	}
 }
