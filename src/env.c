@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:26:02 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/24 18:54:22 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/26 02:45:04 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 #include <ft_string.h>
 #include <ft_error.h>
 #include <ft_str_array.h>
+#include <unistd.h>
 
 void		env_init(t_env *env, char **environs)
 {
 	const t_ui	count = str_array_size(environs);
 	t_ui		i;
+	char		buffer[1024];
 
 	ft_bzero((void *)env, sizeof(env));
 	env_reserve(env, count);
@@ -29,6 +31,11 @@ void		env_init(t_env *env, char **environs)
 	{
 		env_add(env, environs[i]);
 		++i;
+	}
+	if (i == 0)
+	{
+		getcwd(buffer, 1024);
+		env_set(env, "PWD", buffer);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:46:07 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 22:11:14 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/26 02:50:00 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,12 @@ static void	ft_str_toupper(char *str)
 t_bool		env_var_init_kv(t_env_var *env_var, char const *key,
 							char const *value)
 {
+	ft_bzero(env_var, sizeof(*env_var));
 	if (key == NULL)
 		return (false);
 	env_var->key = ft_strdup(key);
 	if (value)
 		env_var->value = ft_strdup(value);
-	else
-		env_var->value = NULL;
 	if (env_var->key)
 		ft_str_toupper(env_var->key);
 	return (env_var->key && (value == NULL || env_var->value));
