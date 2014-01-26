@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 20:22:41 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 20:50:37 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 21:07:50 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static t_list_node	*app_process_all_cmd(t_list *lexems)
 		else if (cmd_is_exec(&cmd))
 			cmd_exec(&cmd, &app->env);
 		else
-			cmd_errorl(&cmd, 2, "unknow command");
+			cmd_errorl(&cmd, 1, "unknow command");
 		cmd_destroy(&cmd);
 	}
 	return (lex_it);
@@ -62,4 +62,3 @@ t_bool				app_process_line(char const *line)
 	list_destroy(&lexems);
 	return (false);
 }
-

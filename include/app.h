@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:15:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 20:41:28 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 21:51:56 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ t_bool	app_process_line(char const *line);
 void	app_stop(void);
 void	app_exit(int code);
 t_bool	app_run(void);
+t_bool	app_cd(char const *new_dir);
 
 #endif

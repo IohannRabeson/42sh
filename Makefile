@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/01/25 20:45:59 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/01/25 22:42:04 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -22,6 +22,7 @@ SRC =			main.c						\
 				app.c						\
 				app_controls.c				\
 				app_op.c					\
+				app_cd.c					\
 				app_run.c					\
 				app_process_line.c			\
 				app_lexems.c				\
@@ -44,7 +45,8 @@ SRC =			main.c						\
 				$(SRC_PARSER)				\
 				$(SRC_BUILTINS)
 
-SRC_BUILTINS =	bt_exit.c
+SRC_BUILTINS =	bt_exit.c				\
+				bt_cd.c
 
 SRC_UTILS =		path_is.c				\
 				path_is_readable.c		\

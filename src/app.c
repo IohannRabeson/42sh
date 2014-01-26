@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:17:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 20:53:06 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/25 21:53:43 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 t_builtin const			g_builtins[] =
 {
 	{"exit", bt_exit},
+	{"cd", bt_cd},
 	{NULL, NULL}
 };
 
