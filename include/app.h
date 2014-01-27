@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:15:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 21:51:56 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/26 19:12:34 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "env.h"
 # include "parser.h"
 # include "builtins.h"
+# include "cmd.h"
 
 # define CHRS_SPC				" \t\v\n\r\b"
 # define CHRS_LOW				"abcdefghijklmnopqrstuvwxyz"
@@ -61,14 +62,16 @@ typedef struct	s_app
 	int			exit_code;
 }				t_app;
 
-t_app	*app_instance(void);
-t_app	*app_init(int argc, char **argv, char **environs);
-void	app_destroy(void);
-char	*app_readline(void);
-t_bool	app_process_line(char const *line);
-void	app_stop(void);
-void	app_exit(int code);
-t_bool	app_run(void);
-t_bool	app_cd(char const *new_dir);
+t_app		*app_instance(void);
+t_app		*app_init(int argc, char **argv, char **environs);
+void		app_destroy(void);
+char		*app_readline(void);
+t_bool		app_process_line(char const *line);
+t_list_node	*app_process_lexems(t_list *lexems);
+t_bool		app_process_cmd(struct s_cmd *cmd, t_env const *env);
+void		app_stop(void);
+void		app_exit(int code);
+t_bool		app_run(void);
+t_bool		app_cd(char const *new_dir);
 
 #endif

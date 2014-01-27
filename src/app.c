@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:17:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 21:53:43 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/26 18:08:02 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_builtin const			g_builtins[] =
 {
 	{"exit", bt_exit},
 	{"cd", bt_cd},
+	{"env", bt_env},
 	{NULL, NULL}
 };
 
@@ -108,6 +109,7 @@ t_app	*app_instance(void)
 
 	return (&app);
 }
+
 t_app	*app_init(int argc, char **argv, char **environs)
 {
 	t_app * const	app = app_instance();
@@ -117,7 +119,7 @@ t_app	*app_init(int argc, char **argv, char **environs)
 	env_init(&app->env, environs);
 	gnl_init(&app->gnl);
 	parser_init(&app->parser, ST_INIT);
-	app->parser.verbose = getopt_contains(&app->getopt, "verbose");
+	app->parser.verbose = getopt_contains(&app->getopt, "--verbose");
 	parser_load(&app->parser, g_parser_transitions);
 	builtins_init(&app->builtins);
 	builtins_load(&app->builtins, g_builtins);

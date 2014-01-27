@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:26:02 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/26 02:45:04 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/26 18:56:12 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,40 @@
 #include <ft_str_array.h>
 #include <unistd.h>
 
+static void	env_setup_imp(t_env *env, t_ui count)
+{
+	t_env_var	*shlvl;
+	t_env_var	*pwd;
+	int			lvl;
+	char		*lvl_str;
+	char		buffer[512];
+
+	lvl = 0;
+	shlvl = env_find(env, "SHLVL");
+	pwd = env_find(env, "PWD");
+	if (pwd == NULL)
+	{	
+		getcwd(buffer, 512);
+		env_set(env, "PWD", buffer);
+	}
+	if (shlvl)
+		lvl = ft_atoi(shlvl->value);
+	lvl_str = ft_itoa(lvl + 1);
+	if (count > 0 && lvl_str)
+	{
+		env_set(env, "SHLVL", lvl_str);
+		free(lvl_str);
+	}
+}
+
 void		env_init(t_env *env, char **environs)
 {
 	const t_ui	count = str_array_size(environs);
 	t_ui		i;
-	char		buffer[1024];
 
-	ft_bzero((void *)env, sizeof(env));
+	ft_bzero((void *)env, sizeof(*env));
+	if (environs == NULL)
+		return ;
 	env_reserve(env, count);
 	i = 0;
 	while (i < count && environs[i])
@@ -32,11 +59,7 @@ void		env_init(t_env *env, char **environs)
 		env_add(env, environs[i]);
 		++i;
 	}
-	if (i == 0)
-	{
-		getcwd(buffer, 1024);
-		env_set(env, "PWD", buffer);
-	}
+	env_setup_imp(env, i);
 }
 
 void		env_destroy(t_env *env)
@@ -76,22 +99,4 @@ void	env_reserve(t_env *env, t_ui new_cap)
 	env->env_vars = new;
 	env->capacity = new_cap;
 	env->count = new_count;
-}
-
-void	env_add(t_env *env, char const *str)
-{
-	if (str == NULL)
-		return ;
-	if (env->count == env->capacity)
-		env_reserve(env, env->capacity + 1);
-	env_var_init(&env->env_vars[env->count++], str);
-}
-
-void	env_add_kv(t_env *env, char const *key, char const *value)
-{
-	if (key == NULL)
-		return ;
-	if (env->count == env->capacity)
-		env_reserve(env, env->capacity + 1);
-	env_var_init_kv(&env->env_vars[env->count++], key, value);
 }

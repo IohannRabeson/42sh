@@ -6,11 +6,30 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 21:33:43 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 21:52:35 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/26 18:22:48 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
+#include <stdlib.h>
+
+void	env_add(t_env *env, char const *str)
+{
+	if (str == NULL)
+		return ;
+	if (env->count == env->capacity)
+		env_reserve(env, env->capacity + 1);
+	env_var_init(&env->env_vars[env->count++], str);
+}
+
+void	env_add_kv(t_env *env, char const *key, char const *value)
+{
+	if (key == NULL)
+		return ;
+	if (env->count == env->capacity)
+		env_reserve(env, env->capacity + 1);
+	env_var_init_kv(&env->env_vars[env->count++], key, value);
+}
 
 void			env_set(t_env *env, char const *key, char const *value)
 {
