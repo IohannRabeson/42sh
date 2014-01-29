@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:17:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/26 18:08:02 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/29 15:46:41 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_parser_trans const	g_parser_transitions[] =
 	{PTT_CHARS, ST_SKIP_SPACES, ST_END_CMD, CHRS_CMD_END},
 	{PTT_CHARS, ST_SKIP_SPACES, ST_OP_REDIR_OUT, CHRS_OPR_OUT},
 	{PTT_CHARS, ST_SKIP_SPACES, ST_OP_REDIR_IN, CHRS_OPR_IN},
+	{PTT_CHARS, ST_SKIP_SPACES, ST_OP_PIPE, CHRS_OP_PIPE},
 	{PTT_CHARS, ST_PARAM, ST_PARAM, CHRS_LOW},
 	{PTT_CHARS, ST_PARAM, ST_PARAM, CHRS_UPP},
 	{PTT_CHARS, ST_PARAM, ST_PARAM, CHRS_DIG},
@@ -51,6 +52,7 @@ t_parser_trans const	g_parser_transitions[] =
 	{PTT_CHARS, ST_PARAM, ST_END_CMD, CHRS_CMD_END},
 	{PTT_CHARS, ST_PARAM, ST_OP_REDIR_OUT, CHRS_OPR_OUT},
 	{PTT_CHARS, ST_PARAM, ST_OP_REDIR_IN, CHRS_OPR_IN},
+	{PTT_CHARS, ST_PARAM, ST_OP_PIPE, CHRS_OP_PIPE},
 	{PTT_CHARS, ST_DELIM_PARAM_IN, ST_FPARAM, CHRS_SPC},
 	{PTT_CHARS, ST_DELIM_PARAM_IN, ST_FPARAM, CHRS_LOW},
 	{PTT_CHARS, ST_DELIM_PARAM_IN, ST_FPARAM, CHRS_UPP},
@@ -59,6 +61,7 @@ t_parser_trans const	g_parser_transitions[] =
 	{PTT_CHARS, ST_DELIM_PARAM_IN, ST_DELIM_PARAM_OUT, CHRS_DELIM_PARAM},
 	{PTT_CHARS, ST_DELIM_PARAM_OUT, ST_SKIP_SPACES, CHRS_SPC},
 	{PTT_CHARS, ST_DELIM_PARAM_OUT, ST_END_CMD, CHRS_CMD_END},
+	{PTT_CHARS, ST_DELIM_PARAM_OUT, ST_OP_PIPE, CHRS_OP_PIPE},
 	{PTT_CHARS, ST_FPARAM, ST_FPARAM, CHRS_LOW},
 	{PTT_CHARS, ST_FPARAM, ST_FPARAM, CHRS_UPP},
 	{PTT_CHARS, ST_FPARAM, ST_FPARAM, CHRS_DIG},
@@ -100,6 +103,12 @@ t_parser_trans const	g_parser_transitions[] =
 	{PTT_CHARS, ST_OP_REDIR_INA, ST_PARAM, CHRS_DIG},
 	{PTT_CHARS, ST_OP_REDIR_INA, ST_PARAM, CHRS_SID},
 	{PTT_CHARS, ST_OP_REDIR_INA, ST_DELIM_PARAM_IN, CHRS_DELIM_PARAM},
+	{PTT_CHARS, ST_OP_PIPE, ST_SKIP_SPACES, CHRS_SPC},
+	{PTT_CHARS, ST_OP_PIPE, ST_PARAM, CHRS_LOW},
+	{PTT_CHARS, ST_OP_PIPE, ST_PARAM, CHRS_UPP},
+	{PTT_CHARS, ST_OP_PIPE, ST_PARAM, CHRS_DIG},
+	{PTT_CHARS, ST_OP_PIPE, ST_PARAM, CHRS_SID},
+	{PTT_CHARS, ST_OP_PIPE, ST_DELIM_PARAM_IN, CHRS_DELIM_PARAM},
 	{PTT_NULL, PARSER_ERR_STATE, PARSER_ERR_STATE, NULL}
 };
 
