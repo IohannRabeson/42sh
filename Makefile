@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/02/03 20:28:33 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/02/03 23:20:24 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -28,6 +28,10 @@ SRC =			main.c						\
 				app_process_cmd.c			\
 				app_lexems.c				\
 				lexems_preprocess.c			\
+				lexems_find_next.c			\
+				syntax.c					\
+				syntax_check.c				\
+				syntax_build.c				\
 				builtins.c					\
 				builtins_find.c				\
 				builtins_add.c				\

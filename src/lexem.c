@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 20:03:13 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/29 19:43:51 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/03 23:36:51 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ t_lexem	*lexem_clone(t_lexem const *lex)
 	t_lexem	*clone;
 
 	clone = lexem_malloc();
-	*clone = *lex;
+	clone->state_id = lex->state_id;
+	clone->str = ft_strdup(lex->str);
+	clone->size = lex->size;
 	return (clone);
 }

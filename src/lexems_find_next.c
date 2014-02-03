@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexems.h                                           :+:      :+:    :+:   */
+/*   lexems_find_next.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/29 17:58:17 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/03 23:27:17 by irabeson         ###   ########.fr       */
+/*   Created: 2014/02/03 23:18:01 by irabeson          #+#    #+#             */
+/*   Updated: 2014/02/03 23:20:36 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXEMS_H
-# define LEXEMS_H
+#include "lexem.h"
+#include <ft_list_node.h>
+#include <stdlib.h>
 
-struct	s_list;
-struct	s_list_node;
+t_list_node	*lexems_find_next(t_list_node *lex_it, t_ui state_id) 
+{
+	t_lexem	*lex;
 
-struct s_list_node	*lexems_find_next(struct s_list_node *lex_it,
-									  t_ui state_id);
-void				lexems_remove_spaces(struct s_list *lexems);
-void				lexems_preprocess(struct s_list *lexems);
-
-#endif
+	if (lex_it == NULL)
+		return (NULL);
+	while (lex_it && lex_it->item)
+	{
+		lex = (t_lexem *)lex_it->item;
+		if (lex->state_id == state_id)
+			return (lex_it);
+		lex_it = lex_it->next;
+	}
+	return (NULL);
+}

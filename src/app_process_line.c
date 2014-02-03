@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 20:22:41 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/03 20:30:02 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/03 23:59:13 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,50 @@
 #include "app_lexems.h"
 #include "lexem.h"
 #include "lexems.h"
+#include "syntax.h"
 #include "cmd.h"
 #include <ft_print.h>
 #include <ft_list.h>
 #include <ft_string.h>
 
+void				app_exec_cmds(t_list *cmds)
+{
+	t_app * const	app = app_instance();
+	t_list_node		*it;
+	t_cmd			*cmd;
+	char			**env;
+
+	env = env_copy_array(&app->env);
+	it = cmds->first;
+	while (it)
+	{
+		cmd = (t_cmd *)it->item;
+		cmd_exec(cmd, env);
+		it = list_erase(cmds, it);
+	}
+}
 
 void				app_process_lexems(t_list *lexems)
 {
+	t_list	cmds;
+	t_list	cmd_lexems;
+	t_cmd	*cmd;
+
+	list_init(&cmds, cmd_free);
+	list_init(&cmd_lexems, lexem_free);
+
 	lexems_preprocess(lexems);
+	cmd = cmd_malloc();
+	while (!list_empty(lexems))
+	{
+		extract_cmd(lexems, &cmd_lexems);
+		build_cmd(cmd, &cmd_lexems);
+		list_push_back(&cmds, cmd);
+		list_clear(&cmd_lexems);
+	}
+//	list_destroy(&cmds);
+	app_exec_cmds(&cmds);
+	list_destroy(&cmd_lexems);
 }
 
 t_bool				app_process_line(char const *line)
@@ -34,7 +69,6 @@ t_bool				app_process_line(char const *line)
 	if (line && ft_strlen(line) > 0 && parser_run(&app->parser, line, &lexems))
 	{
 		app_process_lexems(&lexems);
-		list_clear(&lexems);
 		return (true);
 	}
 	list_destroy(&lexems);

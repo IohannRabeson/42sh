@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexems.h                                           :+:      :+:    :+:   */
+/*   syntax.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/29 17:58:17 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/03 23:27:17 by irabeson         ###   ########.fr       */
+/*   Created: 2014/02/03 22:56:11 by irabeson          #+#    #+#             */
+/*   Updated: 2014/02/03 23:11:27 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXEMS_H
-# define LEXEMS_H
+#ifndef SYNTAX_H
+# define SYNTAX_H
 
-struct	s_list;
-struct	s_list_node;
+# include "lexem.h"
+# include "app.h"
+# include "cmd.h"
+# include <ft_types_def.h>
 
-struct s_list_node	*lexems_find_next(struct s_list_node *lex_it,
-									  t_ui state_id);
-void				lexems_remove_spaces(struct s_list *lexems);
-void				lexems_preprocess(struct s_list *lexems);
+void	extract_cmd(t_list *src, t_list *cmd_lexems);
+void	build_cmd(t_cmd *cmd, t_list *cmd_lexems);
+t_bool	check_syntax(t_list const *cmd_lexems);
 
 #endif
