@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_builder.c                                      :+:      :+:    :+:   */
+/*   cmd_add_arg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/25 01:31:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 19:22:10 by irabeson         ###   ########.fr       */
+/*   Created: 2014/02/03 20:22:14 by irabeson          #+#    #+#             */
+/*   Updated: 2014/02/03 20:25:22 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cmd_builder.h"
-#include "lexem.h"
-#include "app.h"
 #include "cmd.h"
-#include "path.h"
-#include "app_lexems.h"
 #include <ft_str_array.h>
 #include <ft_string.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
+#include <ft_error.h>
 
-/*
-**	Builds a t_cmd instance with the lexems list.
-*/
-t_list_node	*cmd_bld_build(t_cmd *cmd, t_list_node *lex_it)
+void		cmd_add_arg(t_cmd *cmd, char const *arg)
 {
-	if (lex_it == NULL)
-		return (NULL);
-	lex_it = cmd_bld_setup_params(cmd, lex_it);
-	if (lex_it == NULL)
-		return (NULL);
-	lex_it = cmd_bld_setup_operators(cmd, lex_it);
-	return (lex_it);
+	char const	*new_str;
+
+	new_str = ft_strdup(arg);
+	if (new_str == NULL)
+		exit_errorc(ERRC_NOT_ENOUGH_MEMORY);
+	cmd->args = str_array_append(cmd->args, arg);
+	cmd->argc = str_array_size(cmd->args);
 }

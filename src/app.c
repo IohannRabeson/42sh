@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:17:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/29 15:46:41 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/29 19:51:42 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,13 +96,6 @@ t_parser_trans const	g_parser_transitions[] =
 	{PTT_CHARS, ST_OP_REDIR_IN, ST_PARAM, CHRS_DIG},
 	{PTT_CHARS, ST_OP_REDIR_IN, ST_PARAM, CHRS_SID},
 	{PTT_CHARS, ST_OP_REDIR_IN, ST_DELIM_PARAM_IN, CHRS_DELIM_PARAM},
-	{PTT_CHARS, ST_OP_REDIR_IN, ST_OP_REDIR_INA, CHRS_OPR_IN},
-	{PTT_CHARS, ST_OP_REDIR_INA, ST_SKIP_SPACES, CHRS_SPC},
-	{PTT_CHARS, ST_OP_REDIR_INA, ST_PARAM, CHRS_LOW},
-	{PTT_CHARS, ST_OP_REDIR_INA, ST_PARAM, CHRS_UPP},
-	{PTT_CHARS, ST_OP_REDIR_INA, ST_PARAM, CHRS_DIG},
-	{PTT_CHARS, ST_OP_REDIR_INA, ST_PARAM, CHRS_SID},
-	{PTT_CHARS, ST_OP_REDIR_INA, ST_DELIM_PARAM_IN, CHRS_DELIM_PARAM},
 	{PTT_CHARS, ST_OP_PIPE, ST_SKIP_SPACES, CHRS_SPC},
 	{PTT_CHARS, ST_OP_PIPE, ST_PARAM, CHRS_LOW},
 	{PTT_CHARS, ST_OP_PIPE, ST_PARAM, CHRS_UPP},

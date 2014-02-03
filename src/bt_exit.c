@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 20:43:29 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 20:56:34 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/03 20:30:29 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	bt_exit(t_cmd *cmd, t_env const *env)
 {
 	int	ec;
 
-	if (cmd->params_count > 1)
-		ec = ft_atoi(cmd->params[1]);
+	if (cmd->argc > 1)
+		ec = ft_atoi(cmd->args[1]);
 	else
 		ec = 0;
 	app_exit(ec);

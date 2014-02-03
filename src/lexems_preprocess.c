@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_run.c                                          :+:      :+:    :+:   */
+/*   lexems_preprocess.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/24 16:11:25 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/03 20:29:50 by irabeson         ###   ########.fr       */
+/*   Created: 2014/01/29 17:56:11 by irabeson          #+#    #+#             */
+/*   Updated: 2014/01/29 18:48:19 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "app.h"
+#include "lexem.h"
+#include <ft_list.h>
 #include <ft_string.h>
-#include <ft_print.h>
-#include <stdlib.h>
-#include <unistd.h>
 
-t_bool				app_run(void)
+static t_bool		lexem_is_spaces(t_lexem *lex)
 {
-	t_app * const	app = app_instance();
-	char			*line;
+	return (lexem_type_is(lex, ST_SKIP_SPACES));
+}
 
-	line = NULL;
-	if (app->run == false)
-		return (false);
-	line = app_readline();
-	app_process_line(line);
-	if (line)
-		free(line);
-	return (true);
+static void			lexem_in_place(t_lexem *lexem)
+{
+	lexem->str = ft_strndup(lexem->str, lexem->size);
+}
+
+void				lexems_remove_spaces(t_list *lexems)
+{
+	list_erase_if(lexems, lexem_is_spaces);
+}
+
+void				lexems_preprocess(t_list *lexems)
+{
+	list_foreach(lexems, lexem_in_place);
+	lexems_remove_spaces(lexems);
 }

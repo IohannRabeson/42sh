@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_exec_builtin.c                                 :+:      :+:    :+:   */
+/*   lexems.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/25 20:31:30 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 20:34:42 by irabeson         ###   ########.fr       */
+/*   Created: 2014/01/29 17:58:17 by irabeson          #+#    #+#             */
+/*   Updated: 2014/01/29 17:59:45 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cmd.h"
-#include "env.h"
-#include "app.h"
-#include "builtins.h"
-#include "builtin.h"
+#ifndef LEXEMS_H
+# define LEXEMS_H
 
-t_bool	cmd_exec_builtin(t_cmd *cmd, t_env const *env)
-{
-	t_app const * const	app = app_instance();
-	t_builtin			*bt;
+struct	s_list;
 
-	bt = builtins_find(&app->builtins, cmd->params[0]);
-	if (bt)
-		bt->func(cmd, env);
-	return (bt != NULL);
-}
+void				lexems_remove_spaces(struct s_list *lexems);
+void				lexems_preprocess(struct s_list *lexems);
+
+#endif

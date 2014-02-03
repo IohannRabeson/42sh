@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_is.c                                           :+:      :+:    :+:   */
+/*   cmd_set_files.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/25 03:22:58 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 20:25:08 by irabeson         ###   ########.fr       */
+/*   Created: 2014/02/03 20:26:37 by irabeson          #+#    #+#             */
+/*   Updated: 2014/02/03 20:28:17 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd.h"
+#include <ft_string.h>
 
-t_bool	cmd_is_exec(t_cmd const *cmd)
+void		cmd_set_in_file(t_cmd *cmd, char const *filepath)
 {
-	return (cmd && cmd->type == CMD_EXE);
+	if (filepath)
+		cmd->in_file = ft_strdup(filepath);
+	else
+		cmd->in_file = NULL;
 }
 
-t_bool	cmd_is_builtin(t_cmd const *cmd)
+void		cmd_set_out_file(t_cmd *cmd, char const *filepath, t_bool trunc)
 {
-	return (cmd && cmd->type == CMD_BUILTIN);
+	if (filepath)
+	{
+		cmd->out_file = ft_strdup(filepath);	
+		cmd->trunc_out = trunc;
+	}
+	else
+		cmd->out_file = NULL;
 }

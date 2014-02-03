@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:15:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/29 15:48:36 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/29 20:31:24 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ typedef enum	e_parser_states
 	ST_OP_REDIR_OUT,
 	ST_OP_REDIR_OUTA,
 	ST_OP_REDIR_IN,
-	ST_OP_REDIR_INA,
 	ST_OP_PIPE
 }				t_parser_states;
 
@@ -69,7 +68,7 @@ t_app		*app_init(int argc, char **argv, char **environs);
 void		app_destroy(void);
 char		*app_readline(void);
 t_bool		app_process_line(char const *line);
-t_list_node	*app_process_lexems(t_list *lexems);
+void		app_process_lexems(t_list *lexems);
 t_bool		app_process_cmd(struct s_cmd *cmd, t_env const *env);
 void		app_stop(void);
 void		app_exit(int code);

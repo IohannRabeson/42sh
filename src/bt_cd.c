@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 21:13:15 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/26 02:33:23 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/03 20:06:55 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <ft_list.h>
 #include <ft_string.h>
 #include <ft_str_buf.h>
+#include <ft_error.h>
 
 static t_list_node	*process_part(t_list *sp_pwd, t_list *sp_nav,
 								  t_list_node *nav_it)
@@ -116,12 +117,12 @@ void				bt_cd(t_cmd *cmd, t_env const *env)
 	pwd = env_get_value(env, "PWD");
 	if (pwd == NULL)
 		return ;
-	if (cmd->params_count == 1 || cmd->params[1] == NULL)
+	if (cmd->argc == 1 || cmd->args[1] == NULL)
 		result = app_cd(env_get_value(env, "HOME"));
-	else if (ft_strequ(cmd->params[1], "-"))
+	else if (ft_strequ(cmd->args[1], "-"))
 		result = app_cd(env_get_value(env, "OLDPWD"));
 	else
-		result = change_cd(cmd->params[1], pwd);
+		result = change_cd(cmd->args[1], pwd);
 	if (result == false)
 		cmd_errorl(cmd, 2, "no such a directory");
 }

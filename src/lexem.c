@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 20:03:13 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/22 23:39:11 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/01/29 19:43:51 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ void	lexem_delete(t_lexem *lex)
 		ft_memdel((void **)&lex->str);
 		free(lex);
 	}
+}
+
+void	lexem_free(void *lex)
+{
+	lexem_delete((t_lexem *)lex);
 }
 
 void	lexem_set(t_lexem *lex, t_ui state_id, char const *str, t_ui size)

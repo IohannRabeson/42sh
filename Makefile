@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/01/26 18:59:42 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/02/03 20:28:33 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -27,20 +27,18 @@ SRC =			main.c						\
 				app_process_line.c			\
 				app_process_cmd.c			\
 				app_lexems.c				\
-				cmd.c						\
-				cmd_exec.c					\
-				cmd_exec_builtin.c			\
-				cmd_is.c					\
-				cmd_error.c					\
-				cmd_exec_file.c				\
-				cmd_builder.c				\
-				cmd_builder_setup_params.c	\
-				cmd_builder_setup_op.c		\
+				lexems_preprocess.c			\
 				builtins.c					\
 				builtins_find.c				\
 				builtins_add.c				\
 				builtins_load.c				\
 				builtin.c					\
+				cmd.c						\
+				cmd_set_files.c				\
+				cmd_add_arg.c				\
+				cmd_exec.c					\
+				cmd_exec_chain.c			\
+				cmd_error.c					\
 				$(SRC_ENV)					\
 				$(SRC_UTILS)				\
 				$(SRC_PARSER)				\

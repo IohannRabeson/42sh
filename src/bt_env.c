@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 16:50:15 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/26 19:11:14 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/03 20:30:51 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void		bt_env(t_cmd *cmd, t_env const *env)
 
 	env_init(&env_cpy, NULL);
 	env_copy(&env_cpy, env);
-	if (cmd->params_count == 1)
+	if (cmd->argc == 1)
 		bt_env_print_env(env, STDOUT_FILENO);
 	else
 		bt_env_exec_subcmd(cmd, &env_cpy);

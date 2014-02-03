@@ -5,31 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/24 14:05:11 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 18:50:29 by irabeson         ###   ########.fr       */
+/*   Created: 2014/02/03 20:15:39 by irabeson          #+#    #+#             */
+/*   Updated: 2014/02/03 20:21:05 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd.h"
-#include <ft_str_array.h>
-#include <ft_string.h>
 #include <ft_memory.h>
+#include <ft_str_array.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <signal.h>
 
-void	cmd_init(t_cmd *cmd)
+void		cmd_init(t_cmd *cmd)
 {
 	ft_bzero(cmd, sizeof(*cmd));
 }
 
-void	cmd_destroy(t_cmd *cmd)
+void		cmd_destroy(t_cmd *cmd)
 {
-	if (cmd->params)
-		str_array_free(cmd->params);
-	if (cmd->filename)
-		free(cmd->filename);
-	if (cmd->pid > 0)
-		kill(cmd->pid, SIGINT);
+	if (cmd->args)
+		str_array_free(cmd->args);
+	if (cmd->in_file)
+		free(cmd->in_file);
+	if (cmd->out_file)
+		free(cmd->out_file);
+	if (cmd->next)
+		cmd_destroy(cmd->next);
 	ft_bzero(cmd, sizeof(*cmd));
+}
+
+void		cmd_free(t_cmd *cmd)
+{
+	cmd_destroy(cmd);
+	free(cmd);
 }
