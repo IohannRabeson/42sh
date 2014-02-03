@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 19:32:54 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/03 19:52:20 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 00:50:37 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <ft_types_def.h>
 #include <ft_error.h>
 #include <ft_print.h>
+#include "app.h"
 #include "cmd.h"
 
 static int			open_out_fd(char const *filename, t_bool trunc)
@@ -39,13 +40,17 @@ static void			cmd_exec_chain_child(t_cmd *cmd,
 										 int fds_io[2],
 										 char **env)
 {
+	char	*complete_bin;
+
+	complete_bin = app_complete_bin_path(cmd->args[0]);
 	close(fds[0]);
 	dup2(fds_io[0], STDIN_FILENO);
 	if (cmd->next == NULL && fds_io[0] != -1)
 		dup2(fds_io[1], STDOUT_FILENO);
 	else if (cmd->next != NULL)
 		dup2(fds[1], STDOUT_FILENO);
-	execve(cmd->args[0], cmd->args, env);
+	execve(complete_bin, cmd->args, env);
+	free(complete_bin);
 	exit_errorm("Failed to exec command");
 }
 

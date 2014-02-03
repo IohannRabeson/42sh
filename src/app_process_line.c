@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 20:22:41 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/03 23:59:13 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 00:24:43 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,19 @@
 #include <ft_print.h>
 #include <ft_list.h>
 #include <ft_string.h>
+#include <ft_str_array.h>
 
 void				app_exec_cmds(t_list *cmds)
 {
 	t_app * const	app = app_instance();
 	t_list_node		*it;
 	t_cmd			*cmd;
-	char			**env;
 
-	env = env_copy_array(&app->env);
 	it = cmds->first;
 	while (it)
 	{
 		cmd = (t_cmd *)it->item;
-		cmd_exec(cmd, env);
+		app_process_cmd(cmd, &app->env);
 		it = list_erase(cmds, it);
 	}
 }
@@ -48,14 +47,16 @@ void				app_process_lexems(t_list *lexems)
 
 	lexems_preprocess(lexems);
 	cmd = cmd_malloc();
+	cmd_init(cmd);
 	while (!list_empty(lexems))
 	{
 		extract_cmd(lexems, &cmd_lexems);
-		build_cmd(cmd, &cmd_lexems);
-		list_push_back(&cmds, cmd);
+		if (build_cmd(cmd, &cmd_lexems) == false)
+			cmd_free(cmd);
+		else
+			list_push_back(&cmds, cmd);
 		list_clear(&cmd_lexems);
 	}
-//	list_destroy(&cmds);
 	app_exec_cmds(&cmds);
 	list_destroy(&cmd_lexems);
 }

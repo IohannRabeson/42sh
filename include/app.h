@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:15:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/03 22:56:28 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 00:38:42 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,11 @@ char		*app_readline(void);
 t_bool		app_process_line(char const *line);
 void		app_process_lexems(t_list *lexems);
 t_bool		app_process_cmd(struct s_cmd *cmd, t_env const *env);
+t_bool		app_process_builtin(t_cmd *cmd, t_env const *env);
 void		app_stop(void);
 void		app_exit(int code);
 t_bool		app_run(void);
 t_bool		app_cd(char const *new_dir);
+char		*app_complete_bin_path(char const *bin_path);
 
 #endif

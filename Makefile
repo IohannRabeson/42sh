@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/02/03 23:20:24 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/02/04 00:39:44 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -27,6 +27,7 @@ SRC =			main.c						\
 				app_process_line.c			\
 				app_process_cmd.c			\
 				app_lexems.c				\
+				app_complete_bin_path.c		\
 				lexems_preprocess.c			\
 				lexems_find_next.c			\
 				syntax.c					\
