@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 22:45:10 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/24 22:11:12 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 03:16:16 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <ft_str_array.h>
 #include <stdlib.h>
 
-void	env_copy(t_env *dest, t_env const *env)
+void		env_copy(t_env *dest, t_env const *env)
 {
 	t_env_var const	*it;
 
@@ -27,7 +27,19 @@ void	env_copy(t_env *dest, t_env const *env)
 	}
 }
 
-char	**env_copy_array(t_env const *env)
+static void	env_copy_array_imp(t_str_buf *strbuf,
+							   char **new_array,
+							   t_env_var const *it,
+							   t_ui i)
+{
+	str_buf_app_str(strbuf, it->key);
+	str_buf_app_char(strbuf, '=');
+	str_buf_app_str(strbuf, it->value);
+	new_array[i] = str_buf_get(strbuf);
+	str_buf_clear(strbuf);
+}
+
+char		**env_copy_array(t_env const *env)
 {
 	char			**new_array;
 	t_env_var const	*it;
@@ -44,11 +56,7 @@ char	**env_copy_array(t_env const *env)
 	end = env_cend(env);
 	while (it < end)
 	{
-		str_buf_app_str(&strbuf, it->key);
-		str_buf_app_char(&strbuf, '=');
-		str_buf_app_str(&strbuf, it->value);
-		new_array[i] = str_buf_get(&strbuf);
-		str_buf_clear(&strbuf);
+		env_copy_array_imp(&strbuf, new_array, it, i);
 		++it;
 		++i;
 	}

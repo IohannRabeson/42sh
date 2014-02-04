@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:26:02 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/26 18:56:12 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 03:12:41 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	env_setup_imp(t_env *env, t_ui count)
 	shlvl = env_find(env, "SHLVL");
 	pwd = env_find(env, "PWD");
 	if (pwd == NULL)
-	{	
+	{
 		getcwd(buffer, 512);
 		env_set(env, "PWD", buffer);
 	}
@@ -46,7 +46,7 @@ static void	env_setup_imp(t_env *env, t_ui count)
 
 void		env_init(t_env *env, char **environs)
 {
-	const t_ui	count = str_array_size(environs);
+	t_ui const	count = str_array_size(environs);
 	t_ui		i;
 
 	ft_bzero((void *)env, sizeof(*env));

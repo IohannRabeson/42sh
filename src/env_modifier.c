@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 21:33:43 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/26 18:22:48 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 03:16:41 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	env_add_kv(t_env *env, char const *key, char const *value)
 	env_var_init_kv(&env->env_vars[env->count++], key, value);
 }
 
-void			env_set(t_env *env, char const *key, char const *value)
+void	env_set(t_env *env, char const *key, char const *value)
 {
 	t_env_var	*env_var;
 
@@ -42,7 +42,7 @@ void			env_set(t_env *env, char const *key, char const *value)
 		env_add_kv(env, key, value);
 }
 
-void			env_remove(t_env *env, char const *key)
+void	env_remove(t_env *env, char const *key)
 {
 	t_env_var	*env_var;
 
@@ -60,7 +60,7 @@ void			env_remove(t_env *env, char const *key)
 	}
 }
 
-void			env_clear(t_env *env)
+void	env_clear(t_env *env)
 {
 	env->count = 0;
 }

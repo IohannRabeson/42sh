@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 19:45:31 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/21 20:11:00 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 03:17:50 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char const	*get_error_desc(t_error_code code)
 		return (g_err_messages[code]);
 }
 
-void	exit_errorm(char const *message)
+void				exit_errorm(char const *message)
 {
 	ft_putstr_fd("ft_sh: ", STDERR_FILENO);
 	if (message)
@@ -46,7 +46,7 @@ void	exit_errorm(char const *message)
 	exit(1);
 }
 
-void	exit_errorc(t_error_code code)
+void				exit_errorc(t_error_code code)
 {
 	char const *	message;
 

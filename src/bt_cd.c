@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 21:13:15 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/03 20:06:55 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 03:09:51 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static t_list_node	*process_part(t_list *sp_pwd, t_list *sp_nav,
 
 static char			*recompose(t_list const *splitted_path)
 {
-	t_list_node	const	*it;
+	t_list_node const	*it;
 	t_str_buf			strbuf;
 	char const			*part;
 	char				*results;

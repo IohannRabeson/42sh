@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 17:13:23 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 01:54:12 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 03:02:17 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 
 static t_bool	app_cmd_is_builtin(t_cmd const *cmd)
 {
-	t_app * const	app = app_instance();
-	
+	t_app const * const	app = app_instance();
+
 	if (cmd && cmd->argc > 0 && cmd->args && cmd->args[0])
 	{
 		if (builtins_find(&app->builtins, cmd->args[0]))
-			return (true);	
+			return (true);
 	}
 	return (false);
 }
@@ -77,6 +77,6 @@ t_bool	app_process_builtin(t_cmd *cmd, t_env const *env)
 	it = builtins_find(&app->builtins, cmd->args[0]);
 	if (it == NULL)
 		return (false);
-	it->func(cmd, env);	
+	it->func(cmd, env);
 	return (true);
 }

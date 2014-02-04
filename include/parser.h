@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 14:58:51 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 04:56:24 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 02:47:53 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 struct			s_mat_row_kv;
 
-typedef	struct	s_parser_run_imp
+typedef struct	s_parser_run_imp
 {
 	char const	*it;
 	t_ui		current;

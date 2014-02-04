@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 20:22:41 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 02:24:16 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 03:08:26 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,31 +37,38 @@ void				app_exec_cmds(t_list *cmds)
 	}
 }
 
-void				app_process_lexems(t_list *lexems)
+static void			app_extract_cmds(t_list *lexems,
+									 t_list *cmd_lexems,
+									 t_list *cmds)
 {
-	t_list	cmds;
-	t_list	cmd_lexems;
 	t_cmd	*cmd;
-
-	list_init(&cmds, cmd_free);
-	list_init(&cmd_lexems, lexem_free);
-
-	lexems_preprocess(lexems);
+	
 	while (!list_empty(lexems))
 	{
 		cmd = cmd_malloc();
 		cmd_init(cmd);
-		extract_cmd(lexems, &cmd_lexems);
-		if (build_cmd(cmd, &cmd_lexems) == false)
+		extract_cmd(lexems, cmd_lexems);
+		if (build_cmd(cmd, cmd_lexems) == false)
 		{
 			ft_putendl_fd("ft_sh: invalid command line", STDERR_FILENO);
 			cmd_free(cmd);
 			break ;
 		}
 		else
-			list_push_back(&cmds, cmd);
-		list_clear(&cmd_lexems);
+			list_push_back(cmds, cmd);
+		list_clear(cmd_lexems);
 	}
+}
+
+void				app_process_lexems(t_list *lexems)
+{
+	t_list	cmds;
+	t_list	cmd_lexems;
+
+	list_init(&cmds, cmd_free);
+	list_init(&cmd_lexems, lexem_free);
+	lexems_preprocess(lexems);
+	app_extract_cmds(lexems, &cmd_lexems, &cmds);
 	app_exec_cmds(&cmds);
 	list_destroy(&cmds);
 	list_destroy(&cmd_lexems);

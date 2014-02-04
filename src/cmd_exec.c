@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/28 19:58:03 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/03 19:51:21 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 03:11:19 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	open_in_fd(char const *filename)
 		return (-1);
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		exit_errorm("Unable to open file for reading");
+		exit_errorm("Unable to open file to reading");
 	return (fd);
 }
 
@@ -43,7 +43,7 @@ void		cmd_exec(t_cmd *cmd, char **env)
 	while (it)
 	{
 		old_fd_in = fd_in;
-		fd_in = cmd_exec_chain(it, env, fd_in);	
+		fd_in = cmd_exec_chain(it, env, fd_in);
 		if (fd_in == -1)
 			break ;
 		if (old_fd_in != STDIN_FILENO)

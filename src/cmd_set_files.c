@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 20:26:37 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/03 20:28:17 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 03:11:44 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		cmd_set_out_file(t_cmd *cmd, char const *filepath, t_bool trunc)
 {
 	if (filepath)
 	{
-		cmd->out_file = ft_strdup(filepath);	
+		cmd->out_file = ft_strdup(filepath);
 		cmd->trunc_out = trunc;
 	}
 	else

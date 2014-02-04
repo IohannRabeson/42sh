@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:17:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/29 19:51:42 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 02:49:16 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_builtin const			g_builtins[] =
 };
 
 t_parser_trans const	g_parser_transitions[] =
-{ 
+{
 	{PTT_CHARS, ST_INIT, ST_SKIP_SPACES, CHRS_SPC},
 	{PTT_CHARS, ST_INIT, ST_PARAM, CHRS_LOW},
 	{PTT_CHARS, ST_INIT, ST_PARAM, CHRS_UPP},
@@ -106,7 +106,7 @@ t_parser_trans const	g_parser_transitions[] =
 };
 
 t_app	*app_instance(void)
-{ 
+{
 	static t_app app;
 
 	return (&app);

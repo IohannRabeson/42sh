@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 16:53:04 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/23 23:59:01 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 03:23:38 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	parser_mat_row_init(t_parser_mat_row *row, t_ui row_id)
 
 void	parser_mat_row_destroy(t_parser_mat_row *row)
 {
-//	btree_prefix(&row->cols, mat_row_kv_destroy);
 	btree_destroy(&row->cols);
 }
 
