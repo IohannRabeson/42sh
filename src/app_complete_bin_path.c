@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 00:38:50 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 02:30:16 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 02:35:05 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "path.h"
 #include <ft_string.h>
 #include <ft_str_array.h>
+#include <stdlib.h>
 
 static t_bool	check(char const *bin_path)
 {
@@ -23,30 +24,27 @@ static t_bool	check(char const *bin_path)
 char		*app_complete_bin_path(char const *bin_path)
 {
 	t_app const * const	app = app_instance();
-	char				**paths;
-	char const			*path;
-	char				**it;
+	t_list				paths;
+	t_list_node			*it;
 	char				*temp;
 
 	if (check(bin_path))
 		return (ft_strdup(bin_path));
-	path = env_get_value(&app->env, "PATH");
-	if (path == NULL)
-		return (NULL);
-	paths = ft_strsplit(path, ':');
-	it = paths;
-	while (it && *it)
+	list_init(&paths, free);
+	env_get_values(&app->env, "PATH", ':', &paths);
+	it = paths.first;
+	while (it && it->item)
 	{
-		temp = path_concat(*it, bin_path);
+		temp = path_concat((char const *)it->item, bin_path);
 		if (check(temp))
 		{
-			str_array_free(paths);
+			list_destroy(&paths);
 			return (temp);
 		}
 		else
 			free(temp);
-		++it;
+		it = it->next;
 	}
-	str_array_free(paths);
+	list_destroy(&paths);
 	return (NULL);
 }

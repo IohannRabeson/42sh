@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 20:15:39 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 01:16:15 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 02:38:48 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ void		cmd_destroy(t_cmd *cmd)
 	if (cmd->out_file)
 		free(cmd->out_file);
 	if (cmd->next)
+	{
 		cmd_destroy(cmd->next);
+		free(cmd->next);
+	}
 	ft_bzero(cmd, sizeof(*cmd));
 }
 

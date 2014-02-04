@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 19:32:54 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 00:50:37 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 02:37:07 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int					cmd_exec_chain(t_cmd *it, char **env, int fd_in)
 		cmd_exec_chain_parent(it, fds, fds_io, pid);
 	else
 		exit_errorm("failed to fork");
-	close(fds_io[1]);
+	if (fds_io[1] != -1)
+		close(fds_io[1]);
 	return (fds_io[0]);
 }
