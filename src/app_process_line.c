@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 20:22:41 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 01:29:24 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 01:51:47 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <ft_list.h>
 #include <ft_string.h>
 #include <ft_str_array.h>
+#include <unistd.h>
 
 void				app_exec_cmds(t_list *cmds)
 {
@@ -53,6 +54,7 @@ void				app_process_lexems(t_list *lexems)
 		extract_cmd(lexems, &cmd_lexems);
 		if (build_cmd(cmd, &cmd_lexems) == false)
 		{
+			ft_putendl_fd("ft_sh: invalid command line", STDERR_FILENO);
 			cmd_free(cmd);
 			break ;
 		}

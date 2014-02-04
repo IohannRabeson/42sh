@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/02/04 01:26:47 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/02/04 02:00:23 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -33,6 +33,7 @@ SRC =			main.c						\
 				syntax.c					\
 				syntax_check.c				\
 				syntax_build.c				\
+				build_cmd_imp.c				\
 				builtins.c					\
 				builtins_find.c				\
 				builtins_add.c				\
