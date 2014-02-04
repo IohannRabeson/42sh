@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 19:32:54 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 02:37:07 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 12:48:47 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void			cmd_exec_chain_child(t_cmd *cmd,
 		dup2(fds[1], STDOUT_FILENO);
 	execve(complete_bin, cmd->args, env);
 	free(complete_bin);
-	exit_errorm("Failed to exec command");
+	exit_errorm("command execution failed");
 }
 
 static void			cmd_exec_chain_parent(t_cmd *cmd,
@@ -67,9 +67,7 @@ static void			cmd_exec_chain_parent(t_cmd *cmd,
 	waitpid(pid, &status, 0);
 	if (status != 0)
 	{
-		ft_putstr_fd("ft_sh: ", STDERR_FILENO);
-		ft_putstr_fd(cmd->args[0], STDERR_FILENO);
-		ft_putendl_fd(": execution failed", STDERR_FILENO);
+		cmd_errorl(cmd, 1, "command execution failed");
 		fds_io[0] = -1;
 	}
 	else if (cmd->next)

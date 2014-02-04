@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/28 19:58:03 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 03:11:19 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 12:32:29 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void		cmd_exec(t_cmd *cmd, char **env)
 	if (cmd->in_file)
 		fd_in = open_in_fd(it->in_file);
 	else
-		fd_in = 0;
+		fd_in = STDIN_FILENO;
 	old_fd_in = -1;
 	while (it)
 	{

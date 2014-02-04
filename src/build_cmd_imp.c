@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 01:59:09 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 02:01:55 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 12:46:08 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ t_bool	build_pipes(t_cmd *cmd, t_list *cmd_lexems)
 	lex_it = lexems_find_next(cmd_lexems->first, ST_OP_PIPE);
 	if (lex_it)
 	{
+		if (cmd->next || cmd->out_file)
+			return (false);
 		lex_it = list_erase(cmd_lexems, lex_it);
 		if (lex_it == NULL)
 			return (false);
