@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 20:22:41 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 00:24:43 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 01:11:15 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,16 @@ void				app_process_lexems(t_list *lexems)
 	list_init(&cmd_lexems, lexem_free);
 
 	lexems_preprocess(lexems);
-	cmd = cmd_malloc();
-	cmd_init(cmd);
 	while (!list_empty(lexems))
 	{
+		cmd = cmd_malloc();
+		cmd_init(cmd);
 		extract_cmd(lexems, &cmd_lexems);
 		if (build_cmd(cmd, &cmd_lexems) == false)
+		{
 			cmd_free(cmd);
+			break ;
+		}
 		else
 			list_push_back(&cmds, cmd);
 		list_clear(&cmd_lexems);

@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 22:58:25 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/03 23:42:02 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 01:04:20 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void	extract_cmd(t_list *src, t_list *cmd_lexems)
 		if (lex->state_id == ST_END_CMD)
 		{
 			it = list_erase(src, it);
-			break ;
+			return ;
 		}
 		else
 		{
 			new_lex = lexem_clone(lex);
 			list_push_back(cmd_lexems, new_lex);
+			it = list_erase(src, it);
 		}
-		it = list_erase(src, it);
 	}
 }
