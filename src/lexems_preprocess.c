@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/29 17:56:11 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/29 18:48:19 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 01:26:43 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "lexem.h"
 #include <ft_list.h>
 #include <ft_string.h>
+#include <stdlib.h>
 
 static t_bool		lexem_is_spaces(t_lexem *lex)
 {
@@ -22,7 +23,14 @@ static t_bool		lexem_is_spaces(t_lexem *lex)
 
 static void			lexem_in_place(t_lexem *lexem)
 {
-	lexem->str = ft_strndup(lexem->str, lexem->size);
+	char	*str;
+
+	if (lexem->str)
+	{
+		str = ft_strndup(lexem->str, lexem->size);
+		free(lexem->str);
+		lexem->str = str;
+	}
 }
 
 void				lexems_remove_spaces(t_list *lexems)

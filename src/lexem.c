@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 20:03:13 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/03 23:36:51 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 01:22:21 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,14 @@ t_lexem	*lexem_malloc(void)
 	return (new);
 }
 
-void	lexem_delete(t_lexem *lex)
+void	lexem_free(t_lexem *lex)
 {
 	if (lex)
 	{
-		ft_memdel((void **)&lex->str);
+		if (lex->str)
+			free(lex->str);
 		free(lex);
 	}
-}
-
-void	lexem_free(void *lex)
-{
-	lexem_delete((t_lexem *)lex);
 }
 
 void	lexem_set(t_lexem *lex, t_ui state_id, char const *str, t_ui size)

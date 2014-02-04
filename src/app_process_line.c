@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 20:22:41 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 01:11:15 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 01:29:24 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void				app_process_lexems(t_list *lexems)
 		list_clear(&cmd_lexems);
 	}
 	app_exec_cmds(&cmds);
+	list_destroy(&cmds);
 	list_destroy(&cmd_lexems);
 }
 
