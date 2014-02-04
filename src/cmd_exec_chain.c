@@ -6,10 +6,12 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 19:32:54 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 12:48:47 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 13:30:20 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "app.h"
+#include "cmd.h"
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -17,8 +19,6 @@
 #include <ft_types_def.h>
 #include <ft_error.h>
 #include <ft_print.h>
-#include "app.h"
-#include "cmd.h"
 
 static int			open_out_fd(char const *filename, t_bool trunc)
 {
@@ -31,7 +31,7 @@ static int			open_out_fd(char const *filename, t_bool trunc)
 	else
 		fd = open(filename, O_WRONLY | O_CREAT, 0644);
 	if (fd == -1)
-		exit_errorm("Unable to open file for writing");
+		exit_errorm(STR_APPNAME, "unable to open file for writing", 1);
 	return (fd);
 }
 
@@ -51,7 +51,7 @@ static void			cmd_exec_chain_child(t_cmd *cmd,
 		dup2(fds[1], STDOUT_FILENO);
 	execve(complete_bin, cmd->args, env);
 	free(complete_bin);
-	exit_errorm("command execution failed");
+	exit_errorm(STR_APPNAME, "command execution failed", 1);
 }
 
 static void			cmd_exec_chain_parent(t_cmd *cmd,
@@ -89,7 +89,7 @@ int					cmd_exec_chain(t_cmd *it, char **env, int fd_in)
 	else if (pid > 0)
 		cmd_exec_chain_parent(it, fds, fds_io, pid);
 	else
-		exit_errorm("failed to fork");
+		exit_errorm(STR_APPNAME, "failed to fork", 1);
 	if (fds_io[1] != -1)
 		close(fds_io[1]);
 	return (fds_io[0]);

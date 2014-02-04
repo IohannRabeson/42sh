@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:15:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 00:38:42 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 13:23:22 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define KW_REDIR_IN_APP		"<<"
 
 # define STR_PROMPT				"$> "
+# define STR_APPNAME			"ft_sh"
 
 typedef enum	e_parser_states
 {

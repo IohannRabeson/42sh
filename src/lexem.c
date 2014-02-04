@@ -6,10 +6,11 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 20:03:13 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 01:22:21 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 13:31:28 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "app.h"
 #include "lexem.h"
 #include "parser_matrix.h"
 #include <stdlib.h>
@@ -23,7 +24,7 @@ t_lexem	*lexem_malloc(void)
 
 	new = (t_lexem *)malloc(sizeof(*new));
 	if (new == NULL)
-		exit_errorc(ERRC_NOT_ENOUGH_MEMORY);
+		exit_errorc(STR_APPNAME, ERRC_NOT_ENOUGH_MEMORY, 1);
 	new->str = NULL;
 	lexem_set(new, PARSER_ERR_STATE, NULL, 0);
 	return (new);

@@ -6,10 +6,11 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:26:02 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 03:12:41 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 13:30:38 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "app.h"
 #include "env.h"
 #include <stdlib.h>
 #include <ft_memory.h>
@@ -86,7 +87,7 @@ void	env_reserve(t_env *env, t_ui new_cap)
 		return ;
 	new = (t_env_var *)malloc(sizeof(*new) * new_cap);
 	if (new == NULL)
-		exit_errorc(ERRC_NOT_ENOUGH_MEMORY);
+		exit_errorc(STR_APPNAME, ERRC_NOT_ENOUGH_MEMORY, 1);
 	i = 0;
 	new_count = (new_cap < env->count) ? new_cap : env->count;
 	while (i < new_count)

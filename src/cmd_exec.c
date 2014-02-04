@@ -6,11 +6,12 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/28 19:58:03 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 12:32:29 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 13:29:11 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd.h"
+#include "app.h"
 #include <ft_error.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -24,7 +25,7 @@ static int	open_in_fd(char const *filename)
 		return (-1);
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		exit_errorm("Unable to open file to reading");
+		exit_errorm(STR_APPNAME, "Unable to open file to reading", 1);
 	return (fd);
 }
 

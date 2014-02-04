@@ -6,11 +6,12 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 20:15:39 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 02:38:48 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 13:27:58 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd.h"
+#include "app.h"
 #include <ft_memory.h>
 #include <ft_str_array.h>
 #include <ft_error.h>
@@ -43,7 +44,7 @@ t_cmd		*cmd_malloc(void)
 
 	cmd = (t_cmd *)malloc(sizeof(*cmd));
 	if (cmd == NULL)
-		exit_errorc(ERRC_NOT_ENOUGH_MEMORY);
+		exit_errorc(STR_APPNAME, ERRC_NOT_ENOUGH_MEMORY, 1);
 	cmd_init(cmd);
 	return (cmd);
 }
