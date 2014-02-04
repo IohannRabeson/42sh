@@ -6,13 +6,14 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 00:38:50 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 00:48:33 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 02:30:16 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "app.h"
 #include "path.h"
 #include <ft_string.h>
+#include <ft_str_array.h>
 
 static t_bool	check(char const *bin_path)
 {
@@ -38,11 +39,14 @@ char		*app_complete_bin_path(char const *bin_path)
 	{
 		temp = path_concat(*it, bin_path);
 		if (check(temp))
+		{
+			str_array_free(paths);
 			return (temp);
+		}
 		else
 			free(temp);
 		++it;
 	}
-	(void)bin_path;
+	str_array_free(paths);
 	return (NULL);
 }

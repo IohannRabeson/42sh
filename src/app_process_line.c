@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 20:22:41 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 01:51:47 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 02:24:16 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ t_bool				app_process_line(char const *line)
 	t_app * const	app = app_instance();
 	t_list			lexems;
 	
-	list_init(&lexems, free);
+	list_init(&lexems, lexem_free);
 	if (line && ft_strlen(line) > 0 && parser_run(&app->parser, line, &lexems))
 	{
 		app_process_lexems(&lexems);
