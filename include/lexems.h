@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/29 17:58:17 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/03 23:27:17 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/04 02:16:54 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ struct	s_list_node;
 
 struct s_list_node	*lexems_find_next(struct s_list_node *lex_it,
 									  t_ui state_id);
-void				lexems_remove_spaces(struct s_list *lexems);
 void				lexems_preprocess(struct s_list *lexems);
 
 #endif
