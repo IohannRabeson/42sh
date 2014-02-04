@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/02/04 02:00:23 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/02/04 02:21:25 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -94,7 +94,7 @@ $(TARGET): $(OBJS)
 	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o $(TARGET) $(LIB_LINKS)
 
 $(addprefix $(BUILD_DIR)/, %.o): $(addprefix $(SRC_DIR)/, %.c)
-	@echo " - Building $(COLOR_ID)$(<:.c=.o)$(COLOR_NO)..."
+	@echo " - Building $(COLOR_ID)$(@:.c=.o)$(COLOR_NO)..."
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ $(LIB_LINKS)
 
 re: fclean $(TARGET)
