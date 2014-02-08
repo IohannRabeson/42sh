@@ -6,13 +6,13 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/02/04 02:21:25 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/02/08 23:54:52 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
 CC = gcc
 CFLAGS = -Werror -Wextra -Wall -g
-TARGET = ft_minishell2
+TARGET = ft_minishell3
 SRC_DIR = ./src
 INCLUDE_DIR = ./include
 BUILD_DIR = ./builds
