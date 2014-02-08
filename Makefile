@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/02/08 23:54:52 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/02/09 00:15:16 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -97,7 +97,7 @@ $(addprefix $(BUILD_DIR)/, %.o): $(addprefix $(SRC_DIR)/, %.c)
 	@echo " - Building $(COLOR_ID)$(@:.c=.o)$(COLOR_NO)..."
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ $(LIB_LINKS)
 
-re: fclean $(TARGET)
+re: fclean ft $(TARGET)
 
 clean:
 	@echo " - Removing objects files:"

@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 16:53:04 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 13:31:17 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 00:17:13 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ t_bool	parser_mat_row_set(t_parser_mat_row *row,
 	else
 		temp = (t_mat_row_kv *)malloc(sizeof(*temp));
 	if (temp == NULL)
-		exit_errorc(STR_APPNAME, ERRC_NOT_ENOUGH_MEMORY, 1);
+		exit_errorc(STR_APPNAME, ERRC_NOT_ENOUGH_MEMORY, 1, app_destroy);
 	temp->key = value->key;
 	temp->value = value->value;
 	temp->final = value->final;

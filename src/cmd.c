@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 20:15:39 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 13:27:58 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 00:13:45 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ t_cmd		*cmd_malloc(void)
 
 	cmd = (t_cmd *)malloc(sizeof(*cmd));
 	if (cmd == NULL)
-		exit_errorc(STR_APPNAME, ERRC_NOT_ENOUGH_MEMORY, 1);
+		exit_errorc(STR_APPNAME,
+					ERRC_NOT_ENOUGH_MEMORY, 1, app_destroy);
 	cmd_init(cmd);
 	return (cmd);
 }

@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/29 17:56:11 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/08 23:54:29 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 00:19:29 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void			preprocess_lexem(t_lexem *lexem)
 		home_path = env_get_value(&app->env, "HOME");
 		str_buf_init(&buffer);
 		str_buf_app_strn(&buffer, lexem->str, lexem->size);
-		if (lexem->state_id == ST_PARAM)
+		if (home_path && lexem->state_id == ST_PARAM)
 			str_buf_replace_all(&buffer, "~", home_path);
 		free(lexem->str);
 		lexem->str = str_buf_get(&buffer);

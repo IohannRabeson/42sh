@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 19:31:01 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 13:25:28 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 00:12:03 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	builtins_reserve(t_builtins *bts, t_ui new_cap)
 	new_blt = ft_realloc(bts->builtins, sizeof(*bts->builtins) * bts->size,
 							sizeof(*new_blt) * new_cap);
 	if (new_blt == NULL)
-		exit_errorc(STR_APPNAME, ERRC_NOT_ENOUGH_MEMORY, 1);
+		exit_errorc(STR_APPNAME, ERRC_NOT_ENOUGH_MEMORY, 1, app_destroy);
 	bts->builtins = new_blt;
 	bts->size = ft_min_uint(new_cap, bts->size);
 	bts->capacity = new_cap;

@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:26:02 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 13:30:38 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 00:16:22 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	env_reserve(t_env *env, t_ui new_cap)
 		return ;
 	new = (t_env_var *)malloc(sizeof(*new) * new_cap);
 	if (new == NULL)
-		exit_errorc(STR_APPNAME, ERRC_NOT_ENOUGH_MEMORY, 1);
+		exit_errorc(STR_APPNAME, ERRC_NOT_ENOUGH_MEMORY, 1, app_destroy);
 	i = 0;
 	new_count = (new_cap < env->count) ? new_cap : env->count;
 	while (i < new_count)

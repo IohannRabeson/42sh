@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 21:13:15 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 03:09:51 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 00:46:09 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@
 static t_list_node	*process_part(t_list *sp_pwd, t_list *sp_nav,
 								  t_list_node *nav_it)
 {
-	char				*nav;
 	char const * const	home = env_get_value(&app_instance()->env, "HOME");
+	char				*nav;
 
-	if (nav_it == NULL)
+	if (nav_it == NULL || home == NULL)
 		return (NULL);
 	nav = (char *)nav_it->item;
 	if (ft_strequ(nav, "."))
@@ -102,10 +102,13 @@ static t_bool		change_cd(char const *cmd, char const *pwd)
 	char	*new_path;
 	t_bool	result;
 
+	result = false;
 	new_path = make_path(cmd, pwd);
-	result = app_cd(new_path);
 	if (new_path)
+	{
+		result = app_cd(new_path);
 		free(new_path);
+	}
 	return (result);
 }
 
@@ -116,7 +119,10 @@ void				bt_cd(t_cmd *cmd, t_env const *env)
 
 	pwd = env_get_value(env, "PWD");
 	if (pwd == NULL)
+	{
+		cmd_errorl(cmd, 2, "no valid environ");
 		return ;
+	}
 	if (cmd->argc == 1 || cmd->args[1] == NULL)
 		result = app_cd(env_get_value(env, "HOME"));
 	else if (ft_strequ(cmd->args[1], "-"))

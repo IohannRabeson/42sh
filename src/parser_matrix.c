@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 19:22:48 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 13:31:01 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 00:16:50 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	parser_mat_set(t_parser_mat *mat,
 		parser_mat_row_init(temp, current);
 	}
 	if (temp == NULL)
-		exit_errorc(STR_APPNAME, ERRC_NOT_ENOUGH_MEMORY, 1);
+		exit_errorc(STR_APPNAME, ERRC_NOT_ENOUGH_MEMORY, 1, app_destroy);
 	if (node == NULL)
 		btree_insert(&mat->rows, temp);
 	parser_mat_row_set(temp, state);
