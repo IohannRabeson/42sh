@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 19:32:54 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 00:16:01 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 01:32:45 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,21 @@ static void			cmd_exec_chain_parent(t_cmd *cmd,
 										  int fds_io[2],
 										  pid_t pid)
 {
-	int	status;
+	t_app * const	app = app_instance();
+	int				status;
 
 	close(fds[1]);
 	if (fds_io[1] != -1)
 		close(fds_io[1]);
+	app->current_cmd = pid;
 	waitpid(pid, &status, 0);
-	if (status != 0)
+	app->current_cmd = 0;
+	if (WIFSIGNALED(status))
+	{
+		cmd_errorl(cmd, 1, "command interupted");
+		fds_io[0] = -1;
+	}
+	else if (status != 0)
 	{
 		cmd_errorl(cmd, 1, "command execution failed");
 		fds_io[0] = -1;

@@ -6,12 +6,13 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:15:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 13:23:22 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 01:39:04 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef APP_H
 # define APP_H
+# include <unistd.h>
 # include <ft_types_def.h>
 # include <ft_get_next_line.h>
 # include <ft_getopt.h>
@@ -33,7 +34,6 @@
 # define CHRS_OP_PIPE			"|"
 # define KW_REDIR_OUT_APP		">>"
 # define KW_REDIR_IN_APP		"<<"
-
 # define STR_PROMPT				"$> "
 # define STR_APPNAME			"ft_sh"
 
@@ -62,6 +62,7 @@ typedef struct	s_app
 	t_builtins	builtins;
 	t_bool		run;
 	int			exit_code;
+	pid_t		current_cmd;
 }				t_app;
 
 t_app		*app_instance(void);
@@ -77,5 +78,6 @@ void		app_exit(int code);
 t_bool		app_run(void);
 t_bool		app_cd(char const *new_dir);
 char		*app_complete_bin_path(char const *bin_path);
+void		app_kill_cmd(int sig);
 
 #endif

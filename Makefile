@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/02/09 00:15:16 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/02/09 01:39:22 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -20,6 +20,7 @@ LIBFT_DIR = ../libft
 
 SRC =			main.c						\
 				app.c						\
+				app_kill.c					\
 				app_controls.c				\
 				app_op.c					\
 				app_cd.c					\
