@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/08 22:12:50 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 17:35:05 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 21:38:46 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	cursor_insert(t_textedit *te, char c)
 		te->cursor.row += 1;
 		te->cursor.buffer_pos += 1;
 		if (te->cursor.row >= te->height)
-		{	
+		{
 			++te->scroll;
 		}
 	}

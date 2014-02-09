@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 14:47:44 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 18:17:02 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 21:34:43 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ typedef char	t_key[KEYCODE_SIZE];
 
 void	key_bzero(t_key key);
 t_bool	key_read(t_key key, int fd);
-void	key_from_chars(t_key key, char c0, char c1, char c2, char c3);
 void	key_from_str(t_key key, char const *str);
 void	key_from_termcap(t_key key, char c0, char c1, char const *keycode);
 void	key_put(t_key const key);

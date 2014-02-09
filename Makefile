@@ -72,6 +72,7 @@ SRC_ENV =		env.c					\
 
 SRC_PARSER =	parser.c				\
 		   		parser_add.c			\
+		   		parser_add_kw.c			\
 		   		parser_run.c			\
 		   		parser_load.c			\
 		   		parser_matrix.c			\
@@ -95,7 +96,6 @@ SRC_TERMCAPS =	textedit.c					\
 				cursor_delete.c				\
 				key.c						\
 				key_cmp.c					\
-				key_from.c					\
 				key_query.c					\
 				keymapper.c					\
 				terminal_exec.c				\

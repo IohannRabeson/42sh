@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:26:02 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 00:16:22 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 21:39:40 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void		env_destroy(t_env *env)
 	}
 }
 
-void	env_reserve(t_env *env, t_ui new_cap)
+void		env_reserve(t_env *env, t_ui new_cap)
 {
 	t_ui		i;
 	t_ui		new_count;
