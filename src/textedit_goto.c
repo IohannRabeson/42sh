@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bt_exit.c                                          :+:      :+:    :+:   */
+/*   textedit_goto.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/25 20:43:29 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 21:00:31 by irabeson         ###   ########.fr       */
+/*   Created: 2014/02/09 21:12:04 by irabeson          #+#    #+#             */
+/*   Updated: 2014/02/09 21:12:13 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cmd.h"
-#include "env.h"
-#include "app.h"
-#include <ft_string.h>
+#include "textedit.h"
 
-void	bt_exit(t_cmd *cmd, t_env const *env)
+t_bool	textedit_can_goto(t_textedit const *te, t_ui buf_pos)
 {
-	int	ec;
-
-	if (cmd->argc > 1)
-		ec = ft_atoi(cmd->args[1]);
+	if (buf_pos >= te->prompt.size
+		&& buf_pos <= str_buf_size(&te->buffer) + te->prompt.size)
+	{
+		return (true);
+	}
 	else
-		ec = 0;
-	app_exit(ec);
-	(void)cmd;
-	(void)env;
+		return (false);
 }

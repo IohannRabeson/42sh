@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/08 22:08:06 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 19:56:01 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 21:26:04 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,25 +63,19 @@ void	textedit_validate(t_textedit *te)
 		cursor_insert(te, '\r');
 		te->modified = true;
 	}
-	else
+	else if (str_buf_size(&te->buffer) > te->prompt.size)
 	{
 		str_buf_erase(&te->buffer, 0, te->prompt.size);
+		str_buf_replace_all(&te->buffer, "\r", "");
 		str = str_buf_get(&te->buffer);
 		if (str && ft_strlen(str) > 0 && te->val_func)
 			te->val_func(str);
+		else
+			terminal_putchar('\n');
 		if (str)
+		{
 			free(str);
+		}
 		textedit_reset(te);
 	}
-}
-
-t_bool	textedit_can_goto(t_textedit const *te, t_ui buf_pos)
-{
-	if (buf_pos >= te->prompt.size
-		&& buf_pos <= str_buf_size(&te->buffer) + te->prompt.size)
-	{
-		return (true);
-	}
-	else
-		return (false);
 }

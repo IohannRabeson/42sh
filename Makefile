@@ -89,6 +89,7 @@ SRC_TERMCAPS =	textedit.c					\
 				textedit_move_word.c		\
 				textedit_replace.c			\
 				textedit_get.c				\
+				textedit_goto.c				\
 				histo.c						\
 				cursor.c					\
 				cursor_delete.c				\
@@ -116,7 +117,7 @@ $(TARGET): $(OBJS)
 
 $(addprefix $(BUILD_DIR)/, %.o): $(addprefix $(SRC_DIR)/, %.c)
 	@echo " - Building $(COLOR_ID)$(@:.c=.o)$(COLOR_NO)..."
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ $(LIB_LINKS)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 re: fclean ft $(TARGET)
 

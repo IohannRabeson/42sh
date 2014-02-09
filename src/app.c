@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:17:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 20:00:30 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 21:25:27 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "app_builtins.h"
 #include "terminal.h"
 #include <ft_memory.h>
+#include <ft_string.h>
 
 static void	recall_prev(t_app *app)
 {
@@ -30,9 +31,13 @@ static void	validate(char const *str)
 {
 	t_app * const	app = app_instance();
 
-	terminal_putchar('\n');
-	if (app_process_line(str))
-		histo_push(&app->histo, str);
+	if (str && ft_strlen(str) > 0)
+	{
+		if (app_process_line(str))
+		{
+			histo_push(&app->histo, str);
+		}
+	}
 }
 
 static const t_keymap	g_keymaps[] =
