@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/09 14:42:56 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 19:48:23 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 22:06:42 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	repos_cursor(t_textedit const *te)
 	}
 }
 
-void	textedit_display(t_textedit *te)
+void		textedit_display(t_textedit *te)
 {
 	t_str_buf	clone;
 	t_ui		i;

@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/09 18:52:49 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 18:53:04 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 22:07:12 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_bool	is_word_ch(char c)
 	return (ft_isalpha(c) || ft_isdigit(c) || c == '_');
 }
 
-void	cursor_next_word(t_textedit *te)
+void			cursor_next_word(t_textedit *te)
 {
 	t_cursor	*cursor;
 	t_ui		buf_sz;
@@ -63,7 +63,7 @@ static void		skip_space(t_textedit *te)
 	}
 }
 
-void	cursor_prev_word(t_textedit *te)
+void			cursor_prev_word(t_textedit *te)
 {
 	t_cursor	*cursor;
 	t_ui		buf_sz;

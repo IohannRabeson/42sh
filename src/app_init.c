@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/09 21:55:19 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 22:00:02 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 22:04:50 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	recall_next(t_app *app)
 	histo_show_next(&app->histo, &app->textedit);
 }
 
-void	app_init_keymaps(t_app *app)
+void		app_init_keymaps(t_app *app)
 {
 	static const t_keymap	g_keymaps[] =
 	{
