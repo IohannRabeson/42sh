@@ -107,7 +107,7 @@ COLOR_NO = \033[0m
 OBJS = $(addprefix $(BUILD_DIR)/, $(SRC:.c=.o))
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 INCLUDES = -I$(INCLUDE_DIR) -I$(LIBFT_DIR)/includes/
-LIB_LINKS = -L$(LIBFT_DIR) -lft -lncurses
+LIB_LINKS = -L$(LIBFT_DIR) -lft -ltermcap
 
 all: $(BUILD_DIR) ft $(TARGET)
 
