@@ -16,7 +16,7 @@ TARGET = ft_minishell3
 SRC_DIR = ./src
 INCLUDE_DIR = ./include
 BUILD_DIR = ./builds
-LIBFT_DIR = ../libft
+LIBFT_DIR = ./libft
 
 SRC =			main.c						\
 				app.c						\
