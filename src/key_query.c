@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_run.c                                          :+:      :+:    :+:   */
+/*   key_query.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/24 16:11:25 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 19:54:44 by irabeson         ###   ########.fr       */
+/*   Created: 2014/02/05 22:10:05 by irabeson          #+#    #+#             */
+/*   Updated: 2014/02/09 17:56:01 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "app.h"
+#include "key.h"
 #include <ft_string.h>
-#include <ft_print.h>
-#include <stdlib.h>
-#include <unistd.h>
 
-t_bool				app_run(void)
+t_bool	key_is_char(t_key const key)
 {
-	t_app * const	app = app_instance();
-	t_key			key;
+	return (key[1] == 0 && key[2] == 0 && ft_isprint(key[0]) && key[0] != 126);
+}
 
-	if (app->run == false)
-		return (false);
-	key_read(key, 0);
-	if (key_is_char(key))
-		cursor_insert(&app->textedit, key_get_char(key));
-	else
-		keymapper_map(&app->keymapper, key, &app->textedit);
-	textedit_display(&app->textedit);
-	return (true);
+char	key_get_char(t_key const key)
+{
+	return (key[0]);
 }

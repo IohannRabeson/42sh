@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_run.c                                          :+:      :+:    :+:   */
+/*   key_from.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/24 16:11:25 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 19:54:44 by irabeson         ###   ########.fr       */
+/*   Created: 2014/02/04 15:14:11 by irabeson          #+#    #+#             */
+/*   Updated: 2014/02/09 18:15:45 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "app.h"
-#include <ft_string.h>
-#include <ft_print.h>
-#include <stdlib.h>
+#include "key.h"
 #include <unistd.h>
+#include <term.h>
 
-t_bool				app_run(void)
+void	key_from_chars(t_key key, char c0, char c1, char c2, char c3)
 {
-	t_app * const	app = app_instance();
-	t_key			key;
+	key[0] = c0;
+	key[1] = c1;
+	key[2] = c2;
+	key[3] = c3;
+}
 
-	if (app->run == false)
-		return (false);
-	key_read(key, 0);
-	if (key_is_char(key))
-		cursor_insert(&app->textedit, key_get_char(key));
-	else
-		keymapper_map(&app->keymapper, key, &app->textedit);
-	textedit_display(&app->textedit);
-	return (true);
+void	key_from_str(t_key key, char const *str)
+{
+	t_ui	i;
+
+	key_bzero(key);
+	i = 0;
+	if (str == NULL)
+		return ;
+	while (i < KEYCODE_SIZE && str[i] != '\0')
+	{
+		key[i] = str[i];
+		++i;
+	}
 }

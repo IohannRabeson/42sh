@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_run.c                                          :+:      :+:    :+:   */
+/*   textedit_move.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/24 16:11:25 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 19:54:44 by irabeson         ###   ########.fr       */
+/*   Created: 2014/02/09 16:37:47 by irabeson          #+#    #+#             */
+/*   Updated: 2014/02/09 18:56:38 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "app.h"
+#include "textedit.h"
 #include <ft_string.h>
-#include <ft_print.h>
-#include <stdlib.h>
-#include <unistd.h>
 
-t_bool				app_run(void)
+void	cursor_next_char(t_textedit *te)
 {
-	t_app * const	app = app_instance();
-	t_key			key;
+	t_cursor	*cursor;
 
-	if (app->run == false)
-		return (false);
-	key_read(key, 0);
-	if (key_is_char(key))
-		cursor_insert(&app->textedit, key_get_char(key));
-	else
-		keymapper_map(&app->keymapper, key, &app->textedit);
-	textedit_display(&app->textedit);
-	return (true);
+	cursor = &te->cursor;
+	if (cursor->buffer_pos + 1 > str_buf_size(&te->buffer))
+		return ;
+	cursor->buffer_pos += 1;
+	te->modified = true;
+}
+
+void	cursor_prev_char(t_textedit *te)
+{
+	t_cursor	*cursor;
+
+	cursor = &te->cursor;
+	if (cursor->buffer_pos <= te->prompt.size)
+		return ;
+	cursor->buffer_pos -= 1;
+	te->modified = true;
 }

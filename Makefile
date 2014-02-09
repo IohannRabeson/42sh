@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/02/09 01:39:22 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/02/09 19:29:43 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -49,7 +49,8 @@ SRC =			main.c						\
 				$(SRC_ENV)					\
 				$(SRC_UTILS)				\
 				$(SRC_PARSER)				\
-				$(SRC_BUILTINS)
+				$(SRC_BUILTINS)				\
+				$(SRC_TERMCAPS)
 
 SRC_BUILTINS =	bt_exit.c				\
 				bt_cd.c					\
@@ -81,12 +82,31 @@ SRC_PARSER =	parser.c				\
 				lexem_is.c				\
 				lexem_put.c
 
+SRC_TERMCAPS =	textedit.c					\
+				textedit_multiline.c		\
+				textedit_display.c			\
+				textedit_move.c				\
+				textedit_move_word.c		\
+				textedit_replace.c			\
+				textedit_get.c				\
+				histo.c						\
+				cursor.c					\
+				cursor_delete.c				\
+				key.c						\
+				key_cmp.c					\
+				key_from.c					\
+				key_query.c					\
+				keymapper.c					\
+				terminal_exec.c				\
+				terminal_query.c			\
+				terminal.c
+
 COLOR_ID = \033[1;32m
 COLOR_NO = \033[0m
 OBJS = $(addprefix $(BUILD_DIR)/, $(SRC:.c=.o))
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 INCLUDES = -I$(INCLUDE_DIR) -I$(LIBFT_DIR)/includes/
-LIB_LINKS = -L$(LIBFT_DIR) -lft
+LIB_LINKS = -L$(LIBFT_DIR) -lft -lncurses
 
 all: $(BUILD_DIR) ft $(TARGET)
 

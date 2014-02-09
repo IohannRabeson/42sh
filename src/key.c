@@ -1,33 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_run.c                                          :+:      :+:    :+:   */
+/*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/24 16:11:25 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 19:54:44 by irabeson         ###   ########.fr       */
+/*   Created: 2014/02/04 15:02:49 by irabeson          #+#    #+#             */
+/*   Updated: 2014/02/04 15:11:09 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "app.h"
-#include <ft_string.h>
-#include <ft_print.h>
-#include <stdlib.h>
+#include "key.h"
 #include <unistd.h>
+#include <ft_memory.h>
+#include <ft_print.h>
 
-t_bool				app_run(void)
+void	key_bzero(t_key key)
 {
-	t_app * const	app = app_instance();
-	t_key			key;
+	ft_bzero(key, sizeof(char) * KEYCODE_SIZE);
+}
 
-	if (app->run == false)
-		return (false);
-	key_read(key, 0);
-	if (key_is_char(key))
-		cursor_insert(&app->textedit, key_get_char(key));
-	else
-		keymapper_map(&app->keymapper, key, &app->textedit);
-	textedit_display(&app->textedit);
-	return (true);
+t_bool	key_read(t_key key, int fd)
+{
+	key_bzero(key);
+	return (read(fd, key, KEYCODE_SIZE) > 0);
+}
+
+void	key_put(t_key const key)
+{
+	t_ui	i;
+
+	i = 0;
+	while (i < KEYCODE_SIZE)
+	{
+		if (i > 0)
+			ft_putstr(" - ");
+		ft_putnbr(key[i]);
+		++i;
+	}
+	ft_putchar('\n');
 }

@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:15:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 01:39:04 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 19:34:24 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include "parser.h"
 # include "builtins.h"
 # include "cmd.h"
+# include "textedit.h"
+# include "histo.h"
+# include "keymapper.h"
 
 # define CHRS_SPC				" \t\v\n\r\b"
 # define CHRS_LOW				"abcdefghijklmnopqrstuvwxyz"
@@ -63,6 +66,9 @@ typedef struct	s_app
 	t_bool		run;
 	int			exit_code;
 	pid_t		current_cmd;
+	t_textedit	textedit;
+	t_histo		histo;
+	t_keymapper	keymapper;
 }				t_app;
 
 t_app		*app_instance(void);

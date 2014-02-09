@@ -6,14 +6,48 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:17:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 02:49:16 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 20:00:30 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "app.h"
 #include "builtin.h"
 #include "app_builtins.h"
+#include "terminal.h"
 #include <ft_memory.h>
+
+static void	recall_prev(t_app *app)
+{
+	histo_show_prev(&app->histo, &app->textedit);
+}
+
+static void	recall_next(t_app *app)
+{
+	histo_show_next(&app->histo, &app->textedit);
+}
+
+static void	validate(char const *str)
+{
+	t_app * const	app = app_instance();
+
+	terminal_putchar('\n');
+	if (app_process_line(str))
+		histo_push(&app->histo, str);
+}
+
+static const t_keymap	g_keymaps[] =
+{
+	{{10, 0, 0, 0}, textedit_validate},
+	{{127, 0, 0, 0}, cursor_backspace},
+	{{27, 91, 51, 126}, cursor_suppr},
+	{{27, 91, 65, 0}, recall_prev},
+	{{27, 91, 66, 0}, recall_next},
+	{{27, 91, 68, 0}, cursor_prev_char},
+	{{53, 67, 0, 0}, cursor_next_word},
+	{{53, 68, 0, 0}, cursor_prev_word},
+	{{27, 91, 67, 0}, cursor_next_char},
+	{{0, 0, 0, 0}, NULL}
+};
 
 t_builtin const			g_builtins[] =
 {
@@ -126,6 +160,12 @@ t_app	*app_init(int argc, char **argv, char **environs)
 	builtins_init(&app->builtins);
 	builtins_load(&app->builtins, g_builtins);
 	app->run = true;
+	terminal_init();
+	terminal_exec("cl");
+	textedit_init(&app->textedit, "$>", validate);
+	histo_init(&app->histo);
+	keymapper_init(&app->keymapper);
+	keymapper_load(&app->keymapper, g_keymaps);
 	return (app);
 }
 
@@ -138,5 +178,9 @@ void	app_destroy(void)
 	gnl_destroy(&app->gnl);
 	env_destroy(&app->env);
 	getopt_destroy(&app->getopt);
+	keymapper_destroy(&app->keymapper);
+	textedit_destroy(&app->textedit);
+	terminal_destroy();
+	histo_destroy(&app->histo);
 	ft_bzero(app, sizeof(*app));
 }

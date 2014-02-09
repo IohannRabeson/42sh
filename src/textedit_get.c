@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_run.c                                          :+:      :+:    :+:   */
+/*   textedit_get.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/24 16:11:25 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 19:54:44 by irabeson         ###   ########.fr       */
+/*   Created: 2014/02/09 19:08:18 by irabeson          #+#    #+#             */
+/*   Updated: 2014/02/09 19:21:42 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "app.h"
+#include "textedit.h"
 #include <ft_string.h>
-#include <ft_print.h>
-#include <stdlib.h>
-#include <unistd.h>
 
-t_bool				app_run(void)
+char	*textedit_get_text(t_textedit const *te)
 {
-	t_app * const	app = app_instance();
-	t_key			key;
+	t_str_buf	temp;
+	char		*str;
 
-	if (app->run == false)
-		return (false);
-	key_read(key, 0);
-	if (key_is_char(key))
-		cursor_insert(&app->textedit, key_get_char(key));
-	else
-		keymapper_map(&app->keymapper, key, &app->textedit);
-	textedit_display(&app->textedit);
-	return (true);
+	if (str_buf_size(&te->buffer) == te->prompt.size)
+		return (NULL);
+	str_buf_init(&temp);
+	str_buf_clone(&temp, &te->buffer);
+	str_buf_erase(&temp, 0, te->prompt.size);
+	str = str_buf_get(&temp);
+	str_buf_destroy(&temp);
+	return (str);
 }
