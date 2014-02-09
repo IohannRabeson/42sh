@@ -20,6 +20,7 @@ LIBFT_DIR = ./libft
 
 SRC =			main.c						\
 				app.c						\
+				app_init.c					\
 				app_kill.c					\
 				app_controls.c				\
 				app_op.c					\

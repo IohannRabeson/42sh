@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:17:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 21:25:27 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 21:59:19 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,42 +17,7 @@
 #include <ft_memory.h>
 #include <ft_string.h>
 
-static void	recall_prev(t_app *app)
-{
-	histo_show_prev(&app->histo, &app->textedit);
-}
-
-static void	recall_next(t_app *app)
-{
-	histo_show_next(&app->histo, &app->textedit);
-}
-
-static void	validate(char const *str)
-{
-	t_app * const	app = app_instance();
-
-	if (str && ft_strlen(str) > 0)
-	{
-		if (app_process_line(str))
-		{
-			histo_push(&app->histo, str);
-		}
-	}
-}
-
-static const t_keymap	g_keymaps[] =
-{
-	{{10, 0, 0, 0}, textedit_validate},
-	{{127, 0, 0, 0}, cursor_backspace},
-	{{27, 91, 51, 126}, cursor_suppr},
-	{{27, 91, 65, 0}, recall_prev},
-	{{27, 91, 66, 0}, recall_next},
-	{{27, 91, 68, 0}, cursor_prev_char},
-	{{53, 67, 0, 0}, cursor_next_word},
-	{{53, 68, 0, 0}, cursor_prev_word},
-	{{27, 91, 67, 0}, cursor_next_char},
-	{{0, 0, 0, 0}, NULL}
-};
+void					app_init_keymaps(t_app *);
 
 t_builtin const			g_builtins[] =
 {
@@ -144,14 +109,28 @@ t_parser_trans const	g_parser_transitions[] =
 	{PTT_NULL, PARSER_ERR_STATE, PARSER_ERR_STATE, NULL}
 };
 
-t_app	*app_instance(void)
+static void	validate(char const *str)
+{
+	t_app * const	app = app_instance();
+
+	if (str && ft_strlen(str) > 0)
+	{
+		terminal_putchar('\n');
+		if (app_process_line(str))
+		{
+			histo_push(&app->histo, str);
+		}
+	}
+}
+
+t_app		*app_instance(void)
 {
 	static t_app app;
 
 	return (&app);
 }
 
-t_app	*app_init(int argc, char **argv, char **environs)
+t_app		*app_init(int argc, char **argv, char **environs)
 {
 	t_app * const	app = app_instance();
 
@@ -170,11 +149,11 @@ t_app	*app_init(int argc, char **argv, char **environs)
 	textedit_init(&app->textedit, "$>", validate);
 	histo_init(&app->histo);
 	keymapper_init(&app->keymapper);
-	keymapper_load(&app->keymapper, g_keymaps);
+	app_init_keymaps(app);
 	return (app);
 }
 
-void	app_destroy(void)
+void		app_destroy(void)
 {
 	t_app * const	app = app_instance();
 

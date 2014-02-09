@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 17:13:23 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 13:13:18 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 21:50:59 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ t_bool	app_process_cmd(t_cmd *cmd, t_env const *env)
 		cmd_exec(cmd, env_str);
 	else
 	{
-		cmd_errorl(cmd, 1, "unknow command");
 		return (false);
 	}
 	str_array_free(env_str);
