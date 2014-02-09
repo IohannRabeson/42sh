@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 20:22:41 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 21:22:40 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/09 22:10:38 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void			app_extract_cmds(t_list *lexems,
 									 t_list *cmds)
 {
 	t_cmd	*cmd;
-	
+
 	while (!list_empty(lexems))
 	{
 		cmd = cmd_malloc();
@@ -78,7 +78,7 @@ t_bool				app_process_line(char const *line)
 {
 	t_app * const	app = app_instance();
 	t_list			lexems;
-	
+
 	list_init(&lexems, lexem_free);
 	if (line && ft_strlen(line) > 0 && parser_run(&app->parser, line, &lexems))
 	{
