@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 16:11:25 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 20:58:18 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/19 04:52:53 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ t_bool				app_run(void)
 		keymapper_map(&app->keymapper, key, &app->textedit);
 	if (app->run)
 		textedit_display(&app->textedit);
-	return (true);
+	return (app->run);
 }

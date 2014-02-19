@@ -6,12 +6,13 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/08 22:08:06 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 21:26:04 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/02/19 05:08:21 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "textedit.h"
 #include "terminal.h"
+#include "app.h"
 #include <ft_memory.h>
 #include <ft_string.h>
 #include <stdlib.h>
@@ -76,6 +77,7 @@ void	textedit_validate(t_textedit *te)
 		{
 			free(str);
 		}
-		textedit_reset(te);
+		if (app_instance()->run)
+			textedit_reset(te);
 	}
 }
