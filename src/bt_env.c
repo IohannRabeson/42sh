@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 16:50:15 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 21:38:07 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 01:36:18 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	bt_env_print_env(t_env const *env, int fd)
 	}
 }
 
-void		bt_env(t_cmd *cmd, t_env const *env)
+void		bt_env(t_cmd *cmd, t_env *env)
 {
 	t_env	env_cpy;
 

@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/02/09 19:29:43 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/05/14 01:36:55 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -55,7 +55,10 @@ SRC =			main.c						\
 
 SRC_BUILTINS =	bt_exit.c				\
 				bt_cd.c					\
-				bt_env.c
+				bt_env.c				\
+				bt_unsetenv.c			\
+				bt_setenv.c
+
 
 SRC_UTILS =		path_is.c				\
 				path_is_readable.c		\
@@ -72,13 +75,13 @@ SRC_ENV =		env.c					\
 				env_copy.c
 
 SRC_PARSER =	parser.c				\
-		   		parser_add.c			\
-		   		parser_add_kw.c			\
-		   		parser_run.c			\
-		   		parser_load.c			\
-		   		parser_matrix.c			\
-		   		parser_mat_row.c		\
-		   		parser_mat_row_kv.c		\
+				parser_add.c			\
+				parser_add_kw.c			\
+				parser_run.c			\
+				parser_load.c			\
+				parser_matrix.c			\
+				parser_mat_row.c		\
+				parser_mat_row_kv.c		\
 				lexem.c					\
 				lexem_get_text.c		\
 				lexem_is.c				\

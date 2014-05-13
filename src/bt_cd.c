@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 21:13:15 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 00:46:09 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 01:36:00 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ static t_bool		change_cd(char const *cmd, char const *pwd)
 	return (result);
 }
 
-void				bt_cd(t_cmd *cmd, t_env const *env)
+void				bt_cd(t_cmd *cmd, t_env *env)
 {
 	char const	*pwd;
 	t_bool		result;

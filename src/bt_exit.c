@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 20:43:29 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 21:00:31 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 01:36:30 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "app.h"
 #include <ft_string.h>
 
-void	bt_exit(t_cmd *cmd, t_env const *env)
+void	bt_exit(t_cmd *cmd, t_env *env)
 {
 	int	ec;
 

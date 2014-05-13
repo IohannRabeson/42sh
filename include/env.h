@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 19:40:15 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 21:52:44 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 01:13:17 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_bool			env_contains(t_env const *env, char const *key);
 t_ui			env_count(t_env const *env);
 char const		*env_get_value(t_env const *env, char const *key);
 t_ui			env_get_values(t_env const *env, char const *key, char sep,
-							   struct s_list *results);
+								struct s_list *results);
 void			env_set(t_env *env, char const *key, char const *value);
 void			env_remove(t_env *env, char const *key);
 void			env_clear(t_env *env);

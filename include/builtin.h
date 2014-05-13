@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 16:32:27 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/25 20:37:53 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 01:39:26 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 struct			s_env;
 struct			s_cmd;
 
-typedef 		void(*t_builtin_func)(struct s_cmd *cmd, struct s_env const *);
+typedef 		void(*t_builtin_func)(struct s_cmd *cmd, struct s_env *);
 
 typedef struct	s_builtin
 {
