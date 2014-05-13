@@ -6,11 +6,12 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/09 21:55:19 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 22:04:50 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/04/30 02:41:22 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "app.h"
+#include <stdio.h>
 
 static void	recall_prev(t_app *app)
 {
