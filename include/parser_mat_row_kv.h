@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 18:33:08 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/22 22:55:41 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 19:39:35 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ typedef struct	s_mat_row_kv
 	t_bool	final;
 }				t_mat_row_kv;
 
-void	mat_row_kv_init(t_mat_row_kv *kv, char key, t_ui value, t_bool final);
-void	mat_row_kv_destroy(t_mat_row_kv *kv);
-int		mat_row_kv_cmp(t_mat_row_kv const *left, t_mat_row_kv const *right);
+void			mat_row_kv_init(t_mat_row_kv *kv, char key, t_ui value,
+								t_bool final);
+void			mat_row_kv_destroy(t_mat_row_kv *kv);
+int				mat_row_kv_cmp(t_mat_row_kv const *left,
+								t_mat_row_kv const *right);
 
 #endif

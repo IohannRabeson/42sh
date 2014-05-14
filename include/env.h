@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 19:40:15 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 01:13:17 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 18:43:06 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "env_var.h"
 # include <ft_types_def.h>
 
-struct			s_list;
+struct s_list;
 
 typedef struct	s_env
 {

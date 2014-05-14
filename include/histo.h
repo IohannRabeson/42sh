@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/09 18:56:47 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 04:16:01 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 18:47:55 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define HISTO_H
 # include <ft_list.h>
 
-struct			s_textedit;
+struct s_textedit;
 
 typedef struct	s_histo
 {
@@ -22,10 +22,10 @@ typedef struct	s_histo
 	t_list_node	*current;
 }				t_histo;
 
-void	histo_init(t_histo *histo);
-void	histo_destroy(t_histo *histo);
-void	histo_push(t_histo *histo, char const *str);
-void	histo_show_prev(t_histo *histo, struct s_textedit *te);
-void	histo_show_next(t_histo *histo, struct s_textedit *te);
+void			histo_init(t_histo *histo);
+void			histo_destroy(t_histo *histo);
+void			histo_push(t_histo *histo, char const *str);
+void			histo_show_prev(t_histo *histo, struct s_textedit *te);
+void			histo_show_next(t_histo *histo, struct s_textedit *te);
 
 #endif
