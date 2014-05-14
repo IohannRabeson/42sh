@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/24 03:05:01 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/22 16:10:26 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 05:48:12 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,7 @@
 
 void	ft_putstr_fd(char const *str, int fd)
 {
-	write(fd, str, ft_strlen(str));
+	int const	happy_compiler = write(fd, str, ft_strlen(str));
+
+	(void)happy_compiler;
 }

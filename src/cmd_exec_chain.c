@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 19:32:54 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 01:32:45 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 05:38:58 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ static int			open_out_fd(char const *filename, t_bool trunc)
 }
 
 static void			cmd_exec_chain_child(t_cmd *cmd,
-										 int fds[2],
-										 int fds_io[2],
-										 char **env)
+											int fds[2],
+											int fds_io[2],
+											char **env)
 {
 	char	*complete_bin;
 
@@ -58,9 +58,9 @@ static void			cmd_exec_chain_child(t_cmd *cmd,
 }
 
 static void			cmd_exec_chain_parent(t_cmd *cmd,
-										  int fds[2],
-										  int fds_io[2],
-										  pid_t pid)
+											int fds[2],
+											int fds_io[2],
+											pid_t pid)
 {
 	t_app * const	app = app_instance();
 	int				status;
@@ -93,7 +93,8 @@ int					cmd_exec_chain(t_cmd *it, char **env, int fd_in)
 
 	fds_io[1] = open_out_fd(it->out_file, true);
 	fds_io[0] = fd_in;
-	pipe(fds);
+	if (pipe(fds) == -1)
+		exit_errorm(STR_APPNAME, "failed to fork", 1, app_destroy);
 	pid = fork();
 	if (pid == 0)
 		cmd_exec_chain_child(it, fds, fds_io, env);

@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:26:02 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 21:39:40 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 05:40:04 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static void	env_setup_imp(t_env *env, t_ui count)
 	pwd = env_find(env, "PWD");
 	if (pwd == NULL)
 	{
-		getcwd(buffer, 512);
-		env_set(env, "PWD", buffer);
+		if (getcwd(buffer, 512) != NULL)
+			env_set(env, "PWD", buffer);
 	}
 	if (shlvl)
 		lvl = ft_atoi(shlvl->value);

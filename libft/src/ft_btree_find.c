@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/25 14:17:49 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/22 18:54:06 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 05:49:22 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_btree_node		*btree_find(t_btree const *tree, void *value)
 	t_btree_node	*it;
 	int				cmp_res;
 
+	it = NULL;
 	if (tree)
 		it = tree->root;
 	while (it != NULL)

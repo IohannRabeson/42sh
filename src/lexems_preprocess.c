@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/29 17:56:11 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 05:11:28 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 05:55:11 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,18 @@ static t_bool		lexem_is_constant(t_lexem const *lex)
 
 void				replace_constants(t_str_buf *buffer, t_env const *env)
 {
-	char const		*key;
+	char			*key;
 	t_env_var const	*value;
 
-	key = buffer->buffer + 1;
+	key = ft_strndup(buffer->buffer + 1, buffer->size - 1);
 	value = env_cfind(env, key);
 	if (value)
 	{
 		str_buf_clear(buffer);
 		str_buf_app_str(buffer, value->value);
 	}
+	if (key)
+		free(key);
 }
 
 static void			preprocess_lexem(t_lexem *lexem)

@@ -6,12 +6,12 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/05/14 01:36:55 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/05/14 05:36:50 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
 CC = gcc
-CFLAGS = -Werror -Wextra -Wall -g
+CFLAGS = -Werror -Wextra -Wall -O3
 TARGET = ft_minishell3
 SRC_DIR = ./src
 INCLUDE_DIR = ./include
@@ -123,7 +123,7 @@ $(addprefix $(BUILD_DIR)/, %.o): $(addprefix $(SRC_DIR)/, %.c)
 	@echo " - Building $(COLOR_ID)$(@:.c=.o)$(COLOR_NO)..."
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-re: fclean ft $(TARGET)
+re: fclean $(BUILD_DIR) ft $(TARGET)
 
 clean:
 	@echo " - Removing objects files:"

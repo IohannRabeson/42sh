@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/08 23:31:19 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/08 23:43:07 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 05:50:52 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_bool	str_buf_find(t_str_buf *str_buf, char const *search, t_ui *start)
 
 	i = 0;
 	j = 0;
+	temp_start = 0;
 	match = false;
 	while (i < str_buf_size(str_buf) && search[j] != '\0')
 	{

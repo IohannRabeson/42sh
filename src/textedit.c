@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/08 22:08:06 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 04:56:58 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 06:03:47 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	textedit_init(t_textedit *te, char const *prompt, t_val_func val_func)
 
 void	textedit_destroy(t_textedit *te)
 {
-	terminal_putchar('\n');
 	str_buf_destroy(&te->buffer);
 	if (te->prompt.str)
 		free(te->prompt.str);
