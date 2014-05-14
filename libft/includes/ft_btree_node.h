@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/25 15:03:04 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/22 17:28:55 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:46:29 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_btree_node	*btree_node_right(t_btree_node const *node);
 int				btree_node_is_leave(t_btree_node const *node);
 int				btree_node_is_root(t_btree_node const *node);
 void			btree_node_set_child(t_btree_node *node, t_btree_node *child,
-									 t_rb_child lr);
+										t_rb_child lr);
 int				btree_node_is_leave(t_btree_node const *node);
 int				btree_node_is_root(t_btree_node const *node);
 void			btree_node_prefix(t_btree_node *node, t_apl_func afunc);

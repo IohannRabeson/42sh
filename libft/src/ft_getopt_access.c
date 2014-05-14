@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/12 03:30:02 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 00:40:07 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:58:52 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ inline static t_go_flag	*find_flag(t_getopt const *getopt, char const *flag)
 		return (NULL);
 }
 
-int		getopt_contains(t_getopt const *getopt, char const *flag)
+int						getopt_contains(t_getopt const *getopt,
+										char const *flag)
 {
 	return (find_flag(getopt, flag) != NULL);
 }
 
-int		getopt_hasvalue(t_getopt const *getopt, char const *flag)
+int						getopt_hasvalue(t_getopt const *getopt,
+										char const *flag)
 {
 	t_go_flag	*go_flag;
 
@@ -45,7 +47,7 @@ int		getopt_hasvalue(t_getopt const *getopt, char const *flag)
 		return (0);
 }
 
-char	*getopt_value(t_getopt const *getopt, char const *flag)
+char					*getopt_value(t_getopt const *getopt, char const *flag)
 {
 	t_go_flag	*go_flag;
 

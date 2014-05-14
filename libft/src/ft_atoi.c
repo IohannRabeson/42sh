@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 18:02:46 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/22 16:16:28 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:53:20 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static int			ft_isspace(char c)
 {
 	return (c == ' ' || c == '\n' || c == '\t' || c == '\v'
-			|| c == '\r' || c == '\f');
+	|| c == '\r' || c == '\f');
 }
 
 static int			sp_continue(char c)
 {
 	return (c != '\0' && (ft_isspace(c) == 1 || (c == '+')
-			|| (c == '-')));
+	|| (c == '-')));
 }
 
 static const char	*skip_space(const char *str, int *positive)

@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 23:09:41 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/03 22:57:01 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:49:31 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 # include "ft_types_def.h"
 # include <stdlib.h>
 
-typedef struct	s_list
+typedef struct		s_list
 {
 	t_del_func	dfunc;
 	t_list_node	*first;
 	t_list_node	*last;
-}				t_list;
+}					t_list;
 
 void				list_init(t_list *list, t_del_func dfunc);
 void				list_destroy(t_list *list);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_btree_insert.c                              :+:      :+:    :+:   */
+/*   ft_btree_insert.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/25 14:17:18 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/22 18:07:51 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:54:55 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <string.h>
 
 static int			get_insert_pos_imp(t_btree_node **node, const int cmp,
-									   t_rb_child *lr)
+										t_rb_child *lr)
 {
 	t_btree_node	*next;
 

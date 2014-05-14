@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 05:39:04 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/26 17:08:37 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:50:28 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "ft_types_def.h"
 # include "ft_functional.h"
 
-struct	s_list;
+struct s_list;
 
 char	**str_array_malloc(t_ui size);
 char	**str_array_realloc(char **array, t_ui new_size);

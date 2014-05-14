@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/25 14:18:25 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/22 18:19:11 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:55:16 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ t_btree_node	*btree_node_init(void *value)
 	return (node);
 }
 
-/*
-**	Destroy each node recursively using \e dfunc.
-*/
-void		btree_node_destroy(t_btree_node *node, t_del_func dfunc)
+void			btree_node_destroy(t_btree_node *node, t_del_func dfunc)
 {
 	if (node)
 	{

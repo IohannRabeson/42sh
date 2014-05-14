@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/15 00:23:20 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/22 03:44:05 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:57:10 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ typedef struct	s_gnl
 	size_t		buffer_size;
 }				t_gnl;
 
-void	gnl_init(t_gnl *gnl);
-void	gnl_destroy(t_gnl *gnl);
-int		get_next_line(t_gnl *gnl, char **line, int fd);
+void			gnl_init(t_gnl *gnl);
+void			gnl_destroy(t_gnl *gnl);
+int				get_next_line(t_gnl *gnl, char **line, int fd);
+int				gnl_buffer_reserve(t_gnl *gnl, size_t new_cap);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/15 00:24:29 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 02:59:39 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:57:29 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int					gnl_buffer_reserve(t_gnl *gnl, size_t new_cap);
 
 static void			gnl_buffer_clean(t_gnl *gnl, size_t start)
 {
@@ -33,13 +32,6 @@ static void			gnl_buffer_clean(t_gnl *gnl, size_t start)
 	gnl->buffer_size = max_i;
 }
 
-/*
-**	If buffer contains char <i>c</i> then pos receive the char's position
-**	and <i>line</i> receive a copy of the line readed.
-**	The detection of a char and the string copy and cleanup of buffer
-**	are in the same function because of limitations of 42's
-**	standard(25 lines max)...
-*/
 static int			gnl_buffer_contains(t_gnl *gnl,
 										size_t *pos,
 										char c,

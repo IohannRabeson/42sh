@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/11 23:07:48 by irabeson          #+#    #+#             */
-/*   Updated: 2013/12/15 17:37:20 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:56:30 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ inline static size_t	min_ui(size_t a, size_t b)
 }
 
 inline static size_t	compute_offset(size_t src_len, size_t size,
-									   t_align align)
+										t_align align)
 {
 	size_t	free_space;
 
@@ -42,7 +42,7 @@ inline static size_t	compute_offset(size_t src_len, size_t size,
 }
 
 char					*ft_format_align(char const *source, size_t size,
-										 t_align align)
+											t_align align)
 {
 	char	*results;
 	size_t	offset;

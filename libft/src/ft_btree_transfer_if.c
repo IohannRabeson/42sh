@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/25 14:19:04 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/22 17:22:01 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:56:01 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void		transfer_if(t_btree *dest, t_btree *src, t_filter_func func,
 }
 
 void			btree_transfer_if(t_btree *dest, t_btree *src,
-								  t_filter_func func)
+									t_filter_func func)
 {
 	transfer_if(dest, src, func, src->root);
 }

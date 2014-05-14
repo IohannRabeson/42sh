@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 00:51:47 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/29 18:18:13 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:52:17 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include "ft_types_def.h"
 # include <string.h>
 
-struct		s_list;
+struct s_list;
 
 size_t		ft_strlen(char const *str);
 char		*ft_strdup(char const *str);
@@ -62,10 +62,10 @@ char		**ft_strsplit(char const *str, char c);
 char		**ft_strsplits(char const *str, char const *seps);
 t_ui		ft_strsplit_list(char const *str, char c, struct s_list *results);
 t_bool		ft_strfind(char const *str, char const *find,
-					   t_ui *begin, t_ui *size);
+						t_ui *begin, t_ui *size);
 t_bool		ft_strrep(char **origin,
-					  char const *replace,
-					  char const *replacement);
+						char const *replace,
+						char const *replacement);
 char		*ft_strnrep(char const *origin, t_ui begin, t_ui size,
 						char const *replacement);
 char		*ft_itoa(int n);

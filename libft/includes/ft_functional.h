@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 23:12:41 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/03 23:07:48 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:47:15 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ typedef	void(*t_del_func)();
 typedef	int(*t_cmp_func)();
 typedef void(*t_apl_func)();
 typedef int(*t_filter_func)();
-typedef void *(*t_clone_func)(void *);
+typedef void*(*t_clone_func)(void *);
 
 #endif

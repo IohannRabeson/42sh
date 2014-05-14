@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/12 01:51:12 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 00:40:09 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:47:59 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 # include "ft_btree.h"
 # include "ft_types_def.h"
 
-typedef struct	s_getopt
+typedef struct		s_getopt
 {
 	t_btree	flags;
-}				t_getopt;
+}					t_getopt;
 
 void				getopt_init_args(t_getopt *getopt, int argc, char **argv);
 void				getopt_init(t_getopt *getopt);

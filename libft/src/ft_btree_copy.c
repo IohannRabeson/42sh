@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/27 18:23:50 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/22 17:25:57 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:53:49 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include <stddef.h>
 
 static void	btree_copy_imp(t_btree *dest,
-						   t_btree const *src,
-						   t_btree_node *node,
-						   t_clone_func func)
+							t_btree const *src,
+							t_btree_node *node,
+							t_clone_func func)
 {
 	void	*new;
 
@@ -34,7 +34,7 @@ static void	btree_copy_imp(t_btree *dest,
 }
 
 void		btree_copy(t_btree *dest, t_btree const *src,
-					   t_clone_func func)
+						t_clone_func func)
 {
 	btree_copy_imp(dest, src, src->root, func);
 }

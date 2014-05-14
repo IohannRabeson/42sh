@@ -6,14 +6,14 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 19:42:00 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 00:13:00 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:46:56 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_ERROR_H
 # define FT_ERROR_H
 
-typedef			void(t_exit_cb)(void);
+typedef void(t_exit_cb)(void);
 
 typedef enum	e_error_code
 {
