@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 19:32:54 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 05:38:58 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 20:38:59 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,7 @@ static int			open_out_fd(char const *filename, t_bool trunc)
 	return (fd);
 }
 
-static void			cmd_exec_chain_child(t_cmd *cmd,
-											int fds[2],
-											int fds_io[2],
+static void			cmd_exec_chain_child(t_cmd *cmd, int fds[2], int fds_io[2],
 											char **env)
 {
 	char	*complete_bin;
@@ -57,14 +55,13 @@ static void			cmd_exec_chain_child(t_cmd *cmd,
 	exit_errorm(STR_APPNAME, "command execution failed", 1, app_destroy);
 }
 
-static void			cmd_exec_chain_parent(t_cmd *cmd,
-											int fds[2],
-											int fds_io[2],
+static void			cmd_exec_chain_parent(t_cmd *cmd, int fds[2], int fds_io[2],
 											pid_t pid)
 {
-	t_app * const	app = app_instance();
-	int				status;
+	t_app	*app;
+	int		status;
 
+	app = app_instance();
 	close(fds[1]);
 	if (fds_io[1] != -1)
 		close(fds_io[1]);

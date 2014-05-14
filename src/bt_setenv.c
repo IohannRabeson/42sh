@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/27 16:23:49 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 01:34:50 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 20:35:44 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void		bt_setenv(t_cmd *cmd, t_env *env)
 		if (env_cfind(env, key) == NULL)
 			env_add_kv(env, key, value);
 		else
-			env_set(env, key, value);	
+			env_set(env, key, value);
 	}
-	(void)env;
 }

@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 03:23:16 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 22:05:45 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 20:53:14 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	parser_run_lexem_push(t_list *lexems, t_lexem *lexem, t_ui current)
 }
 
 static int	parser_run_check_current(t_parser_run_imp *imp,
-									 char const *str)
+										char const *str)
 {
 	if (imp->current == PARSER_ERR_STATE)
 	{
@@ -51,9 +51,9 @@ static void	parser_run_imp_init(t_parser_run_imp *imp,
 }
 
 static void	parser_run_imp(t_parser_run_imp *imp,
-						   t_parser *parser,
-						   t_list *lexems,
-						   char const *str)
+							t_parser *parser,
+							t_list *lexems,
+							char const *str)
 {
 	imp->final = parser_mat_is_final(&parser->matrix, imp->current, *imp->it);
 	imp->current = parser_mat_get(&parser->matrix, imp->current, *imp->it);

@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 20:22:41 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 22:10:38 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 20:29:17 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@
 
 void				app_exec_cmds(t_list *cmds)
 {
-	t_app * const	app = app_instance();
-	t_list_node		*it;
-	t_cmd			*cmd;
+	t_app		*app;
+	t_list_node	*it;
+	t_cmd		*cmd;
 
+	app = app_instance();
 	it = cmds->first;
 	while (it)
 	{
@@ -38,8 +39,8 @@ void				app_exec_cmds(t_list *cmds)
 }
 
 static void			app_extract_cmds(t_list *lexems,
-									 t_list *cmd_lexems,
-									 t_list *cmds)
+										t_list *cmd_lexems,
+										t_list *cmds)
 {
 	t_cmd	*cmd;
 
@@ -76,9 +77,10 @@ void				app_process_lexems(t_list *lexems)
 
 t_bool				app_process_line(char const *line)
 {
-	t_app * const	app = app_instance();
-	t_list			lexems;
+	t_app	*app;
+	t_list	lexems;
 
+	app = app_instance();
 	list_init(&lexems, lexem_free);
 	if (line && ft_strlen(line) > 0 && parser_run(&app->parser, line, &lexems))
 	{

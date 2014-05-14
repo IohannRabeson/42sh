@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 16:11:25 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/19 04:52:53 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 20:29:51 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@
 
 t_bool				app_run(void)
 {
-	t_app * const	app = app_instance();
-	t_key			key;
+	t_app	*app;
+	t_key	key;
 
+	app = app_instance();
 	if (app->run == false)
 		return (false);
 	key_read(key, 0);

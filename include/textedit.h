@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/08 22:03:38 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 19:41:07 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 20:12:26 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,7 @@ void			cursor_insert(t_textedit *te, char c);
 void			cursor_insert_str(t_textedit *te, char const *str);
 void			cursor_backspace(t_textedit *te);
 void			cursor_suppr(t_textedit *te);
+void			recall_prev(t_textedit *te);
+void			recall_next(t_textedit *te);
 
 #endif

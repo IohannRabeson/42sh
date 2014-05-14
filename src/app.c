@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:17:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 01:39:17 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 20:03:51 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include "terminal.h"
 #include <ft_memory.h>
 #include <ft_string.h>
-
-void					app_init_keymaps(t_app *);
 
 t_builtin const			g_builtins[] =
 {
@@ -113,8 +111,9 @@ t_parser_trans const	g_parser_transitions[] =
 
 static void	validate(char const *str)
 {
-	t_app * const	app = app_instance();
+	t_app	*app;
 
+	app = app_instance();
 	if (str && ft_strlen(str) > 0)
 	{
 		terminal_putchar('\n');
@@ -134,8 +133,9 @@ t_app		*app_instance(void)
 
 t_app		*app_init(int argc, char **argv, char **environs)
 {
-	t_app * const	app = app_instance();
+	t_app	*app;
 
+	app = app_instance();
 	ft_bzero(app, sizeof(*app));
 	getopt_init_args(&app->getopt, argc, argv);
 	env_init(&app->env, environs);
@@ -157,8 +157,9 @@ t_app		*app_init(int argc, char **argv, char **environs)
 
 void		app_destroy(void)
 {
-	t_app * const	app = app_instance();
+	t_app	*app;
 
+	app = app_instance();
 	builtins_destroy(&app->builtins);
 	parser_destroy(&app->parser);
 	gnl_destroy(&app->gnl);

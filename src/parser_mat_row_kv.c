@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 18:24:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/22 22:53:43 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:02:23 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,3 @@ int		mat_row_kv_cmp(t_mat_row_kv const *left, t_mat_row_kv const *right)
 	else
 		return (0);
 }
-

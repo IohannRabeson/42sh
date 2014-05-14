@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 20:22:46 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 21:53:10 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 20:48:34 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@
 #include <ft_string.h>
 
 void			parser_add(t_parser *parser,
-						   t_ui start,
-						   t_mat_row_kv const *state)
+							t_ui start,
+							t_mat_row_kv const *state)
 {
 	parser_mat_set(&parser->matrix, start, state);
 }
 
-void	parser_add_chars(t_parser *parser,
-						 t_ui start,
-						 t_ui next,
-						 char const *str)
+void			parser_add_chars(t_parser *parser,
+									t_ui start,
+									t_ui next,
+									char const *str)
 {
 	t_mat_row_kv	kv;
 

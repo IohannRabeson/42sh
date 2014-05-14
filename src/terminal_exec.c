@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/05 19:33:27 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 05:41:16 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 20:59:32 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 int			terminal_putchar(int c)
 {
 	int const	happy_compiler = write (terminal_out_fd(), &c, 1);
+
 	return (1);
 	(void)happy_compiler;
 }
@@ -45,7 +46,7 @@ void		terminal_goto(t_ui x, t_ui y)
 {
 	char	*term_cmd;
 	char	*cm_cmd;
-	
+
 	cm_cmd = tgetstr("cm", NULL);
 	if (cm_cmd == false)
 		return ;

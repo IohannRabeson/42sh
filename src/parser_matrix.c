@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 19:22:48 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 00:16:50 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 20:52:00 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ t_bool	parser_mat_is_final(t_parser_mat *mat, t_ui current, char c)
 }
 
 void	parser_mat_set(t_parser_mat *mat,
-					   t_ui current,
-					   t_mat_row_kv const *state)
+						t_ui current,
+						t_mat_row_kv const *state)
 {
 	t_btree_node			*node;
 	t_parser_mat_row		kv;

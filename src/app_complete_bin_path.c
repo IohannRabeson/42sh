@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 00:38:50 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 02:35:05 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 20:06:19 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ static t_bool	check(char const *bin_path)
 	return (path_exists(bin_path) && path_is_executable(bin_path));
 }
 
-char		*app_complete_bin_path(char const *bin_path)
+char			*app_complete_bin_path(char const *bin_path)
 {
-	t_app const * const	app = app_instance();
-	t_list				paths;
-	t_list_node			*it;
-	char				*temp;
+	t_app const	*app;
+	t_list		paths;
+	t_list_node	*it;
+	char		*temp;
 
+	app = app_instance();
 	if (check(bin_path))
 		return (ft_strdup(bin_path));
 	list_init(&paths, free);

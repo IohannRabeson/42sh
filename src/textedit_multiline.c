@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/09 14:41:24 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 14:41:45 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:03:51 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@
 #include <ft_string.h>
 #include <stdlib.h>
 
-static char const	*close_br = "\"\'`)]}";
-static char const	*open_br = "\"\'`([{";
+static char const	*g_close_br = "\"\'`)]}";
+static char const	*g_open_br = "\"\'`([{";
 
 static char		get_close_char(char open)
 {
 	char	*oc;
 	t_ui	offset;
 
-	oc = ft_strchr(open_br, open);
+	oc = ft_strchr(g_open_br, open);
 	if (oc == NULL)
 		return ('\0');
-	offset = oc - open_br;
-	if (offset >= ft_strlen(close_br))
+	offset = oc - g_open_br;
+	if (offset >= ft_strlen(g_close_br))
 		return ('\0');
-	return (close_br[offset]);
+	return (g_close_br[offset]);
 }
 
 static t_bool	brace_stack_pop(t_str_buf *brace_stack, char c)
@@ -58,12 +58,12 @@ t_bool			textedit_multiline(t_textedit const *textedit)
 	while (i < str_buf_size(&textedit->buffer))
 	{
 		c = str_buf_get_char(&textedit->buffer, i);
-		if (ft_strchr(close_br, c) != NULL
+		if (ft_strchr(g_close_br, c) != NULL
 			&& (brace_stack_pop(&brace_stack, c)))
 		{
 			str_buf_pop_back(&brace_stack);
 		}
-		else if (ft_strchr(open_br, c) != NULL)
+		else if (ft_strchr(g_open_br, c) != NULL)
 		{
 			str_buf_app_char(&brace_stack, c);
 		}

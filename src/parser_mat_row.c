@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 16:53:04 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 00:17:13 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:01:52 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,6 @@ void	parser_mat_row_clear(t_parser_mat_row *row)
 	btree_clear(&row->cols);
 }
 
-/*
-**	Get the value at the column col_id of the row \e row.
-*/
 t_ui	parser_mat_row_get(t_parser_mat_row const *row, char col_id)
 {
 	t_btree_node		*node;
@@ -69,19 +66,11 @@ t_bool	parser_mat_row_is_final(t_parser_mat_row const *row, char col_id)
 	return (false);
 }
 
-/*
-**	Set the value at column col_id.
-**
-**	If the column doesn't exists, the column is created.
-**	This function create a link between a state(undefined at this level)
-**	and an other state défined by next_id. This edge in the transition graph
-**	will be followed when the character col_id will be encountered.
-*/
 t_bool	parser_mat_row_set(t_parser_mat_row *row,
-						   t_mat_row_kv const *value)
+							t_mat_row_kv const *value)
 {
 	t_btree_node	*node;
-	t_mat_row_kv 	*temp;
+	t_mat_row_kv	*temp;
 	t_bool			result;
 
 	node = btree_find(&row->cols, (void *)value);
@@ -101,7 +90,7 @@ t_bool	parser_mat_row_set(t_parser_mat_row *row,
 }
 
 int		parser_mat_row_cmp(t_parser_mat_row const *left,
-						   t_parser_mat_row const *right)
+							t_parser_mat_row const *right)
 {
 	if (left->row_id < right->row_id)
 		return (-1);

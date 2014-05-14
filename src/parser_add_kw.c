@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/09 21:46:25 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/19 04:48:30 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 20:49:31 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static t_ui		parser_consume_free_id(t_parser *parser)
 }
 
 static t_ui		parser_add_kw_imp(t_parser *parser,
-								   t_ui start,
-								   char const *str)
+									t_ui start,
+									char const *str)
 {
 	const size_t	str_size = ft_strlen(str);
 	size_t			i;
@@ -50,9 +50,7 @@ static t_ui		parser_add_kw_imp(t_parser *parser,
 		if (auto_id == PARSER_ERR_STATE)
 			auto_id = parser_consume_free_id(parser);
 		if (auto_id == PARSER_ERR_STATE)
-		{
 			break ;
-		}
 		parser_addc(parser, last_id, auto_id, *str);
 		last_id = auto_id;
 		++str;
@@ -62,9 +60,9 @@ static t_ui		parser_add_kw_imp(t_parser *parser,
 }
 
 void			parser_add_keyword(t_parser *parser,
-								   t_ui start,
-								   t_ui next,
-								   char const *str)
+									t_ui start,
+									t_ui next,
+									char const *str)
 {
 	const size_t	str_size = ft_strlen(str);
 	t_ui			last_id;

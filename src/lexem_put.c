@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 16:04:56 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/24 16:07:45 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 20:41:51 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,3 @@ void	lexem_put(t_lexem const *lex)
 	ft_putstrn(lex->str, lex->size);
 	ft_putchar('\n');
 }
-

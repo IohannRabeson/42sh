@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 21:13:15 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 01:36:00 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 20:34:10 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@
 #include <ft_error.h>
 
 static t_list_node	*process_part(t_list *sp_pwd, t_list *sp_nav,
-								  t_list_node *nav_it)
+									t_list_node *nav_it)
 {
-	char const * const	home = env_get_value(&app_instance()->env, "HOME");
-	char				*nav;
+	char const	*home;
+	char		*nav;
 
+	home = env_get_value(&app_instance()->env, "HOME");
 	if (nav_it == NULL || home == NULL)
 		return (NULL);
 	nav = (char *)nav_it->item;

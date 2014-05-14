@@ -6,13 +6,14 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/28 19:23:34 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 18:42:50 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 20:54:50 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CMD_H
 # define CMD_H
 # include <ft_types_def.h>
+# include <ft_list.h>
 
 typedef struct	s_cmd
 {
@@ -35,5 +36,11 @@ void			cmd_add_arg(t_cmd *cmd, char const *arg);
 void			cmd_set_in_file(t_cmd *cmd, char const *filepath);
 void			cmd_set_out_file(t_cmd *cmd, char const *filepath,
 									t_bool trunc);
+t_bool			build_redirects_in(t_cmd *cmd, t_list *cmd_lexems);
+t_bool			build_redirects_out(t_cmd *cmd, t_list *cmd_lexems);
+t_bool			build_redirects_outa(t_cmd *cmd, t_list *cmd_lexems);
+t_bool			build_pipes(t_cmd *cmd, t_list *cmd_lexems);
+void			build_args(t_cmd *cmd, t_list *cmd_lexems);
+
 
 #endif

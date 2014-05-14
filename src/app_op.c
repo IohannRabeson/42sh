@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 15:08:06 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 19:43:46 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 20:22:03 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@
 
 char	*app_readline(void)
 {
-	t_app * const	app = app_instance();
-	int				gnl_res;
-	char			*line;
+	t_app	*app;
+	int		gnl_res;
+	char	*line;
 
+	app = app_instance();
 	ft_putstr(STR_PROMPT);
 	line = NULL;
 	gnl_res = get_next_line(&app->gnl, &line, STDIN_FILENO);

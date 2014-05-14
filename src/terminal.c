@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/05 19:20:23 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 22:06:22 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 20:57:50 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 
 void			terminal_init(void)
 {
-	struct termios	termios;
-	char 			*terminal_name;
-	
+	t_termios	termios;
+	char		*terminal_name;
+
 	terminal_name = getenv("TERM");
 	if (terminal_name == NULL || tgetent(NULL, terminal_name) < 0)
 		return ;
@@ -35,7 +35,7 @@ void			terminal_init(void)
 
 void			terminal_destroy(void)
 {
-	struct termios	termios;
+	t_termios	termios;
 
 	if (tcgetattr(0, &termios) == -1)
 		return ;
