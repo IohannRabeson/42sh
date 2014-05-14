@@ -6,12 +6,14 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 16:50:15 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 01:36:18 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 04:51:12 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "cmd.h"
 #include "env.h"
+#include "app.h"
 #include <ft_print.h>
 #include <ft_getopt.h>
 #include <ft_getopt_flag.h>
@@ -20,8 +22,12 @@
 
 static void	bt_env_exec_subcmd(t_cmd *cmd, t_env *env)
 {
-	(void)cmd;
-	(void)env;
+	t_cmd	sub_cmd;
+
+	sub_cmd = *cmd;
+	++sub_cmd.args;
+	--sub_cmd.argc;
+	app_process_cmd(&sub_cmd, env);
 }
 
 static void	bt_env_print_env(t_env const *env, int fd)
