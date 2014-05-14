@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/08 22:08:06 by irabeson          #+#    #+#             */
-/*   Updated: 2014/04/30 02:40:07 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 03:55:27 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ void	textedit_validate(t_textedit *te)
 			terminal_putchar('\n');
 		if (str)
 		{
-			histo_push(&app_instance()->histo, str);
 			free(str);
 		}
 		if (app_instance()->run)

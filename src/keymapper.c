@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 19:27:01 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 01:58:10 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 03:45:40 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	keymapper_load(t_keymapper *km, t_keymap const *keymaps)
 }
 
 t_bool	keymapper_map(t_keymapper const *km, t_key const key,
-					  void *obj)
+						void *obj)
 {
 	t_ui	i;
 

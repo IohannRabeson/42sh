@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/09 18:56:47 by irabeson          #+#    #+#             */
-/*   Updated: 2014/04/30 02:31:33 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 04:16:01 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ typedef struct	s_histo
 {
 	t_list		str_list;
 	t_list_node	*current;
-	char		*old;
 }				t_histo;
 
 void	histo_init(t_histo *histo);

@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 19:23:46 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/04 19:38:11 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 03:45:21 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define KEYMAPPER_H
 # include "key.h"
 
-/*!
-**	Must bu have one pointer as parameter.
-*/
 typedef			void(*t_func_action)();
 
 typedef struct	s_keymap

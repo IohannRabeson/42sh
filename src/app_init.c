@@ -6,21 +6,25 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/09 21:55:19 by irabeson          #+#    #+#             */
-/*   Updated: 2014/04/30 02:41:22 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 04:11:03 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "app.h"
 #include <stdio.h>
 
-static void	recall_prev(t_app *app)
+static void	recall_prev(t_textedit *te)
 {
-	histo_show_prev(&app->histo, &app->textedit);
+	t_app * const app = app_instance();
+
+	histo_show_prev(&app->histo, te);
 }
 
-static void	recall_next(t_app *app)
+static void	recall_next(t_textedit *te)
 {
-	histo_show_next(&app->histo, &app->textedit);
+	t_app * const app = app_instance();
+
+	histo_show_next(&app->histo, te);
 }
 
 void		app_init_keymaps(t_app *app)
