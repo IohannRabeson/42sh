@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/08 22:08:06 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 03:55:27 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 04:56:58 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,7 @@ void	textedit_validate(t_textedit *te)
 		else
 			terminal_putchar('\n');
 		if (str)
-		{
 			free(str);
-		}
 		if (app_instance()->run)
 			textedit_reset(te);
 	}
