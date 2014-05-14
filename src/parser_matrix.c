@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 19:22:48 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 20:52:00 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:39:55 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,40 +32,6 @@ void	parser_mat_clear(t_parser_mat *mat)
 {
 	btree_prefix(&mat->rows, parser_mat_row_destroy);
 	btree_clear(&mat->rows);
-}
-
-t_ui	parser_mat_get(t_parser_mat *mat, t_ui current, char c)
-{
-	t_btree_node			*node;
-	t_parser_mat_row		kv;
-	t_parser_mat_row const	*row;
-
-	kv.row_id = current;
-	node = btree_find(&mat->rows, &kv);
-	if (node)
-	{
-		row = (t_parser_mat_row const *)node->value;
-		return (parser_mat_row_get(row, c));
-	}
-	else
-		return (PARSER_ERR_STATE);
-}
-
-t_bool	parser_mat_is_final(t_parser_mat *mat, t_ui current, char c)
-{
-	t_btree_node			*node;
-	t_parser_mat_row		kv;
-	t_parser_mat_row const	*row;
-
-	kv.row_id = current;
-	node = btree_find(&mat->rows, &kv);
-	if (node)
-	{
-		row = (t_parser_mat_row const *)node->value;
-		return (parser_mat_row_is_final(row, c));
-	}
-	else
-		return (false);
 }
 
 void	parser_mat_set(t_parser_mat *mat,

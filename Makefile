@@ -65,7 +65,7 @@ SRC_UTILS =		path_is.c				\
 				path_can.c				\
 				path_concat.c			\
 				path_exists.c
-				
+
 SRC_ENV =		env.c					\
 				env_it.c				\
 				env_var.c				\
@@ -80,6 +80,7 @@ SRC_PARSER =	parser.c				\
 				parser_run.c			\
 				parser_load.c			\
 				parser_matrix.c			\
+				parser_mat_access.c		\
 				parser_mat_row.c		\
 				parser_mat_row_kv.c		\
 				lexem.c					\

@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/09 14:42:56 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 21:01:32 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:39:21 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,16 @@
 #include "terminal.h"
 #include <ft_memory.h>
 
-static void	repos_cursor(t_textedit const *te)
+static void	repos_cursor_imp(t_textedit const *te)
 {
-	t_ui	i;
 	t_ui	max;
 	t_ui	col;
 	t_ui	row;
+	t_ui	i;
 
 	col = 0;
 	row = 0;
 	max = te->cursor.buffer_pos;
-	terminal_exec("rc");
-	i = 0;
-	while (i < te->scroll)
-	{
-		terminal_exec("up");
-		++i;
-	}
 	i = 0;
 	while (i < max)
 	{
@@ -46,6 +39,20 @@ static void	repos_cursor(t_textedit const *te)
 		++i;
 		++col;
 	}
+}
+
+static void	repos_cursor(t_textedit const *te)
+{
+	t_ui	i;
+
+	terminal_exec("rc");
+	i = 0;
+	while (i < te->scroll)
+	{
+		terminal_exec("up");
+		++i;
+	}
+	repos_cursor_imp(te);
 }
 
 void		textedit_display(t_textedit *te)

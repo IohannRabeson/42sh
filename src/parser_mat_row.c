@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 16:53:04 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 21:01:52 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/14 21:44:42 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,38 +34,6 @@ void	parser_mat_row_clear(t_parser_mat_row *row)
 	btree_clear(&row->cols);
 }
 
-t_ui	parser_mat_row_get(t_parser_mat_row const *row, char col_id)
-{
-	t_btree_node		*node;
-	t_mat_row_kv		kv;
-	t_mat_row_kv const	*temp;
-
-	mat_row_kv_init(&kv, col_id, PARSER_ERR_STATE, false);
-	node = btree_find(&row->cols, &kv);
-	if (node && node->value)
-	{
-		temp = (t_mat_row_kv const *)node->value;
-		return (temp->value);
-	}
-	return (PARSER_ERR_STATE);
-}
-
-t_bool	parser_mat_row_is_final(t_parser_mat_row const *row, char col_id)
-{
-	t_btree_node		*node;
-	t_mat_row_kv		kv;
-	t_mat_row_kv const	*temp;
-
-	mat_row_kv_init(&kv, col_id, PARSER_ERR_STATE, false);
-	node = btree_find(&row->cols, &kv);
-	if (node && node->value)
-	{
-		temp = (t_mat_row_kv const *)node->value;
-		return (temp->final);
-	}
-	return (false);
-}
-
 t_bool	parser_mat_row_set(t_parser_mat_row *row,
 							t_mat_row_kv const *value)
 {
@@ -90,7 +58,7 @@ t_bool	parser_mat_row_set(t_parser_mat_row *row,
 }
 
 int		parser_mat_row_cmp(t_parser_mat_row const *left,
-							t_parser_mat_row const *right)
+						   t_parser_mat_row const *right)
 {
 	if (left->row_id < right->row_id)
 		return (-1);
