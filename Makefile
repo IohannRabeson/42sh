@@ -12,7 +12,7 @@
 
 CC = gcc
 CFLAGS = -Werror -Wextra -Wall -O3
-TARGET = ft_minishell3
+TARGET = ft_minishell2
 SRC_DIR = ./src
 INCLUDE_DIR = ./include
 BUILD_DIR = ./builds
