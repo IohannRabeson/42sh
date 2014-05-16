@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:15:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 20:54:05 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/16 23:50:57 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct	s_app
 	t_textedit	textedit;
 	t_histo		histo;
 	t_keymapper	keymapper;
+	int			last_cmd_status;
 }				t_app;
 
 t_app			*app_instance(void);

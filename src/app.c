@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:17:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/16 21:44:43 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/16 23:53:01 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ t_app		*app_init(int argc, char **argv, char **environs)
 	app->run = true;
 	terminal_init();
 	terminal_exec("cl");
-	textedit_init(&app->textedit, "$>", validate);
+	textedit_init(&app->textedit, STR_PROMPT , validate);
 	histo_init(&app->histo);
 	keymapper_init(&app->keymapper);
 	app_init_keymaps(app);

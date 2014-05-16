@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 19:32:54 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/16 22:24:14 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/16 23:51:32 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,11 @@ static void			cmd_exec_chain_parent(t_cmd *cmd, int fds[2], int fds_io[2],
 	}
 	else if (status != 0)
 	{
-		cmd_errorl(cmd, 1, "command execution failed");
 		fds_io[0] = -1;
 	}
 	else if (cmd->next)
 		fds_io[0] = fds[0];
+	app->last_cmd_status = status;
 }
 
 int					cmd_exec_chain(t_cmd *it, char **env, int fd_in)
@@ -91,7 +91,7 @@ int					cmd_exec_chain(t_cmd *it, char **env, int fd_in)
 	fds_io[1] = open_out_fd(it->out_file, it->trunc_out);
 	fds_io[0] = fd_in;
 	if (pipe(fds) == -1)
-		exit_errorm(STR_APPNAME, "failed to fork", 1, app_destroy);
+		exit_errorm(STR_APPNAME, "failed to pipe", 1, app_destroy);
 	pid = fork();
 	if (pid == 0)
 		cmd_exec_chain_child(it, fds, fds_io, env);

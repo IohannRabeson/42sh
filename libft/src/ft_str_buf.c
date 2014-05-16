@@ -6,16 +6,18 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 17:54:26 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 00:09:20 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/16 22:39:08 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_str_buf.h"
 #include "ft_error.h"
+#include "ft_memory.h"
 #include <stdlib.h>
 
 void	str_buf_init(t_str_buf *strbuf)
 {
+	ft_bzero(strbuf, sizeof(*strbuf));
 	strbuf->buffer = NULL;
 	strbuf->size = 0;
 	strbuf->capacity = 0;
@@ -48,7 +50,7 @@ void	str_buf_reserve(t_str_buf *strbuf, t_ui new_cap)
 		exit_errorc("str_buf_reserve", ERRC_NOT_ENOUGH_MEMORY, 1, NULL);
 	i = 0;
 	new_size = (new_cap < strbuf->size) ? new_cap : strbuf->size;
-	while (i < new_size)
+	while (strbuf->buffer && i < new_size)
 	{
 		new_buf[i] = strbuf->buffer[i];
 		++i;
