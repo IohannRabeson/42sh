@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 19:32:54 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 20:38:59 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/17 00:11:08 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int			open_out_fd(char const *filename, t_bool trunc)
 	if (trunc)
 		fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	else
-		fd = open(filename, O_WRONLY | O_CREAT, 0644);
+		fd = open(filename, O_WRONLY | O_APPEND, 0644);
 	if (fd == -1)
 	{
 		exit_errorm(STR_APPNAME,
@@ -75,11 +75,11 @@ static void			cmd_exec_chain_parent(t_cmd *cmd, int fds[2], int fds_io[2],
 	}
 	else if (status != 0)
 	{
-		cmd_errorl(cmd, 1, "command execution failed");
 		fds_io[0] = -1;
 	}
 	else if (cmd->next)
 		fds_io[0] = fds[0];
+	app_set_last_cmd_status(status);
 }
 
 int					cmd_exec_chain(t_cmd *it, char **env, int fd_in)
@@ -88,10 +88,10 @@ int					cmd_exec_chain(t_cmd *it, char **env, int fd_in)
 	int		fds_io[2];
 	pid_t	pid;
 
-	fds_io[1] = open_out_fd(it->out_file, true);
+	fds_io[1] = open_out_fd(it->out_file, it->trunc_out);
 	fds_io[0] = fd_in;
 	if (pipe(fds) == -1)
-		exit_errorm(STR_APPNAME, "failed to fork", 1, app_destroy);
+		exit_errorm(STR_APPNAME, "failed to pipe", 1, app_destroy);
 	pid = fork();
 	if (pid == 0)
 		cmd_exec_chain_child(it, fds, fds_io, env);

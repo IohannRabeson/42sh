@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/05 19:33:27 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 20:59:32 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/16 22:56:58 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <term.h>
 #include <ft_error.h>
 #include <ft_print.h>
+#include <stdlib.h>
 
 int			terminal_putchar(int c)
 {

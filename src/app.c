@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:17:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 20:03:51 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/17 00:25:39 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,10 +117,12 @@ static void	validate(char const *str)
 	if (str && ft_strlen(str) > 0)
 	{
 		terminal_putchar('\n');
+		terminal_destroy();
 		if (app_process_line(str))
 		{
 			histo_push(&app->histo, str);
 		}
+		terminal_init();
 	}
 }
 
@@ -139,6 +141,8 @@ t_app		*app_init(int argc, char **argv, char **environs)
 	ft_bzero(app, sizeof(*app));
 	getopt_init_args(&app->getopt, argc, argv);
 	env_init(&app->env, environs);
+	env_init(&app->vars, NULL);
+	env_set(&app->vars, "$?", "0");
 	gnl_init(&app->gnl);
 	parser_init(&app->parser, ST_INIT);
 	app->parser.verbose = getopt_contains(&app->getopt, "--verbose");
@@ -148,7 +152,7 @@ t_app		*app_init(int argc, char **argv, char **environs)
 	app->run = true;
 	terminal_init();
 	terminal_exec("cl");
-	textedit_init(&app->textedit, "$>", validate);
+	textedit_init(&app->textedit, STR_PROMPT , validate);
 	histo_init(&app->histo);
 	keymapper_init(&app->keymapper);
 	app_init_keymaps(app);
@@ -163,6 +167,7 @@ void		app_destroy(void)
 	builtins_destroy(&app->builtins);
 	parser_destroy(&app->parser);
 	gnl_destroy(&app->gnl);
+	env_destroy(&app->vars);
 	env_destroy(&app->env);
 	getopt_destroy(&app->getopt);
 	keymapper_destroy(&app->keymapper);

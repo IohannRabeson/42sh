@@ -6,13 +6,18 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/05/14 05:36:50 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/05/17 00:11:55 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
 CC = gcc
-CFLAGS = -Werror -Wextra -Wall -O3
-TARGET = ft_minishell2
+MODE=release
+CMODE = -O3
+ifeq ($(MODE), debug)
+CMODE = -g
+endif
+CFLAGS = -Werror -Wextra -Wall $(CMODE)
+TARGET = ft_minishell3
 SRC_DIR = ./src
 INCLUDE_DIR = ./include
 BUILD_DIR = ./builds
@@ -30,6 +35,7 @@ SRC =			main.c						\
 				app_process_cmd.c			\
 				app_lexems.c				\
 				app_complete_bin_path.c		\
+				app_set.c					\
 				lexems_preprocess.c			\
 				lexems_find_next.c			\
 				syntax.c					\
@@ -107,7 +113,11 @@ SRC_TERMCAPS =	textedit.c					\
 				terminal_query.c			\
 				terminal.c
 
-COLOR_ID = \033[1;32m
+ifeq ($(MODE), debug)
+COLOR_ID = \033[0;32m
+else
+COLOR_ID = \033[0;34m
+endif
 COLOR_NO = \033[0m
 OBJS = $(addprefix $(BUILD_DIR)/, $(SRC:.c=.o))
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))

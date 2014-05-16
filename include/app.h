@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:15:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 20:54:05 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/17 00:11:34 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct	s_app
 {
 	t_getopt	getopt;
 	t_env		env;
+	t_env		vars;
 	t_gnl		gnl;
 	t_parser	parser;
 	t_builtins	builtins;
@@ -85,5 +86,6 @@ t_bool			app_run(void);
 t_bool			app_cd(char const *new_dir);
 char			*app_complete_bin_path(char const *bin_path);
 void			app_kill_cmd(int sig);
+void			app_set_last_cmd_status(int status);
 
 #endif
