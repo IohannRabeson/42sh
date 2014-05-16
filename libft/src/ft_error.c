@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 19:45:31 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 00:32:20 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/16 14:24:30 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ static char const	*get_error_desc(t_error_code code)
 		return (g_err_messages[code]);
 }
 
-void	exit_errorm(char const *app,
-					char const *message,
-					int exit_code,
-					t_exit_cb callback)
+void				exit_errorm(char const *app,
+								char const *message,
+								int exit_code,
+								t_exit_cb callback)
 {
 	ft_putstr_fd(app, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
@@ -50,10 +50,10 @@ void	exit_errorm(char const *app,
 	exit(exit_code);
 }
 
-void	exit_errorc(char const *app,
-					t_error_code code,
-					int exit_code,
-					t_exit_cb callback)
+void				exit_errorc(char const *app,
+								t_error_code code,
+								int exit_code,
+								t_exit_cb callback)
 {
 	char const *message;
 

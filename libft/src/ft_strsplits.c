@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/22 01:58:07 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/22 16:22:56 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/16 15:36:08 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int		contains(char c, char const *chars)
 }
 
 static int		next_word(char const *str_it, char const **begin,
-						  char const **end, char const *seps)
+							char const **end, char const *seps)
 {
 	(*begin) = 0;
 	(*end) = 0;

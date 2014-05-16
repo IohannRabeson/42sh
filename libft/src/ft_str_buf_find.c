@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/06 22:12:13 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/06 22:26:56 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/16 15:38:06 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ t_bool	str_buf_find_first_char(t_str_buf const *strbuf, char c, t_ui *pos)
 }
 
 t_bool	str_buf_find_nth_char(t_str_buf const *strbuf,
-							  char c,
-							  t_ui *pos, t_ui n)
+								char c,
+								t_ui *pos, t_ui n)
 {
 	t_ui	i;
 	t_ui	count;

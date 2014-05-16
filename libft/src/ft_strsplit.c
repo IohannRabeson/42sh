@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/26 10:46:55 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/22 16:22:56 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/16 15:35:37 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 
 static int		next_word(char const *str_it, char const **begin,
-						  char const **end, char sep)
+							char const **end, char sep)
 {
 	(*begin) = 0;
 	(*end) = 0;

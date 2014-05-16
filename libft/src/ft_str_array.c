@@ -6,19 +6,13 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 05:39:31 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/24 22:30:17 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/16 15:37:00 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_str_array.h"
 #include <stdlib.h>
 
-/*
-**	Allocate an array of \e size + 1 strings.
-**	The last string of the array is set to NULL and indicate
-**	the end of the array.
-**	For safety all of the items of the array are set to NULL.
-*/
 char	**str_array_malloc(t_ui size)
 {
 	char	**new_array;
@@ -34,12 +28,6 @@ char	**str_array_malloc(t_ui size)
 	return (new_array);
 }
 
-/*
-**	Allocate an array of \e size + 1 strings and copy
-**	the strings of \e array into it.
-**	If the new array is greater than the old array, the news
-**	cell allocated are filled by NULL.
-*/
 char	**str_array_realloc(char **array, t_ui new_size)
 {
 	const t_ui	old_size = str_array_size(array);
@@ -63,19 +51,12 @@ char	**str_array_realloc(char **array, t_ui new_size)
 	return (new_array);
 }
 
-/*
-**	Free an array of string terminated by a null string.
-**	Each string in the array are freed, and <i>array</i> too.
-*/
 void	str_array_free(char **array)
 {
 	str_array_foreach(array, free);
 	free(array);
 }
 
-/*
-**	Count strings of an array of string treminated by a null string.
-*/
 t_ui	str_array_size(char **array)
 {
 	t_ui	i;

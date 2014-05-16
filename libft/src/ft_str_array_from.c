@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 14:13:50 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/24 23:27:37 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/16 14:55:45 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 #include "ft_list.h"
 #include "ft_string.h"
 
-/*
-**	Create a null terminated array of strings from a
-**	normal(not null terminated) array of strings.
-**	\param count The srts strings count.
-**	\param strs Array of strings.
-*/
 char	**str_array_from_array(int count, char **strs)
 {
 	char	**new_array;
@@ -39,10 +33,6 @@ char	**str_array_from_array(int count, char **strs)
 	return (new_array);
 }
 
-/*
-**	Create a null terminated array of strings from a list of
-**	string.
-*/
 char	**str_array_from_list(t_list const *str_list)
 {
 	t_ui const			count = list_count(str_list);

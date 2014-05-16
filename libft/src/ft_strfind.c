@@ -6,14 +6,14 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/29 17:38:12 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/29 18:18:03 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/16 15:37:35 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_string.h"
 
 t_bool		ft_strfind(char const *str, char const *find,
-					   t_ui *begin, t_ui *size)
+						t_ui *begin, t_ui *size)
 {
 	t_ui const	str_len = ft_strlen(str);
 	t_ui const	find_len = ft_strlen(find);

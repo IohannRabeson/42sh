@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 16:53:04 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 21:44:42 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/16 15:42:02 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_bool	parser_mat_row_set(t_parser_mat_row *row,
 }
 
 int		parser_mat_row_cmp(t_parser_mat_row const *left,
-						   t_parser_mat_row const *right)
+							t_parser_mat_row const *right)
 {
 	if (left->row_id < right->row_id)
 		return (-1);

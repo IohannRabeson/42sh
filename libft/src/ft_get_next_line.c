@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/15 00:24:29 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 21:57:29 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/16 14:24:55 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <libft.h>
 #include <stdlib.h>
 #include <unistd.h>
-
 
 static void			gnl_buffer_clean(t_gnl *gnl, size_t start)
 {

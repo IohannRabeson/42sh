@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/12 03:30:02 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 21:58:52 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/16 14:53:29 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 inline static t_go_flag	*find_flag(t_getopt const *getopt, char const *flag)
 {
 	t_btree_node	*node;
-	t_go_flag	go_flag;
+	t_go_flag		go_flag;
 
 	go_flag.key = (char *)flag;
 	go_flag.value = NULL;

@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/14 21:40:06 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 21:44:49 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/16 15:42:22 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,3 @@ t_bool	parser_mat_row_is_final(t_parser_mat_row const *row, char col_id)
 	}
 	return (false);
 }
-

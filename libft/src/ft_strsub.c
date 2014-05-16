@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/21 17:26:42 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/22 16:22:56 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/16 15:35:50 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strsub(char const *str, unsigned int start, size_t len)
 	char			*new_str;
 
 	if (str == NULL)
-			return (NULL);
+		return (NULL);
 	new_len = (len - start);
 	new_str = (char *)malloc(sizeof(*new_str) * (new_len + 1));
 	if (new_str)

@@ -6,11 +6,11 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 23:01:46 by irabeson          #+#    #+#             */
-/*   Updated: 2014/01/24 23:03:13 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/16 14:55:08 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <stddef.h>
+#include <stddef.h>
 
 size_t				ft_min_size_t(size_t a, size_t b)
 {
