@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:17:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 20:03:51 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/16 21:44:43 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,10 +117,12 @@ static void	validate(char const *str)
 	if (str && ft_strlen(str) > 0)
 	{
 		terminal_putchar('\n');
+		terminal_destroy();
 		if (app_process_line(str))
 		{
 			histo_push(&app->histo, str);
 		}
+		terminal_init();
 	}
 }
 

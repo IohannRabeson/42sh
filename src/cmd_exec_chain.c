@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 19:32:54 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 20:38:59 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/16 22:24:14 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int			open_out_fd(char const *filename, t_bool trunc)
 	if (trunc)
 		fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	else
-		fd = open(filename, O_WRONLY | O_CREAT, 0644);
+		fd = open(filename, O_WRONLY | O_APPEND, 0644);
 	if (fd == -1)
 	{
 		exit_errorm(STR_APPNAME,
@@ -88,7 +88,7 @@ int					cmd_exec_chain(t_cmd *it, char **env, int fd_in)
 	int		fds_io[2];
 	pid_t	pid;
 
-	fds_io[1] = open_out_fd(it->out_file, true);
+	fds_io[1] = open_out_fd(it->out_file, it->trunc_out);
 	fds_io[0] = fd_in;
 	if (pipe(fds) == -1)
 		exit_errorm(STR_APPNAME, "failed to fork", 1, app_destroy);
