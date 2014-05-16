@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:17:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/16 23:53:01 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/17 00:25:39 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,8 @@ t_app		*app_init(int argc, char **argv, char **environs)
 	ft_bzero(app, sizeof(*app));
 	getopt_init_args(&app->getopt, argc, argv);
 	env_init(&app->env, environs);
+	env_init(&app->vars, NULL);
+	env_set(&app->vars, "$?", "0");
 	gnl_init(&app->gnl);
 	parser_init(&app->parser, ST_INIT);
 	app->parser.verbose = getopt_contains(&app->getopt, "--verbose");
@@ -165,6 +167,7 @@ void		app_destroy(void)
 	builtins_destroy(&app->builtins);
 	parser_destroy(&app->parser);
 	gnl_destroy(&app->gnl);
+	env_destroy(&app->vars);
 	env_destroy(&app->env);
 	getopt_destroy(&app->getopt);
 	keymapper_destroy(&app->keymapper);

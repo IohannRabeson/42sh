@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 01:34:09 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 20:51:08 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/17 00:22:44 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ t_bool		lexem_is_constant(t_lexem const *lex)
 {
 	if (lex == NULL && lex->state_id != ST_PARAM)
 		return (false);
-	return (lex->str && lex->str[0] == '$' && ft_strlen(lex->str) > 1);
+	return (lex->str && lex->str[0] == '$' && lex->size > 1);
 }

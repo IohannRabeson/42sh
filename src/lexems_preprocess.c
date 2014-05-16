@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/29 17:56:11 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/16 22:02:42 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/17 00:57:25 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,22 @@
 #include <ft_str_buf.h>
 #include <ft_string.h>
 #include <stdlib.h>
+
+void				replace_variables(t_str_buf *buffer, t_env const *env)
+{
+	char			*key;
+	t_env_var const	*value;
+
+	key = ft_strndup(buffer->buffer, buffer->size);
+	value = env_cfind(env, key);
+	if (value)
+	{
+		str_buf_clear(buffer);
+		str_buf_app_str(buffer, value->value);
+	}
+	if (key)
+		free(key);
+}
 
 void				replace_constants(t_str_buf *buffer, t_env const *env)
 {
@@ -47,7 +63,10 @@ static void			preprocess_lexem(t_lexem *lexem)
 		str_buf_init(&buffer);
 		str_buf_app_strn(&buffer, lexem->str, lexem->size);
 		if (lexem_is_constant(lexem))
+		{
+			replace_variables(&buffer, &app->vars);
 			replace_constants(&buffer, &app->env);
+		}
 		if (home_path && lexem->state_id == ST_PARAM)
 			str_buf_replace_all(&buffer, "~", home_path);
 		free(lexem->str);
