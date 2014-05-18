@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app_builtins.h                                     :+:      :+:    :+:   */
+/*   bt_help.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/25 20:48:35 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/18 04:13:26 by irabeson         ###   ########.fr       */
+/*   Created: 2014/05/18 04:14:27 by irabeson          #+#    #+#             */
+/*   Updated: 2014/05/18 04:20:06 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef APP_BUILTINS_H
-# define APP_BUILTINS_H
+#include "cmd.h"
+#include "app.h"
+#include <ft_print.h>
 
-struct s_cmd;
-struct s_env;
+void	bt_help(t_cmd *cmd, struct s_env *env)
+{
+	t_app const *const	app = app_instance();
+	t_ui				i;
 
-void	bt_exit(struct s_cmd *cmd, struct s_env *env);
-void	bt_cd(struct s_cmd *cmd, struct s_env *env);
-void	bt_env(struct s_cmd *cmd, struct s_env *env);
-void	bt_setenv(t_cmd *cmd, struct s_env *env);
-void	bt_unsetenv(t_cmd *cmd, struct s_env *env);
-void	bt_help(t_cmd *cmd, struct s_env *env);
-
-#endif
+	i = 0;
+	ft_putendl("Available builtins:");
+	while (i < app->builtins.size)
+	{
+		ft_putstr("    ");
+		ft_putendl(app->builtins.builtins[i].key);
+		++i;
+	}
+	(void)cmd;
+	(void)env;
+}

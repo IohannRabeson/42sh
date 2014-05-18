@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/05/17 00:11:55 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/05/18 04:17:50 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -63,7 +63,8 @@ SRC_BUILTINS =	bt_exit.c				\
 				bt_cd.c					\
 				bt_env.c				\
 				bt_unsetenv.c			\
-				bt_setenv.c
+				bt_setenv.c				\
+				bt_help.c
 
 
 SRC_UTILS =		path_is.c				\

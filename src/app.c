@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:17:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/17 00:25:39 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/18 04:18:20 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_builtin const			g_builtins[] =
 	{"env", bt_env},
 	{"setenv", bt_setenv},
 	{"unsetenv", bt_unsetenv},
+	{"help", bt_help},
 	{NULL, NULL}
 };
 
