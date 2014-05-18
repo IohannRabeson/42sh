@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:15:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/17 00:11:34 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/18 04:29:47 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define CHRS_DIG				"0123456789"
 # define CHRS_SID				"!#$%&()*+,-./:=?@[]^_{}~"
 # define CHRS_SPE				"!#$%&()*+,-./:;<=>?@[]^_{|}~"
-# define CHRS_DELIM_PARAM		"\""
+# define CHRS_DELIM_PARAM		"\"\'"
 # define CHRS_CMD_END			";"
 # define CHRS_OPR_OUT			">"
 # define CHRS_OPR_IN			"<"
