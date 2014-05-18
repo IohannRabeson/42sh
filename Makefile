@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/05/18 04:17:50 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/05/18 05:15:11 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -17,7 +17,7 @@ ifeq ($(MODE), debug)
 CMODE = -g
 endif
 CFLAGS = -Werror -Wextra -Wall $(CMODE)
-TARGET = ft_minishell3
+TARGET = ft_minishell2
 SRC_DIR = ./src
 INCLUDE_DIR = ./include
 BUILD_DIR = ./builds
