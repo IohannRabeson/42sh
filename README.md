@@ -1,2 +1,2 @@
 Makefile usage:
-make [MODE=[debug|release]] [rule]
+make [MODE=debug|release] [rule]
