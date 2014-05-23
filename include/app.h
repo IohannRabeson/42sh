@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:15:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/23 17:06:28 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/23 22:24:03 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,14 @@
 # define CHRS_LOW				"abcdefghijklmnopqrstuvwxyz"
 # define CHRS_UPP				"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 # define CHRS_DIG				"0123456789"
-# define CHRS_SID				"!#$%&()*+,-./:=?@[]^_{}~"
+# define CHRS_SID				"!#$%&()*+,-./:?@[]^_{}~"
 # define CHRS_SPE				"!#$%&()*+,-./:;<=>?@[]^_{|}~"
 # define CHRS_DELIM_PARAM		"\"\'"
 # define CHRS_CMD_END			";"
 # define CHRS_OPR_OUT			">"
 # define CHRS_OPR_IN			"<"
 # define CHRS_OP_PIPE			"|"
+# define CHRS_OP_ASSIGN			"="
 # define KW_REDIR_OUT_APP		">>"
 # define KW_REDIR_IN_APP		"<<"
 # define STR_PROMPT				"$> "
@@ -52,7 +53,8 @@ typedef enum	e_parser_states
 	ST_OP_REDIR_OUT,
 	ST_OP_REDIR_OUTA,
 	ST_OP_REDIR_IN,
-	ST_OP_PIPE
+	ST_OP_PIPE,
+	ST_OP_ASSIGN
 }				t_parser_states;
 
 typedef struct	s_app
