@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:15:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/23 22:24:03 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/23 22:47:45 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ typedef enum	e_parser_states
 	ST_OP_REDIR_OUTA,
 	ST_OP_REDIR_IN,
 	ST_OP_PIPE,
-	ST_OP_ASSIGN
+	ST_OP_ASSIGN,
+	ST_OP_COUNT
 }				t_parser_states;
 
 typedef struct	s_app
