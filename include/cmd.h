@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/28 19:23:34 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 20:54:50 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/23 17:06:45 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,5 @@ t_bool			build_redirects_out(t_cmd *cmd, t_list *cmd_lexems);
 t_bool			build_redirects_outa(t_cmd *cmd, t_list *cmd_lexems);
 t_bool			build_pipes(t_cmd *cmd, t_list *cmd_lexems);
 void			build_args(t_cmd *cmd, t_list *cmd_lexems);
-
 
 #endif

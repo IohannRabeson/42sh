@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/29 17:56:11 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/17 00:57:25 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/23 17:06:06 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ static void			preprocess_lexem(t_lexem *lexem)
 static void			lexems_transform_outa(t_list *lexems)
 {
 	int				state;
-	t_list_node	*it;
-	t_lexem 		*lex;
+	t_list_node		*it;
+	t_lexem			*lex;
 
 	state = 0;
 	it = list_first(lexems);
