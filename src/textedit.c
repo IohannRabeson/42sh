@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/08 22:08:06 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 06:03:47 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/24 00:28:44 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	textedit_validate(t_textedit *te)
 {
 	char	*str;
 
+	str = NULL;
 	if (textedit_multiline(te))
 	{
 		cursor_insert(te, '\r');
