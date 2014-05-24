@@ -57,13 +57,15 @@ SRC =			main.c						\
 				$(SRC_UTILS)				\
 				$(SRC_PARSER)				\
 				$(SRC_BUILTINS)				\
-				$(SRC_TERMCAPS)
+				$(SRC_TERMCAPS)				\
+				$(SRC_HISTO)
 
 SRC_BUILTINS =	bt_exit.c				\
 				bt_cd.c					\
 				bt_env.c				\
 				bt_unsetenv.c			\
 				bt_setenv.c				\
+				bt_history.c			\
 				bt_help.c
 
 
@@ -103,7 +105,6 @@ SRC_TERMCAPS =	textedit.c					\
 				textedit_replace.c			\
 				textedit_get.c				\
 				textedit_goto.c				\
-				histo.c						\
 				cursor.c					\
 				cursor_delete.c				\
 				key.c						\
@@ -113,6 +114,11 @@ SRC_TERMCAPS =	textedit.c					\
 				terminal_exec.c				\
 				terminal_query.c			\
 				terminal.c
+
+SRC_HISTO =		histo.c						\
+				histo_prev.c				\
+				histo_modifiers.c			\
+				histo_foreach.c
 
 ifeq ($(MODE), debug)
 COLOR_ID = \033[0;32m
