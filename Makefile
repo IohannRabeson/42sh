@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/05/18 05:15:11 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/05/24 00:25:42 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -17,7 +17,7 @@ ifeq ($(MODE), debug)
 CMODE = -g
 endif
 CFLAGS = -Werror -Wextra -Wall $(CMODE)
-TARGET = ft_minishell2
+TARGET = 42sh
 SRC_DIR = ./src
 INCLUDE_DIR = ./include
 BUILD_DIR = ./builds
@@ -36,6 +36,7 @@ SRC =			main.c						\
 				app_lexems.c				\
 				app_complete_bin_path.c		\
 				app_set.c					\
+				signal_handlers.c			\
 				lexems_preprocess.c			\
 				lexems_find_next.c			\
 				syntax.c					\
