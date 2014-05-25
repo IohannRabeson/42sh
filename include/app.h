@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:15:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/23 17:06:28 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/23 22:24:03 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,19 @@
 # define CHRS_LOW				"abcdefghijklmnopqrstuvwxyz"
 # define CHRS_UPP				"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 # define CHRS_DIG				"0123456789"
-# define CHRS_SID				"!#$%&()*+,-./:=?@[]^_{}~"
+# define CHRS_SID				"!#$%&()*+,-./:?@[]^_{}~"
 # define CHRS_SPE				"!#$%&()*+,-./:;<=>?@[]^_{|}~"
 # define CHRS_DELIM_PARAM		"\"\'"
 # define CHRS_CMD_END			";"
 # define CHRS_OPR_OUT			">"
 # define CHRS_OPR_IN			"<"
 # define CHRS_OP_PIPE			"|"
+# define CHRS_OP_ASSIGN			"="
 # define KW_REDIR_OUT_APP		">>"
 # define KW_REDIR_IN_APP		"<<"
 # define STR_PROMPT				"$> "
 # define STR_APPNAME			"ft_sh"
+# define FILE_HISTORY			".42sh_history"
 
 typedef enum	e_parser_states
 {
@@ -52,7 +54,9 @@ typedef enum	e_parser_states
 	ST_OP_REDIR_OUT,
 	ST_OP_REDIR_OUTA,
 	ST_OP_REDIR_IN,
-	ST_OP_PIPE
+	ST_OP_PIPE,
+	ST_OP_ASSIGN,
+	ST_OP_COUNT
 }				t_parser_states;
 
 typedef struct	s_app
@@ -69,13 +73,12 @@ typedef struct	s_app
 	t_textedit	textedit;
 	t_histo		histo;
 	t_keymapper	keymapper;
+	char 		*app_path;
 }				t_app;
 
 t_app			*app_instance(void);
 t_app			*app_init(int argc, char **argv, char **environs);
-void			app_init_keymaps(t_app *app);
 void			app_destroy(void);
-char			*app_readline(void);
 t_bool			app_process_line(char const *line);
 void			app_process_lexems(t_list *lexems);
 t_bool			app_process_cmd(struct s_cmd *cmd, t_env *env);

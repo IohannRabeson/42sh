@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/02 22:05:21 by irabeson          #+#    #+#             */
-/*   Updated: 2014/02/09 00:10:12 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/24 19:11:56 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_strndup(const char *str, size_t n)
 	if (new_str == NULL)
 		exit_errorc("ft_strndup", ERRC_NOT_ENOUGH_MEMORY, 1, NULL);
 	i = 0;
-	if (new_str && i < n)
+	if (new_str)
 	{
 		while (str[i] != '\0' && i < count)
 		{

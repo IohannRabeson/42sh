@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/05/24 00:25:42 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/05/25 08:00:26 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -58,13 +58,15 @@ SRC =			main.c						\
 				$(SRC_UTILS)				\
 				$(SRC_PARSER)				\
 				$(SRC_BUILTINS)				\
-				$(SRC_TERMCAPS)
+				$(SRC_TERMCAPS)				\
+				$(SRC_HISTO)
 
 SRC_BUILTINS =	bt_exit.c				\
 				bt_cd.c					\
 				bt_env.c				\
 				bt_unsetenv.c			\
 				bt_setenv.c				\
+				bt_history.c			\
 				bt_help.c
 
 
@@ -104,7 +106,6 @@ SRC_TERMCAPS =	textedit.c					\
 				textedit_replace.c			\
 				textedit_get.c				\
 				textedit_goto.c				\
-				histo.c						\
 				cursor.c					\
 				cursor_delete.c				\
 				key.c						\
@@ -114,6 +115,12 @@ SRC_TERMCAPS =	textedit.c					\
 				terminal_exec.c				\
 				terminal_query.c			\
 				terminal.c
+
+SRC_HISTO =		histo.c						\
+				histo_prev.c				\
+				histo_modifiers.c			\
+				histo_io.c					\
+				histo_foreach.c
 
 ifeq ($(MODE), debug)
 COLOR_ID = \033[0;32m
