@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/24 22:46:39 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/24 22:53:19 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/25 05:26:50 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ void			histo_remove(t_histo *histo, t_ui i)
 	{
 		list_erase(&histo->str_list, it);
 		histo->current = NULL;
+		str_buf_clear(&histo->temp_cmdline);
 	}
 }

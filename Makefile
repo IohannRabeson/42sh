@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/05/23 22:51:07 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/05/25 04:40:10 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -118,6 +118,7 @@ SRC_TERMCAPS =	textedit.c					\
 SRC_HISTO =		histo.c						\
 				histo_prev.c				\
 				histo_modifiers.c			\
+				histo_io.c					\
 				histo_foreach.c
 
 ifeq ($(MODE), debug)

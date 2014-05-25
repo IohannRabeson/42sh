@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/24 20:39:03 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/25 00:14:51 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/25 05:25:26 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,16 @@ static void	remove_item_history(t_cmd const *cmd)
 	t_app *const	app = app_instance();
 	int				item_index;
 
-	item_index = ft_atoi(cmd->args[2]);
+	item_index = -1;
+	if (cmd->argc > 2)
+	{
+		item_index = ft_atoi(cmd->args[2]);
+	}
+	else
+	{
+		cmd_errorl(cmd, 1, "usage: history -d <entry_id>");
+		return ;
+	}
 	if (item_index < 0 || item_index >= (int)histo_size(&app->histo))
 	{
 		cmd_errorl(cmd, 1, "invalid history item's index");

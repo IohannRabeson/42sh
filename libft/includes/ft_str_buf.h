@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 17:47:25 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 21:51:29 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/25 02:36:45 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ char			*str_buf_getsub(t_str_buf const *strbuf, t_ui start,
 char			str_buf_get_char(t_str_buf const *strbuf, t_ui pos);
 char			str_buf_get_last_char(t_str_buf const *strbuf);
 t_ui			str_buf_size(t_str_buf const *strbuf);
+void			str_buf_assign(t_str_buf *strbuf, char const *str);
 void			str_buf_app_char(t_str_buf *strbuf, char c);
 void			str_buf_app_str(t_str_buf *strbuf, char const *str);
 void			str_buf_app_strn(t_str_buf *strbuf, char const *str, t_ui n);

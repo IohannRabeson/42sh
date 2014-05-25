@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/09 18:56:47 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/25 00:22:48 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/25 06:30:19 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct	s_histo
 	t_list		str_list;
 	t_list_node	*current;
 	t_str_buf	temp_cmdline;
-	int			end;
 }				t_histo;
 
 typedef void(*t_histo_entry_func)(t_ui i, char *str);
@@ -30,6 +29,8 @@ typedef void(*t_histo_entry_cfunc)(t_ui i, char const *str);
 
 void			histo_init(t_histo *histo);
 void			histo_destroy(t_histo *histo);
+void			histo_save_config(t_histo *histo, char const *file_path);
+void			histo_load_config(t_histo *histo, char const *file_path);
 t_ui			histo_size(t_histo const *histo);
 void			histo_show_prev(t_histo *histo, struct s_textedit *te);
 void			histo_show_next(t_histo *histo, struct s_textedit *te);

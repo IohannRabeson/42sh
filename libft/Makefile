@@ -6,7 +6,7 @@
 #    By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 10:49:54 by irabeson          #+#    #+#              #
-#    Updated: 2014/02/09 21:36:46 by irabeson         ###   ########.fr        #
+#*   Updated: 2014/05/25 02:38:23 by irabeson         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,6 +107,7 @@ SRC_STR_BUF =						\
 		ft_str_buf_app.c			\
 		ft_str_buf_get.c			\
 		ft_str_buf_clone.c			\
+		ft_str_buf_assign.c			\
 		ft_str_buf_rw.c
 
 SRC_MEMORY =						\
