@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   textedit_get.c                                     :+:      :+:    :+:   */
+/*   ft_str_buf_assign.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/09 19:08:18 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/24 18:23:43 by irabeson         ###   ########.fr       */
+/*   Created: 2014/05/25 02:37:08 by irabeson          #+#    #+#             */
+/*   Updated: 2014/05/25 02:39:22 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "textedit.h"
-#include <ft_string.h>
+#include "ft_str_buf.h"
 
-char	*textedit_get_text(t_textedit const *te)
+void			str_buf_assign(t_str_buf *strbuf, char const *str)
 {
-	t_str_buf	temp;
-	char		*str;
-
-	if (str_buf_size(&te->buffer) == te->prompt.size)
-		return (ft_strdup(""));
-	str_buf_init(&temp);
-	str_buf_clone(&temp, &te->buffer);
-	str_buf_erase(&temp, 0, te->prompt.size);
-	str = str_buf_get(&temp);
-	str_buf_destroy(&temp);
-	return (str);
+	str_buf_clear(strbuf);
+	str_buf_app_str(strbuf, str);
 }

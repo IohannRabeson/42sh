@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:15:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/23 22:47:45 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/23 22:24:03 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define KW_REDIR_IN_APP		"<<"
 # define STR_PROMPT				"$> "
 # define STR_APPNAME			"ft_sh"
+# define FILE_HISTORY			".42sh_history"
 
 typedef enum	e_parser_states
 {
@@ -72,13 +73,12 @@ typedef struct	s_app
 	t_textedit	textedit;
 	t_histo		histo;
 	t_keymapper	keymapper;
+	char 		*app_path;
 }				t_app;
 
 t_app			*app_instance(void);
 t_app			*app_init(int argc, char **argv, char **environs);
-void			app_init_keymaps(t_app *app);
 void			app_destroy(void);
-char			*app_readline(void);
 t_bool			app_process_line(char const *line);
 void			app_process_lexems(t_list *lexems);
 t_bool			app_process_cmd(struct s_cmd *cmd, t_env *env);
