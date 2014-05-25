@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 14:58:51 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 19:37:50 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/25 18:28:28 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,8 @@ typedef struct		s_parser
 	t_bool				verbose;
 }					t_parser;
 
-typedef enum		e_trans_type
-{
-	PTT_CHARS,
-	PTT_KEYWORD,
-	PTT_NULL
-}					t_trans_type;
-
 typedef struct		s_parser_trans
 {
-	t_trans_type	type;
 	t_ui			current;
 	t_ui			next;
 	char const		*chars;
