@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/24 20:39:03 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/25 05:25:26 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/25 06:47:39 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,11 @@ static void	remove_item_history(t_cmd const *cmd)
 	histo_remove(&app->histo, item_index);
 }
 
+static void	reload_history(void)
+{
+	histo_load_config(&app_instance()->histo, FILE_HISTORY);
+}
+
 void		bt_history(t_cmd *cmd, struct s_env *env)
 {
 	t_app *const	app = app_instance();
@@ -83,6 +88,8 @@ void		bt_history(t_cmd *cmd, struct s_env *env)
 		histo_clear(&app->histo);
 	else if (getopt_contains(&go, "-d"))
 		remove_item_history(cmd);
+	else if (getopt_contains(&go, "-r"))
+		reload_history();
 	getopt_destroy(&go);
 	(void)env;
 }

@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:17:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/25 06:16:30 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/25 06:44:18 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void		app_destroy(void)
 	keymapper_destroy(&app->keymapper);
 	textedit_destroy(&app->textedit);
 	terminal_destroy();
+	histo_save_config(&app->histo, FILE_HISTORY);
 	histo_destroy(&app->histo);
 	if (app->app_path)
 		free(app->app_path);

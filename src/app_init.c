@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/09 21:55:19 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/25 05:28:35 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/25 07:33:24 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,7 @@ static void	init_gui(t_app *app)
 	terminal_exec("cl");
 	textedit_init(&app->textedit, STR_PROMPT, user_validate);
 	histo_init(&app->histo);
+	histo_load_config(&app->histo, FILE_HISTORY);
 	keymapper_init(&app->keymapper);
 	keymapper_load(&app->keymapper, g_keymaps);
 }
@@ -178,7 +179,7 @@ t_app		*app_init(int argc, char **argv, char **environs)
 	env_init(&app->env, environs);
 	env_init(&app->vars, NULL);
 	env_set(&app->vars, "$?", "0");
-	app->app_path = path_concat(env_get_value(&app->env, "PWD"), argv[0]);
+	app->app_path = ft_strdup("./");
 	gnl_init(&app->gnl);
 	parser_init(&app->parser, ST_INIT);
 	app->parser.verbose = getopt_contains(&app->getopt, "--verbose");
