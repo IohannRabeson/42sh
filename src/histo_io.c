@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/25 04:39:13 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/25 07:10:47 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/25 07:57:50 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void		histo_save_config(t_histo *histo, char const *file_path)
 	int			fd;
 
 	fd = open_local(file_path, O_WRONLY | O_CREAT | O_TRUNC, 0666);
-	if (fd < 0)
+	if (fd < 0 && getopt_contains(&app_instance()->getopt, "--verbose"))
 	{
 		ft_putendl_fd("ft_sh: failed to save history", 2);
 		return ;
@@ -90,7 +90,7 @@ void		histo_load_config(t_histo *histo, char const *file_path)
 		}
 		str_buf_destroy(&str_buf);
 	}
-	else
+	else if (getopt_contains(&app_instance()->getopt, "--verbose"))
 		ft_putendl_fd("ft_sh: failed to load history", 2);
 	close(fd);
 }
