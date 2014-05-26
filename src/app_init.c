@@ -21,14 +21,14 @@
 
 static t_builtin const		g_builtins[] =
 {
-	{"exit", bt_exit},
-	{"cd", bt_cd},
-	{"env", bt_env},
-	{"setenv", bt_setenv},
-	{"unsetenv", bt_unsetenv},
-	{"help", bt_help},
-	{"history", bt_history},
-	{NULL, NULL}
+	{"exit", bt_exit, "exit [exit_code]"},
+	{"cd", bt_cd, "cd [-]"},
+	{"env", bt_env, "env [-i <exec>]"},
+	{"setenv", bt_setenv, "setenv <key> [value]"},
+	{"unsetenv", bt_unsetenv, "unsetenv <key>"},
+	{"help", bt_help, "help [builtin]"},
+	{"history", bt_history, "history [-c | -d <index> | -r]"},
+	{NULL, NULL, NULL}
 };
 
 static const t_keymap		g_keymaps[] =
