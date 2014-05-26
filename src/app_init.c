@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/09 21:55:19 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/25 18:59:57 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/27 00:36:01 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static t_parser_trans const	g_parser_transitions[] =
 	{ST_SKIP_SPACES, ST_OP_REDIR_OUT, CHRS_OPR_OUT},
 	{ST_SKIP_SPACES, ST_OP_REDIR_IN, CHRS_OPR_IN},
 	{ST_SKIP_SPACES, ST_OP_PIPE, CHRS_OP_PIPE},
+	{ST_SKIP_SPACES, ST_OP_AND_1, CHRS_OP_AND},
 	{ST_PARAM, ST_PARAM, CHRS_LOW},
 	{ST_PARAM, ST_PARAM, CHRS_UPP},
 	{ST_PARAM, ST_PARAM, CHRS_DIG},
@@ -78,6 +79,7 @@ static t_parser_trans const	g_parser_transitions[] =
 	{ST_PARAM, ST_OP_PIPE, CHRS_OP_PIPE},
 
 	{ST_PARAM, ST_OP_ASSIGN, CHRS_OP_ASSIGN},
+	{ST_PARAM, ST_OP_AND_1, CHRS_OP_AND},
 
 	{ST_DELIM_PARAM_IN, ST_FPARAM, CHRS_SPC},
 	{ST_DELIM_PARAM_IN, ST_FPARAM, CHRS_LOW},
@@ -90,6 +92,7 @@ static t_parser_trans const	g_parser_transitions[] =
 	{ST_DELIM_PARAM_OUT, ST_OP_PIPE, CHRS_OP_PIPE},
 
 	{ST_DELIM_PARAM_OUT, ST_OP_ASSIGN, CHRS_OP_ASSIGN},
+	{ST_DELIM_PARAM_OUT, ST_OP_AND_1, CHRS_OP_AND},
 
 	{ST_FPARAM, ST_FPARAM, CHRS_LOW},
 	{ST_FPARAM, ST_FPARAM, CHRS_UPP},
@@ -131,6 +134,7 @@ static t_parser_trans const	g_parser_transitions[] =
 	{ST_OP_PIPE, ST_PARAM, CHRS_DIG},
 	{ST_OP_PIPE, ST_PARAM, CHRS_SID},
 	{ST_OP_PIPE, ST_DELIM_PARAM_IN, CHRS_DELIM_PARAM},
+	{ST_OP_PIPE, ST_OP_OR, CHRS_OP_PIPE},
 
 	{ST_OP_ASSIGN, ST_SKIP_SPACES, CHRS_SPC},
 	{ST_OP_ASSIGN, ST_DELIM_PARAM_IN, CHRS_DELIM_PARAM},
@@ -138,6 +142,22 @@ static t_parser_trans const	g_parser_transitions[] =
 	{ST_OP_ASSIGN, ST_PARAM, CHRS_UPP},
 	{ST_OP_ASSIGN, ST_PARAM, CHRS_DIG},
 	{ST_OP_ASSIGN, ST_PARAM, CHRS_SID},
+
+	{ST_OP_OR, ST_SKIP_SPACES, CHRS_SPC},
+	{ST_OP_OR, ST_DELIM_PARAM_IN, CHRS_DELIM_PARAM},
+	{ST_OP_OR, ST_PARAM, CHRS_LOW},
+	{ST_OP_OR, ST_PARAM, CHRS_UPP},
+	{ST_OP_OR, ST_PARAM, CHRS_DIG},
+	{ST_OP_OR, ST_PARAM, CHRS_SID},
+
+	{ST_OP_AND_1, ST_OP_AND, CHRS_OP_AND},
+
+	{ST_OP_AND, ST_SKIP_SPACES, CHRS_SPC},
+	{ST_OP_AND, ST_DELIM_PARAM_IN, CHRS_DELIM_PARAM},
+	{ST_OP_AND, ST_PARAM, CHRS_LOW},
+	{ST_OP_AND, ST_PARAM, CHRS_UPP},
+	{ST_OP_AND, ST_PARAM, CHRS_DIG},
+	{ST_OP_AND, ST_PARAM, CHRS_SID},
 
 	{PARSER_ERR_STATE, PARSER_ERR_STATE, NULL}
 };

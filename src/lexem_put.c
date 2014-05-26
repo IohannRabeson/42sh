@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 16:04:56 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/23 22:49:43 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/27 00:40:42 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ static char const	*g_lexem_types[ST_OP_COUNT] =
 	"[REDIR OUT APP OP",
 	"[REDIR IN OP]",
 	"[PIPE OP]",
-	"[ASSIGN OP]"
+	"[ASSIGN OP]",
+	"[ST_OP_OR]",
+	"[ST_OP_AND_FIRST]",
+	"[ST_OP_AND]"
 };
 
 static void			display_type(unsigned int type)
