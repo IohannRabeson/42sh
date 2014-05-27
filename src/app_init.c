@@ -18,6 +18,8 @@
 #include "env.h"
 #include <ft_string.h>
 #include <ft_memory.h>
+#include <ft_string.h>
+#include <unistd.h>
 
 static t_builtin const		g_builtins[] =
 {
@@ -190,6 +192,19 @@ static void	init_gui(t_app *app)
 	keymapper_load(&app->keymapper, g_keymaps);
 }
 
+static void	init_variables(t_app *app)
+{
+	char	*pid_str;
+
+	pid_str = ft_ultoa(getpid());
+	env_set(&app->vars, "$?", "0");
+	if (pid_str)
+	{
+		env_set(&app->vars, "$$", pid_str);
+		free(pid_str);
+	}
+}
+
 t_app		*app_init(int argc, char **argv, char **environs)
 {
 	t_app	*app;
@@ -199,7 +214,7 @@ t_app		*app_init(int argc, char **argv, char **environs)
 	getopt_init_args(&app->getopt, argc, argv);
 	env_init(&app->env, environs);
 	env_init(&app->vars, NULL);
-	env_set(&app->vars, "$?", "0");
+	init_variables(app);
 	app->app_path = ft_strdup("./");
 	gnl_init(&app->gnl);
 	parser_init(&app->parser, ST_INIT);
