@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 19:32:54 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/17 00:11:08 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/27 04:09:14 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,11 @@ static int			open_out_fd(char const *filename, t_bool trunc)
 		fd = open(filename, O_WRONLY | O_APPEND, 0644);
 	if (fd == -1)
 	{
-		exit_errorm(STR_APPNAME,
-					"unable to open file for writing", 1, app_destroy);
+		ft_putstr_fd(STR_APPNAME, 2);
+		ft_putstr_fd(": ", 2);
+		ft_putstr_fd(filename, 2);
+		ft_putstr_fd(": ", 2);
+		ft_putendl_fd("unable to open file for writing", 2);
 	}
 	return (fd);
 }
