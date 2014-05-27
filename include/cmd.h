@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/28 19:23:34 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/23 17:06:45 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/27 02:56:28 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include <ft_types_def.h>
 # include <ft_list.h>
 
+typedef t_bool (*t_condition)(int exit_code);
+
 typedef struct	s_cmd
 {
 	char			**args;
@@ -22,6 +24,8 @@ typedef struct	s_cmd
 	char			*in_file;
 	char			*out_file;
 	t_bool			trunc_out;
+	t_condition		condition;
+	int				exit_code;
 	struct s_cmd	*next;
 }				t_cmd;
 
