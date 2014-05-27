@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 20:22:41 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 20:29:17 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/27 03:20:05 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,15 @@ void				app_exec_cmds(t_list *cmds)
 	{
 		cmd = (t_cmd *)it->item;
 		app_process_cmd(cmd, &app->env);
-		it = list_erase(cmds, it);
+		if (cmd->condition != NULL
+			&& cmd->condition(cmd->exit_code) == false)
+		{
+			it = list_erase(cmds, it);
+			if (it)
+				it = list_erase(cmds, it);
+		}
+		else
+			it = list_erase(cmds, it);
 	}
 }
 
@@ -48,7 +56,7 @@ static void			app_extract_cmds(t_list *lexems,
 	{
 		cmd = cmd_malloc();
 		cmd_init(cmd);
-		extract_cmd(lexems, cmd_lexems);
+		extract_cmd(lexems, cmd_lexems, cmd);
 		if (build_cmd(cmd, cmd_lexems) == false)
 		{
 			ft_putendl_fd("ft_sh: invalid command line", STDERR_FILENO);
@@ -69,6 +77,8 @@ void				app_process_lexems(t_list *lexems)
 	list_init(&cmds, cmd_free);
 	list_init(&cmd_lexems, lexem_free);
 	lexems_preprocess(lexems);
+	if (app_instance()->parser.verbose)
+		list_foreach(lexems, lexem_put);
 	app_extract_cmds(lexems, &cmd_lexems, &cmds);
 	app_exec_cmds(&cmds);
 	list_destroy(&cmds);

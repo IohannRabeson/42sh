@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 19:32:54 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/17 00:11:08 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/27 03:02:52 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ static void			cmd_exec_chain_parent(t_cmd *cmd, int fds[2], int fds_io[2],
 	else if (cmd->next)
 		fds_io[0] = fds[0];
 	app_set_last_cmd_status(status);
+	cmd->exit_code = status;
 }
 
 int					cmd_exec_chain(t_cmd *it, char **env, int fd_in)
