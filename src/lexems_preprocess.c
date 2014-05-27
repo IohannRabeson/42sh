@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/29 17:56:11 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/27 00:39:51 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/27 03:09:58 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,10 +123,35 @@ static void			lexems_transform_and(t_list *lexems)
 	}
 }
 
+static void			lexems_transform_or(t_list *lexems)
+{
+	int				state;
+	t_list_node		*it;
+	t_lexem			*lex;
+
+	state = 0;
+	it = list_first(lexems);
+	while (it)
+	{
+		lex = (t_lexem *)it->item;
+		if (state == 0 && lex && lex->state_id == ST_OP_PIPE)
+			state = 1;
+		else if (state == 1 && lex && lex->state_id == ST_OP_OR)
+		{
+			list_erase(lexems, it->prev);
+			lexem_set(lex, ST_OP_OR, KW_OP_OR,
+						ft_strlen(KW_OP_OR));
+			state = 0;
+		}
+		it = it->next;
+	}
+}
+
 void				lexems_preprocess(t_list *lexems)
 {
 	lexems_transform_outa(lexems);
 	lexems_transform_and(lexems);
+	lexems_transform_or(lexems);
 	list_foreach(lexems, preprocess_lexem);
 	list_erase_if(lexems, lexem_is_spaces);
 	list_erase_if(lexems, lexem_is_delim);

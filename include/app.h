@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 20:15:52 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/27 00:39:24 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/27 03:10:20 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define KW_REDIR_OUT_APP		">>"
 # define KW_REDIR_IN_APP		"<<"
 # define KW_OP_AND				"&&"
+# define KW_OP_OR				"||"
 # define STR_PROMPT				"$> "
 # define STR_APPNAME			"ft_sh"
 # define FILE_HISTORY			".42sh_history"
