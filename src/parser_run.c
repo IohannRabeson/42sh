@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 03:23:16 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 20:53:14 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/27 02:25:36 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,5 @@ t_bool		parser_run(t_parser *parser, char const *str, t_list *lexems)
 		ft_putendl("manque des trucs mec");
 		return (false);
 	}
-	if (parser->verbose)
-		list_foreach(lexems, lexem_put);
 	return (true);
 }

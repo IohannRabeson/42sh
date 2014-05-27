@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 20:22:41 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/14 20:29:17 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/27 02:26:40 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void				app_process_lexems(t_list *lexems)
 	list_init(&cmds, cmd_free);
 	list_init(&cmd_lexems, lexem_free);
 	lexems_preprocess(lexems);
+	if (app_instance()->parser.verbose)
+		list_foreach(lexems, lexem_put);
 	app_extract_cmds(lexems, &cmd_lexems, &cmds);
 	app_exec_cmds(&cmds);
 	list_destroy(&cmds);
