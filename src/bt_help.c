@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/18 04:14:27 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/25 09:16:01 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/25 09:26:47 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	help_summary(void)
 	t_ui				i;
 
 	i = 0;
-	ft_putendl("Available builtins (type help <builtin name> for details):");
+	ft_putendl("available builtins (type help <builtin name> for details):");
 	while (i < app->builtins.size)
 	{
 		ft_putstr("    ");
@@ -67,12 +67,11 @@ static void	help_detailed(t_cmd const *cmd)
 	}
 }
 
-void	bt_help(t_cmd *cmd, struct s_env *env)
+void		bt_help(t_cmd *cmd, struct s_env *env)
 {
 	if (cmd->argc == 1)
 		help_summary();
 	else if (cmd->argc > 1)
 		help_detailed(cmd);
-	(void)cmd;
 	(void)env;
 }
