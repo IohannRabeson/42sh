@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/18 04:14:27 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/25 09:26:47 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/27 05:01:18 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,10 @@ static void	help_detailed(t_cmd const *cmd)
 	builtin = builtins_find(&app_instance()->builtins, topic);
 	if (builtin)
 	{
-		ft_putstr(builtin->key);
-		ft_putstr(" ");
-		ft_putendl(builtin->help);
+		ft_putstr(" - ");
+		ft_putendl(builtin->key);
+		if (builtin->help)
+			ft_putendl(builtin->help);
 	}
 	else
 	{
