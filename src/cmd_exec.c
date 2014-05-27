@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/28 19:58:03 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/27 03:06:48 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/05/27 05:07:29 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include <ft_print.h>
 
 static int	open_in_fd(char const *filename)
 {
@@ -25,8 +26,13 @@ static int	open_in_fd(char const *filename)
 		return (-1);
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		exit_errorm(STR_APPNAME,
-					"Unable to open file to reading", 1, app_destroy);
+	{
+		ft_putstr_fd(STR_APPNAME, 2);
+		ft_putstr_fd(": ", 2);
+		ft_putstr_fd(filename, 2);
+		ft_putstr_fd(": ", 2);
+		ft_putendl_fd("unable to open file for reading", 2);
+	}
 	return (fd);
 }
 
