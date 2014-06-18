@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/09 21:55:19 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/27 00:36:01 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/06/18 08:24:32 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static t_builtin const		g_builtins[] =
 	{"unsetenv", bt_unsetenv, "unsetenv <key>"},
 	{"help", bt_help, "help [builtin]"},
 	{"history", bt_history, "history [-c | -d <index> | -r]"},
+	{"echo", bt_echo, "echo [-n] [-e] <text>"},
 	{NULL, NULL, NULL}
 };
 

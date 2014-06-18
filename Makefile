@@ -6,7 +6,7 @@
 #*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/21 19:04:04 by irabeson          #+#    #+#             *#
-#*   Updated: 2014/05/25 08:00:26 by irabeson         ###   ########.fr       *#
+#*   Updated: 2014/06/18 07:32:57 by irabeson         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -67,6 +67,7 @@ SRC_BUILTINS =	bt_exit.c				\
 				bt_unsetenv.c			\
 				bt_setenv.c				\
 				bt_history.c			\
+				bt_echo.c				\
 				bt_help.c
 
 

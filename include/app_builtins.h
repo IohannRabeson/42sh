@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 20:48:35 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/24 20:39:48 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/06/18 07:32:12 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ void	bt_setenv(t_cmd *cmd, struct s_env *env);
 void	bt_unsetenv(t_cmd *cmd, struct s_env *env);
 void	bt_help(t_cmd *cmd, struct s_env *env);
 void	bt_history(t_cmd *cmd, struct s_env *env);
+void	bt_echo(t_cmd *cmd, struct s_env *env);
 
 #endif
