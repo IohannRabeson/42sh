@@ -6,7 +6,7 @@
 /*   By: irabeson <irabeson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 21:13:15 by irabeson          #+#    #+#             */
-/*   Updated: 2014/05/23 16:33:32 by irabeson         ###   ########.fr       */
+/*   Updated: 2014/06/18 07:36:49 by irabeson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void				bt_cd(t_cmd *cmd, t_env *env)
 
 	result = false;
 	pwd = env_get_value(env, "PWD");
+	// TODO: check PATH
 	if (pwd == NULL)
 	{
 		cmd_errorl(cmd, 2, "no valid environ");
