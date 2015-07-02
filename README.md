@@ -26,4 +26,4 @@ make re            # recompile tout en mode release (gcc -O3)
 
 
 ## Notes ##
-[zoli dessin](https://docs.google.com/drawings/d/1onj-TkuuqKqZyILVbRrlkrvAVMpRFn9NRbZADQ7mwg4/edit?usp=sharing)
+[Archi generale](https://docs.google.com/drawings/d/1onj-TkuuqKqZyILVbRrlkrvAVMpRFn9NRbZADQ7mwg4/edit?usp=sharing)
