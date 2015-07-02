@@ -1,6 +1,5 @@
 ## Usage ##
 ```
-#!bash
 ./42sh [--verbose]
 ```
 
